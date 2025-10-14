@@ -1,0 +1,14 @@
+[class^="col"] {
+    border: 1px dashed blue;
+}
+
+.main {
+    margin-left: 280px; /* same as sidebar width */
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
