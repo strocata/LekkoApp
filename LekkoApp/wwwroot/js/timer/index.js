@@ -71,7 +71,7 @@
         startBtn.addEventListener("click", start);
         resetBtn.addEventListener("click", reset);
 
-        return { start, stop, reset, inactivate, isRunning: () => !!timerInterval };
+        return { start, stop, reset, inactivate};
     }
 
     function switchTabAndStart(tabId, startBtnId) {
@@ -108,6 +108,7 @@
                 return res.json();
             })
             .then(data => {
+                document.getElementById("completedPomodoros").innerHTML = "Pomodoros done: " + data.completedPomodoros;
                 if (data.completed === true) 
                 {
                     window.pomodoro.inactivate();

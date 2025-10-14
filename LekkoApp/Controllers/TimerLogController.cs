@@ -55,7 +55,8 @@ public class TimerLogController : ControllerBase
         {
             success = true,
             completed = isCompleted,
-            status = currentTask.Status.ToString()
+            status = currentTask.Status.ToString(),
+            completedPomodoros = currentTask.CompletedPomodoros.ToString()
         });
     }
 
