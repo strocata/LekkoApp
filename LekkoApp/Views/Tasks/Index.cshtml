@@ -1,0 +1,104 @@
+@model LekkoApp.Models.TasksViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Tasks</title>
+</head>
+<body>
+
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <div class="list-group d-grid gap-3 border-0">
+            @foreach (var item in Model.Tasks)
+            {
+                <a class="list-group-item list-group-item-action rounded-3 py-3"
+                   asp-controller="Tasks"
+                   asp-action="Index"
+                   asp-route-selectedId="@item.Id">
+                    @item.Title
+                    <span class="d-block small opacity-50">@item.DueDate</span>
+                </a>
+            }
+        </div>
+    </div>
+
+    @if (Model.SelectedTask != null)
+    {
+        <div class="col-12 col-lg-6">
+            <div class="p-3 border rounded">
+                <h4>Task Number: @Model.SelectedTask.TaskNumber</h4>
+
+                <!-- Save Form --> 
+                <form asp-controller="Tasks" asp-action="UpdateCardTask" method="post">
+                    <input type="hidden" asp-for="@Model.SelectedTask.Id"/>
+
+                    <div class="mb-3">
+                        <label asp-for="@Model.SelectedTask.Title" class="form-label"></label>
+                        <input asp-for="@Model.SelectedTask.Title" class="form-control"/>
+                        <span asp-validation-for="@Model.SelectedTask.Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="@Model.SelectedTask.Description" class="form-label"></label>
+                        <textarea asp-for="@Model.SelectedTask.Description" class="form-control"></textarea>
+                        <span asp-validation-for="@Model.SelectedTask.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="@Model.SelectedTask.Status" class="form-label"></label>
+                        <select asp-for="@Model.SelectedTask.Status"
+                                asp-items="Html.GetEnumSelectList<LekkoApp.Models.TaskStatus>()"
+                                class="form-select">
+                            <option value="">-- Select --</option>
+                        </select>
+                        <span asp-validation-for="@Model.SelectedTask.Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="row row-cols-2 mb-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Creation Date</h5>
+                                    <p class="card-text">@Model.SelectedTask.CreatedAt</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row row-cols-2 mb-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Estimated Pomodoros</h5>
+                                    <p class="card-text">@Model.SelectedTask.EstimatedPomodoros</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Completed Pomodoros</h5>
+                                    <p class="card-text">@Model.SelectedTask.CompletedPomodoros</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-2">Save</button>
+                </form>
+
+                <!-- Start Timer Form -->
+                <form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-2">
+                    <input type="hidden" asp-for="@Model.SelectedTask.Id"/>
+                    <button type="submit" class="btn btn-success">Start Timer</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+
+</body>
+</html>

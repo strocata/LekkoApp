@@ -1,0 +1,98 @@
+@model TimerViewModel
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Timer</title>
+</head>
+<body>
+<div class="container mt-4">
+    <div class="modern-tabs mb-5">
+        <ul class="nav nav-tabs" id="filledTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pomodoro-tab" data-bs-toggle="tab" data-bs-target="#pomodoro" type="button" role="tab">
+                    Pomodoro
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="short-break-tab" data-bs-toggle="tab" data-bs-target="#short-break" type="button" role="tab">
+                    Short Break
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="long-break-tab" data-bs-toggle="tab" data-bs-target="#long-break" type="button" role="tab">
+                    Long Break
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-3" id="filledTabsContent">
+            <!-- Pomodoro -->
+            <div class="tab-pane fade show active" id="pomodoro" role="tabpanel">
+                <div class="timer-container d-flex flex-column align-items-center justify-content-center">
+                    <div id="pomodoro-timer" class="timer-display mb-4">00:00</div>
+                    <div class="btn-group">
+                        <button id="startPomodoroBtn" class="btn btn-primary">Start</button>
+                        <button id="resetPomodoroBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Short Break -->
+            <div class="tab-pane fade" id="short-break" role="tabpanel">
+                <div class="timer-container d-flex flex-column align-items-center justify-content-center">
+                    <div id="short-break-timer" class="timer-display mb-4">00:00</div>
+                    <div class="btn-group">
+                        <button id="startShortBtn" class="btn btn-primary">Start</button>
+                        <button id="resetShortBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Long Break -->
+            <div class="tab-pane fade" id="long-break" role="tabpanel">
+                <div class="timer-container d-flex flex-column align-items-center justify-content-center">
+                    <div id="long-break-timer" class="timer-display mb-4">00:00</div>
+                    <div class="btn-group">
+                        <button id="startLongBtn" class="btn btn-primary">Start</button>
+                        <button id="resetLongBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card card-glow hvr-glow">
+                    <div class="card-body">
+                        <p class="card-title">Current Task</p>
+                        <input type="hidden" id="taskId" value="@Model.SelectedTask.Id" />
+                        <input type="hidden" id="taskStatus" value="@Model.SelectedTask.Status" />
+                        <h5 class="card-text">Title: @Model.SelectedTask.Title</h5>
+                        <p class="card-text">Description: @Model.SelectedTask.Description</p>
+                        <p class="card-text">Estimated pomodoros: @Model.SelectedTask.EstimatedPomodoros</p>
+                        <p class="card-text">
+                            Pomodoros done: @(Model.SelectedTask.CompletedPomodoros)
+                        </p>
+                        <p class="card-text">Deadline: @Model.SelectedTask.DueDate</p>
+                        <a href="#" class="btn btn-glow">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/js/timer/index.js" asp-append-version="true"></script>
+<script>
+    
+</script>
+</body>
+</html>
