@@ -146,3 +146,4 @@
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/scopedcss/Views/Home/Index.cshtml.rz.scp.css
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/scopedcss/Views/Tasks/Index.cshtml.rz.scp.css
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/scopedcss/Views/Timer/Index.cshtml.rz.scp.css
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/LekkoApp.sourcelink.json
