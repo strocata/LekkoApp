@@ -88,15 +88,13 @@
     }
 
     function sendTimerData(timerType) {
-        // get taskId from hidden input
         const taskIdEl = document.getElementById("taskId");
         const taskId = taskIdEl ? taskIdEl.value : null;
         console.log("Sending:", { timerType, taskId });
+        
         fetch('/TimerLog/LogIteration', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 timerType: timerType,
                 completedAt: new Date().toISOString(),
@@ -108,12 +106,41 @@
                 return res.json();
             })
             .then(data => {
-                document.getElementById("completedPomodoros").innerHTML = "Pomodoros done: " + data.completedPomodoros;
-                if (data.completed === true) 
-                {
-                    window.pomodoro.inactivate();
-                    window.shortBreak.inactivate();
-                    window.longBreak.inactivate();
+                console.log("Timer response data:", data);
+
+                const progressBar = document.querySelector("#completedPomodoros .progress-bar");
+                if (!progressBar) {
+                    console.warn("Progress bar element not found: #completedPomodoros .progress-bar");
+                    return;
+                }
+
+                const completed = Number(data.completedPomodoros);
+                const estimated = Number(data.estimatedPomodoros);
+
+                let percentage = 0;
+                if (Number.isFinite(completed) && Number.isFinite(estimated) && estimated > 0) {
+                    percentage = (completed / estimated) * 100;
+                } else {
+                    console.warn("Invalid completed/estimated values:", { completed, estimated });
+                }
+
+                percentage = Math.max(0, Math.min(100, percentage));
+                const rounded = Math.round(percentage * 10) / 10;
+
+                progressBar.style.transition = progressBar.style.transition || "width 0.35s ease";
+
+                progressBar.style.width = `${rounded}%`;
+                progressBar.setAttribute("aria-valuenow", String(rounded));
+
+                const progressText = document.querySelector("#completedPomodoros + small");
+                if (progressText) {
+                    progressText.textContent = `${Math.round(rounded)}% Complete`;
+                }
+
+                if (data.completed === true) {
+                    if (window.pomodoro) window.pomodoro.inactivate();
+                    if (window.shortBreak) window.shortBreak.inactivate();
+                    if (window.longBreak) window.longBreak.inactivate();
                 }
             })
             .catch(err => console.error("Error sending timer data:", err));

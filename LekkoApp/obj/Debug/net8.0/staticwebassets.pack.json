@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets/js/timer/index.js"
     },
     {
+      "Id": "/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/lekko_app_logo.png",
+      "PackagePath": "staticwebassets/lekko_app_logo.png"
+    },
+    {
       "Id": "/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/lib/bootstrap/LICENSE",
       "PackagePath": "staticwebassets/lib/bootstrap"
     },

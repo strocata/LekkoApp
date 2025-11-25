@@ -1,6 +1,7 @@
 using LekkoApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using LekkoApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Task = LekkoApp.Models.Task;
 using TaskStatus = LekkoApp.Models.TaskStatus;
@@ -17,7 +18,8 @@ public class TimerLogController : ControllerBase
     {
         _context = context;
     }
-
+    
+    [Authorize]
     [HttpPost("LogIteration")]
     public async Task<IActionResult> LogIteration([FromBody] TimerLogDto dto)
     {
@@ -56,7 +58,8 @@ public class TimerLogController : ControllerBase
             success = true,
             completed = isCompleted,
             status = currentTask.Status.ToString(),
-            completedPomodoros = currentTask.CompletedPomodoros.ToString()
+            completedPomodoros = currentTask.CompletedPomodoros.ToString(),
+            estimatedPomodoros = currentTask.EstimatedPomodoros.ToString(),
         });
     }
 

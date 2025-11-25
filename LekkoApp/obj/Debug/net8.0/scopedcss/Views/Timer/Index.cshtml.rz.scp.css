@@ -15,11 +15,6 @@ body[b-7ak3ss9ndt] {
     padding: 2rem 0;
 }
 
-body[b-7ak3ss9ndt] {
-    background: #f8f9fa;
-    padding: 2rem 0;
-}
-
 /* Modern Filled Tabs */
 .modern-tabs[b-7ak3ss9ndt] {
     background: white;
@@ -91,11 +86,12 @@ body[b-7ak3ss9ndt] {
 }
 
 .card-glow[b-7ak3ss9ndt] {
-    background: linear-gradient(135deg, #5d2cb1, #fad0c4);
+    background: linear-gradient(135deg, #9e9e4d, #004e3f);
     color: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%;
 }
 
 .card-glow:hover[b-7ak3ss9ndt] {
@@ -120,13 +116,13 @@ body[b-7ak3ss9ndt] {
 
 .card-glow .btn-glow[b-7ak3ss9ndt] {
     background-color: #fff;
-    color: #5d2cb1;
+    color: #9e9e4d;
     font-weight: bold;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .card-glow .btn-glow:hover[b-7ak3ss9ndt] {
-    background-color: #5d2cb1;
+    background-color: #004e3f;
     color: #fff;
 }
 

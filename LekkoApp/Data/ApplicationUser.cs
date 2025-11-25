@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace LekkoApp.Data;
 
-public class ApplicationUser
+public class ApplicationUser: IdentityUser
 {
     
 }

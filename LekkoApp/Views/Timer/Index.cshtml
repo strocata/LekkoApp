@@ -1,6 +1,5 @@
 @model TimerViewModel
 
-
 <!DOCTYPE html>
 
 <html>
@@ -29,7 +28,6 @@
         </ul>
 
         <div class="tab-content mt-3" id="filledTabsContent">
-            <!-- Pomodoro -->
             <div class="tab-pane fade show active" id="pomodoro" role="tabpanel">
                 <div class="timer-container d-flex flex-column align-items-center justify-content-center">
                     <div id="pomodoro-timer" class="timer-display mb-4">00:00</div>
@@ -40,7 +38,6 @@
                 </div>
             </div>
 
-            <!-- Short Break -->
             <div class="tab-pane fade" id="short-break" role="tabpanel">
                 <div class="timer-container d-flex flex-column align-items-center justify-content-center">
                     <div id="short-break-timer" class="timer-display mb-4">00:00</div>
@@ -51,7 +48,6 @@
                 </div>
             </div>
 
-            <!-- Long Break -->
             <div class="tab-pane fade" id="long-break" role="tabpanel">
                 <div class="timer-container d-flex flex-column align-items-center justify-content-center">
                     <div id="long-break-timer" class="timer-display mb-4">00:00</div>
@@ -63,14 +59,12 @@
             </div>
         </div>
     </div>
-</div>
 
-@if (Model != null)
-{
-    <div class="container">
+    @if (Model != null)
+    {
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card card-glow hvr-glow">
+            <div class="col-md-12">
+                <div class="card card-glow hvr-glow mb-3 flex-fill">
                     <div class="card-body">
                         <p class="card-title">Current Task</p>
                         <input type="hidden" id="taskId" value="@Model.SelectedTask.Id" />
@@ -78,21 +72,25 @@
                         <h5 class="card-text">Title: @Model.SelectedTask.Title</h5>
                         <p class="card-text">Description: @Model.SelectedTask.Description</p>
                         <p class="card-text">Estimated pomodoros: @Model.SelectedTask.EstimatedPomodoros</p>
-                        <p class="card-text" id="completedPomodoros">
-                            Pomodoros done: @(Model.SelectedTask.CompletedPomodoros)
-                        </p>
+                        <div class="progress" style="height: 10px;" id="completedPomodoros">
+                            <div class="progress-bar b"
+                                 role="progressbar"
+                                 style="width:@(Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros * 100)%"
+                                 aria-valuenow="@(Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros * 100)"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100">
+                            </div>
+                        </div>
+                        <small class="text-muted">@($"{(Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros) * 100:F0}% Complete")</small>
                         <p class="card-text">Deadline: @Model.SelectedTask.DueDate</p>
                         <a href="#" class="btn btn-glow">Edit</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
 
 <script src="~/js/timer/index.js" asp-append-version="true"></script>
-<script>
-    
-</script>
 </body>
 </html>
