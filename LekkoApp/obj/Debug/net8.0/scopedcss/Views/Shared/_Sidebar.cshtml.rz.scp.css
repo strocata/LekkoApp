@@ -1,15 +1,3 @@
-:root[b-hsbaks4ons] {
-    --bs-emphasis-color: #f8f9fa;
-    --bs-emphasis-color-rgb: #212529;
-    --bs-tertiary-bg: #f8f9fa;
-}
-
-[data-bs-theme="dark"][b-hsbaks4ons] {
-    --bs-emphasis-color: #f8f9fa;
-    --bs-emphasis-color-rgb: #f8f9fa;
-    --bs-tertiary-bg: #2b3035;
-}
-
 body[b-hsbaks4ons] {
     min-height: 100vh;
     min-height: -webkit-fill-available;
@@ -20,15 +8,11 @@ html[b-hsbaks4ons] {
 }
 
 main[b-hsbaks4ons] {
-    position: fixed;
     height: 100vh;
-    top: 0;
-    left: 0;
     height: -webkit-fill-available;
-    padding: 1rem;
     max-height: 100vh;
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .dropdown-toggle[b-hsbaks4ons] { outline: 0; }
@@ -79,12 +63,12 @@ main[b-hsbaks4ons] {
 }
 
 .bd-placeholder-img[b-hsbaks4ons] {
-     font-size: 1.125rem;
-     text-anchor: middle;
-     -webkit-user-select: none;
-     -moz-user-select: none;
-     user-select: none
- }
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
 
 @media (min-width: 768px) {
     .bd-placeholder-img-lg[b-hsbaks4ons] {

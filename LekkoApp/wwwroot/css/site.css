@@ -1,3 +1,62 @@
+/* ==========================================
+   Global Theme Variables (Color Palette)
+   ========================================== */
+:root {
+    /* ===== Brand Colors ===== */
+    --color-primary: #005F73;         /* Deep teal */
+    --color-primary-light: #0A9396;   /* Light teal for hover or accent */
+    --color-secondary: #0A9396;       /* Aqua green */
+    --color-secondary-light: #94D2BD; /* Soft mint accent */
+
+    /* ===== Backgrounds & Surfaces ===== */
+    --color-background: #FFF5E3;      /* Warm cream (your secondary brand color) */
+    --color-surface: #E9D8A6;         /* Light sand surface */
+    --color-surface-light: #EE9B00;   /* Highlighted surface (cards, hover) */
+    --color-surface-dark: #CA6702;    /* Deeper amber tone */
+
+    /* ===== Feedback States ===== */
+    --color-warning: #EE9B00;
+    --color-error: #BB3E03;
+    --color-success: #4E605E;         /* Muted forest green tone */
+
+    /* ===== Text ===== */
+    --color-text: #001219;            /* Deep navy for main text */
+    --color-text-muted: #4E605E;      /* Muted gray-green */
+    --color-on-primary: #FFFFFF;      /* Text on primary buttons */
+    --color-on-surface: #001219;      /* Text on standard surfaces */
+    --color-on-surface-light: #FFFFFF;/* Text on highlighted or colored surfaces */
+}
+
+/* ==========================================
+   Dark Theme Override
+   ========================================== */
+[data-bs-theme="dark"] {
+    /* ===== Brand Colors ===== */
+    --color-primary: #0A9396;          /* Light teal */
+    --color-primary-light: #94D2BD;    /* Softer mint teal */
+    --color-secondary: #005F73;        /* Deep teal */
+    --color-secondary-light: #0B3C49;  /* Muted blue-gray */
+
+    /* ===== Backgrounds & Surfaces ===== */
+    --color-background: #001219;       /* Deep navy background */
+    --color-surface: #0B3C49;          /* Subtle dark surface */
+    --color-surface-light: #005F73;    /* Slightly brighter surface */
+    --color-surface-dark: #003844;     /* Darker tone for panels */
+
+    /* ===== Feedback States ===== */
+    --color-warning: #EE9B00;
+    --color-error: #CA6702;
+    --color-success: #94D2BD;
+
+    /* ===== Text ===== */
+    --color-text: #E9D8A6;             /* Warm sand for readability */
+    --color-text-muted: #94D2BD;       /* Muted mint for secondary text */
+    --color-on-primary: #001219;       /* Text on bright buttons */
+    --color-on-surface: #E9D8A6;       /* Text on darker surfaces */
+    --color-on-surface-light: #001219; /* Text on lighter highlighted areas */
+}
+
+
 html {
   font-size: 14px;
 }

@@ -1,9 +1,7 @@
-using System.Diagnostics;
 using LekkoApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using LekkoApp.Data;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Task = LekkoApp.Models.Task;
 
 namespace LekkoApp.Controllers
@@ -14,7 +12,7 @@ namespace LekkoApp.Controllers
         private readonly ApplicationDbContext _context;
         private readonly List<Task> _tasks;
         
-
+        
         public TasksController(ILogger<TasksController> logger, ApplicationDbContext context)
         {
             _logger = logger;
@@ -22,6 +20,7 @@ namespace LekkoApp.Controllers
             _tasks = _context.Tasks.ToList();
         }
 
+        [Authorize]
         public IActionResult Index(Guid? selectedId)
         {
             var selectedTask = selectedId.HasValue
@@ -37,6 +36,7 @@ namespace LekkoApp.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -45,6 +45,7 @@ namespace LekkoApp.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Models.Task task)
@@ -81,6 +82,7 @@ namespace LekkoApp.Controllers
             return RedirectToAction("Create");
         }
 
+        [Authorize]
         [HttpPost] 
         public IActionResult UpdateCardTask(Models.Task selectedTask)
         {
@@ -96,7 +98,8 @@ namespace LekkoApp.Controllers
             
             return RedirectToAction("Index", new { selectedId = selectedTask.Id });
         }
-
+        
+        [Authorize]
         public IActionResult StartTimer(TasksViewModel model)
         {
             var selectedTask = _tasks.FirstOrDefault(i => i.Id == model.SelectedTask.Id);

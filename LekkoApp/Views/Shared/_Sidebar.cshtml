@@ -1,3 +1,8 @@
+@using LekkoApp.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 <!-- SVG icons for theme selection dropdown-->
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -19,8 +24,6 @@
             d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
     </symbol>
 </svg>
-
-<!-- Theme Dark/Light dropdown selection -->
 
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
@@ -68,8 +71,6 @@
         </li>
     </ul>
 </div>
-
-<!-- SVG icons for sidebar items -->
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="bootstrap" viewBox="0 0 118 94"><title>Bootstrap</title>
@@ -119,87 +120,83 @@
         <path
             d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
     </symbol>
+    <symbol id="dashboard" viewBox="0 0 16 16">
+        <path d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793zm1 0V7.5h6.482A7 7 0 0 0 8.5 1.018M14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8"/>
+    </symbol>
 </svg>
 
 <!-- SideBar -->
 <main class="d-flex flex-nowrap">
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;"><a href="/"
-                                                                                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <svg class="bi pe-none me-2" width="40" height="32" aria-hidden="true">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
-            <span class="fs-4">Lekko</span> </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a class="nav-link text-white" asp-controller="Home" asp-action="Index">
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#home"></use>
-                    </svg>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a class="nav-link text-white" asp-controller="Tasks" asp-action="Index">
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#tasks"></use>
-                    </svg>
-                    Tasks
-                </a>
-            </li>
-            <li><a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#journal"></use>
-                    </svg>
-                    Projects
-                </a></li>
-            <li><a class="nav-link text-white" asp-controller="Timer" asp-action="Index">
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#clock"></use>
-                    </svg>
-                    Start Pomodoro
-                </a></li>
-            <li><a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                    Dashboard
-                </a></li>
-            <li><a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                    Settings
-                </a></li>
-        </ul>
-        <hr>
-        <div class="dropdown"><a href="#"
-                                 class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                                 data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png"
-                                                                                       alt="" width="32" height="32"
-                                                                                       class="rounded-circle me-2">
-                <strong>mdo</strong> </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-        </div>
-    </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const navLinks = document.querySelectorAll(".nav-link");
 
-            navLinks.forEach(link => {
-                link.addEventListener("click", () => {
-                    navLinks.forEach(l => l.classList.remove("active"));
-                    link.classList.add("active");
-                });
-            });
-        });
-    </script>
+  <!-- Sidebar -->
+  <aside class="sidebar d-flex flex-column flex-shrink-0 p-3">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;"> <a href="/"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"> <svg
+                    class="bi pe-none me-2" width="40" height="32" aria-hidden="true">
+                    <use xlink:href="#bootstrap"></use>
+                </svg> <span class="fs-4">LEKKO!</span> </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item"> <a class="nav-link" aria-current="page" asp-controller="Home" asp-action="Index"> <svg
+                            class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
+                            <use xlink:href="#home"></use>
+                        </svg>
+                        Home
+                    </a> </li>
+                <li> <a class="nav-link link-body-emphasis" asp-controller="Dashboard" asp-action="Index"> <svg class="bi pe-none me-2" width="16"
+                            height="16" aria-hidden="true">
+                            <use xlink:href="#speedometer2"></use>
+                        </svg>
+                        Dashboard
+                    </a> </li>
+                <li> <a class="nav-link link-body-emphasis" asp-controller="Tasks" asp-action="Index"> <svg class="bi pe-none me-2" width="16"
+                            height="16" aria-hidden="true">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        Tasks
+                    </a> </li>
+                <li> <a class="nav-link link-body-emphasis" asp-controller="Timer" asp-action="Index"> <svg class="bi pe-none me-2" width="16"
+                            height="16" aria-hidden="true">
+                            <use xlink:href="#grid"></use>
+                        </svg>
+                        Timer
+                    </a> </li>
+                <li> <a href="#" class="nav-link link-body-emphasis"> <svg class="bi pe-none me-2" width="16"
+                            height="16" aria-hidden="true">
+                            <use xlink:href="#people-circle"></use>
+                        </svg>
+                        Customers
+                    </a> </li>
+            </ul>
+            <hr>
+            <div class="dropdown"> <a href="#"
+                    class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://www.shutterstock.com/image-vector/avatar-gender-neutral-silhouette-vector-600nw-2470054311.jpg" alt=""
+                        width="32" height="32" class="rounded-circle me-2"> <strong>@UserManager.GetUserName(User)</strong> </a>
+                <ul class="dropdown-menu text-small shadow">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li class="dropdown-item">
+                            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Settings</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown-item">
+                            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+  </aside>
 </main>
