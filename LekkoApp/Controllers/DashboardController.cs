@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using LekkoApp.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace LekkoApp.Controllers;
