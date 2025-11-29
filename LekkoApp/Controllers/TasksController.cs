@@ -2,6 +2,9 @@ using LekkoApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using LekkoApp.Data;
 using Microsoft.AspNetCore.Authorization;
+using LekkoApp.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Task = LekkoApp.Models.Task;
 
 namespace LekkoApp.Controllers
@@ -10,27 +13,29 @@ namespace LekkoApp.Controllers
     {
         private readonly ILogger<TasksController> _logger;
         private readonly ApplicationDbContext _context;
-        private readonly List<Task> _tasks;
+        private readonly List<Task> _userTasks;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly TaskRepository _taskRepository;
         
         
-        public TasksController(ILogger<TasksController> logger, ApplicationDbContext context)
+        public TasksController(ILogger<TasksController> logger, ApplicationDbContext context, TaskRepository taskRepository, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _context = context;
-            _tasks = _context.Tasks.ToList();
+            _taskRepository = taskRepository;
+            _userManager = userManager;
         }
 
         [Authorize]
-        public IActionResult Index(Guid? selectedId)
+        public async Task<IActionResult> Index(Task task)
         {
-            var selectedTask = selectedId.HasValue
-                ? _tasks.FirstOrDefault(i => i.Id == selectedId.Value)
-                : null;
-
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var userTasks = await _taskRepository.GetByUserAsync(user);
+            
             var model = new TasksViewModel
             {
-                Tasks = _tasks,
-                SelectedTask = selectedTask
+                Tasks = userTasks,
+                SelectedTask = task
             };
 
             return View(model);
@@ -40,15 +45,14 @@ namespace LekkoApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            // optional: send defaults
-            var model = new Models.Task { EstimatedPomodoros = 1, Status = Models.TaskStatus.NotStarted };
+            var model =  new Models.Task { EstimatedPomodoros = 1, Status = Models.TaskStatus.NotStarted };
             return View(model);
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Models.Task task)
+        public async Task<IActionResult> Create(Models.Task task)
         {
             _logger.LogInformation("Create POST invoked. Title={Title}", task?.Title);
 
@@ -68,41 +72,27 @@ namespace LekkoApp.Controllers
                 _logger.LogWarning("ModelState invalid");
                 return View(task);
             }
+            
+            ApplicationUser? user = await _userManager.GetUserAsync(HttpContext.User);
 
-            // set server-only fields:
-            task.Id = Guid.NewGuid();
-            task.UserId = Guid.NewGuid();
-            task.CreatedAt = DateTime.UtcNow;
-            task.CompletedPomodoros = 0;
-
-            // save to DB...
-            _context.Tasks.Add(task);
-            _context.SaveChanges();
+            await _taskRepository.Create(task, user);
 
             return RedirectToAction("Create");
         }
 
         [Authorize]
         [HttpPost] 
-        public IActionResult UpdateCardTask(Models.Task selectedTask)
+        public async Task<RedirectToActionResult> UpdateCardTask(Task selectedTask)
         {
-            var item = _tasks.FirstOrDefault(i => i.Id == selectedTask.Id);
-            if (item != null)
-            {
-                item.Status = selectedTask.Status;
-                item.Title = selectedTask.Title;
-                item.Description = selectedTask.Description;
-                _context.Tasks.Update(item);
-                _context.SaveChanges();
-            }
+            selectedTask = await _taskRepository.Update(selectedTask);
             
             return RedirectToAction("Index", new { selectedId = selectedTask.Id });
         }
         
         [Authorize]
-        public IActionResult StartTimer(TasksViewModel model)
+        public async Task<IActionResult> StartTimer(TasksViewModel model)
         {
-            var selectedTask = _tasks.FirstOrDefault(i => i.Id == model.SelectedTask.Id);
+            var selectedTask = await _taskRepository.GetAsync(model.SelectedTask);
             
             var session = new TimerViewModel
             {
