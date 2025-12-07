@@ -1,0 +1,50 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*.user
+*.userosscache
+*.sln.DotSettings.user
+
+# .NET
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.pdb
+*.dll
+*.exe
+*.cache
+_ReSharper*/
+*.suo
+*.ntvs*
+*.njsproj
+*.csproj.user
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+.env
+.env.local
+.env.*.local
+
+# Rider
+.idea/
+*.sln.DotSettings.user
