@@ -27,15 +27,16 @@ namespace LekkoApp.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Index(Task task)
+        public async Task<IActionResult> Index(Guid taskId)
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var userTasks = await _taskRepository.GetByUserAsync(user);
+            var selectedTask = await _taskRepository.GetByIdAsync(taskId);
             
             var model = new TasksViewModel
             {
                 Tasks = userTasks,
-                SelectedTask = task
+                SelectedTask = selectedTask
             };
 
             return View(model);
@@ -90,9 +91,9 @@ namespace LekkoApp.Controllers
         }
         
         [Authorize]
-        public async Task<IActionResult> StartTimer(TasksViewModel model)
+        public async Task<IActionResult> StartTimer(Guid taskId)
         {
-            var selectedTask = await _taskRepository.GetAsync(model.SelectedTask);
+            var selectedTask = await _taskRepository.GetByIdAsync(taskId);
             
             var session = new TimerViewModel
             {

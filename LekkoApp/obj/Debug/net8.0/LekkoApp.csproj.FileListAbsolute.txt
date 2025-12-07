@@ -269,3 +269,11 @@
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/LekkoAppClient/components.json
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/LekkoAppClient/package-lock.json
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/LekkoAppClient/package.json
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/LekkoAppClient/tsconfig.app.json
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/LekkoAppClient/tsconfig.json
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/LekkoAppClient/tsconfig.node.json
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/package-lock.json
+/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/package.json

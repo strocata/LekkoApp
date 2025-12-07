@@ -9,13 +9,16 @@
         </div>
         <div class="d-flex gap-2">
             <button class="btn btn-outline-primary btn-sm">
-                    <i class="fas fa-bell me-1"></i> Notifications
-                </button>
+                <i class="fas fa-bell me-1"></i> Notifications
+            </button>
             <button class="btn btn-primary btn-sm">
-                    <i class="fas fa-plus me-1"></i> New Project
-                </button>
+                <i class="fas fa-plus me-1"></i> New Project
+            </button>
         </div>
     </div>
+
+    <div id="chart-area-default"></div>
+
 
     <!-- Stats Cards Row -->
     <div class="row g-3 mb-4">
@@ -27,8 +30,8 @@
                             <h6 class="text-muted mb-2">Total Users</h6>
                             <h3 class="mb-0">8,549</h3>
                             <small class="text-success">
-                                    <i class="fas fa-arrow-up me-1"></i>12.5%
-                                </small>
+                                <i class="fas fa-arrow-up me-1"></i>12.5%
+                            </small>
                         </div>
                         <div class="bg-primary bg-opacity-10 p-3 rounded">
                             <i class="fas fa-users text-primary"></i>
@@ -45,8 +48,8 @@
                             <h6 class="text-muted mb-2">Revenue</h6>
                             <h3 class="mb-0">$24,890</h3>
                             <small class="text-success">
-                                    <i class="fas fa-arrow-up me-1"></i>8.2%
-                                </small>
+                                <i class="fas fa-arrow-up me-1"></i>8.2%
+                            </small>
                         </div>
                         <div class="bg-success bg-opacity-10 p-3 rounded">
                             <i class="fas fa-dollar-sign text-success"></i>
@@ -63,8 +66,8 @@
                             <h6 class="text-muted mb-2">Orders</h6>
                             <h3 class="mb-0">1,236</h3>
                             <small class="text-danger">
-                                    <i class="fas fa-arrow-down me-1"></i>3.1%
-                                </small>
+                                <i class="fas fa-arrow-down me-1"></i>3.1%
+                            </small>
                         </div>
                         <div class="bg-warning bg-opacity-10 p-3 rounded">
                             <i class="fas fa-shopping-cart text-warning"></i>
@@ -81,8 +84,8 @@
                             <h6 class="text-muted mb-2">Growth</h6>
                             <h3 class="mb-0">15.3%</h3>
                             <small class="text-success">
-                                    <i class="fas fa-arrow-up me-1"></i>5.8%
-                                </small>
+                                <i class="fas fa-arrow-up me-1"></i>5.8%
+                            </small>
                         </div>
                         <div class="bg-info bg-opacity-10 p-3 rounded">
                             <i class="fas fa-chart-line text-info"></i>
@@ -153,20 +156,33 @@
                 <div class="card-body">
                     <div class="d-grid gap-2">
                         <button class="btn btn-outline-primary">
-                                <i class="fas fa-plus me-2"></i>Add New Project
-                            </button>
+                            <i class="fas fa-plus me-2"></i>Add New Project
+                        </button>
                         <button class="btn btn-outline-success">
-                                <i class="fas fa-users me-2"></i>Manage Team
-                            </button>
+                            <i class="fas fa-users me-2"></i>Manage Team
+                        </button>
                         <button class="btn btn-outline-info">
-                                <i class="fas fa-cog me-2"></i>Settings
-                            </button>
+                            <i class="fas fa-cog me-2"></i>Settings
+                        </button>
                         <button class="btn btn-outline-warning">
-                                <i class="fas fa-file-alt me-2"></i>Generate Report
-                            </button>
+                            <i class="fas fa-file-alt me-2"></i>Generate Report
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<script type="module">
+    import RefreshRuntime from 'http://localhost:5173/@@react-refresh'
+    RefreshRuntime.injectIntoGlobalHook(window)
+    window.$RefreshReg$ = () => { }
+    window.$RefreshSig$ = () => (type) => type
+    window.__vite_plugin_react_preamble_installed__ = true
+</script>
+<script type="module" src="http://localhost:5173/@@vite/client"></script>
+<script type="module" src="http://localhost:5173/src/mount-main-chart.tsx"></script>
+
+
