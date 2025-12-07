@@ -8,7 +8,7 @@
                 <a class="list-group-item list-group-item-action rounded-3 py-3"
                    asp-controller="Tasks"
                    asp-action="Index"
-                   asp-route-selectedId="@item">
+                   asp-route-taskId="@item.Id">
                     @item.Title
                     <span class="d-block small opacity-50">@item.DueDate</span>
                 </a>
@@ -83,7 +83,7 @@
 
                 <!-- Start Timer Form -->
                 <form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-2">
-                    <input type="hidden" asp-for="@Model.SelectedTask.Id"/>
+                    <input type="hidden" name="taskId" value="@Model.SelectedTask.Id" />
                     <button type="submit" class="btn btn-success">Start Timer</button>
                 </form>
             </div>

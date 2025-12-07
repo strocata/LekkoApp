@@ -22,6 +22,12 @@ public class TaskRepository : ITaskRepository
         return null;
     }
 
+    public async Task<Task?> GetByIdAsync(Guid id)
+    {
+        var selectedTask = await _context.Tasks.FindAsync(id);
+        return selectedTask;
+    }
+
     public async Task<List<Task>> GetByUserAsync(ApplicationUser user)
     {
         var selectedTasks = await _context.Tasks.Where(t => t.UserId.ToString() == user.Id).ToListAsync();

@@ -1,15 +1,23 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import MainChart from "./charts/MainChart.tsx"
+
+import { createRoot } from "react-dom/client"
+import { ChartAreaDefault } from "@/charts/MainChart"
 import "./index.css"
 
-const rootElement = document.getElementById("main-chart")
+export function mountChartAreaDefault(id: string) {
+    const el = document.getElementById(id)
+    if (!el) {
+        console.error("Mount point not found:", id)
+        return
+    }
 
-if (rootElement) {
-    const root = ReactDOM.createRoot(rootElement)
-    root.render(
-        <React.StrictMode>
-            <MainChart />
-        </React.StrictMode>
-    )
+    const root = createRoot(el)
+    root.render(<ChartAreaDefault />)
+}
+
+(window as any).mountChartAreaDefault = mountChartAreaDefault
+
+// Auto-mount if the element exists
+const MOUNT_POINT_ID = "chart-area-default"
+if (document.getElementById(MOUNT_POINT_ID)) {
+    mountChartAreaDefault(MOUNT_POINT_ID)
 }

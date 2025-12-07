@@ -1,7 +1,6 @@
 using LekkoApp.Data;
 using LekkoApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Abstractions;
 
 namespace LekkoApp.Controllers;
 
