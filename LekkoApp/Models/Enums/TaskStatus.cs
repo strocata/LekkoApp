@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace LekkoApp.Models.Enums;
 
 public enum TaskStatus

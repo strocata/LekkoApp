@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@tabler/core": "^1.4.0",
     "@tailwindcss/vite": "^4.1.17",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

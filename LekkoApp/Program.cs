@@ -47,6 +47,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddScoped<TaskRepository>();
+builder.Services.AddScoped<ProjectRepository>();
 
 var app = builder.Build();
 

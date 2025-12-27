@@ -1,0 +1,73 @@
+@model LekkoApp.Models.ProjectViewModel
+
+<div class="card">
+    <!-- Card header -->
+    <div class="card-header">
+        <div class="row w-100 align-items-center">
+            <div class="col">
+                <h3 class="card-title mb-0">Employee</h3>
+                <p class="text-secondary mb-0">Table description.</p>
+            </div>
+
+            <div class="col-md-auto col-sm-12 mt-2 mt-md-0">
+                <form asp-action="Index" method="get" class="d-flex align-items-center">
+                    <span class="me-2 text-secondary">Search</span>
+                    <input type="text"
+                           name="SearchString"
+                           class="form-control form-control-sm"
+                           value="@ViewData["SearchString"]"
+                           aria-label="Search project">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive">
+        <table class="table table-vcenter table-hover table-selectable">
+            <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Creation Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>No of Tasks</th>
+                <th class="text-end">Actions</th>
+            </tr>
+            </thead>
+
+            <tbody class="table-tbody">
+            @foreach (var item in Model.Projects)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                    <td>@item.Status</td>
+                    <td>@Model.ProjectsCount</td>
+
+                    <td class="text-end">
+                        <div class="dropdown">
+                            <button class="btn btn-sm dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Actions
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">
+                                    Edit
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Card footer -->
+    <div class="card-footer d-flex align-items-center">
+        <!-- pagination / info here -->
+    </div>
+</div>

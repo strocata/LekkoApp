@@ -4,7 +4,7 @@ using LekkoApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Task = LekkoApp.Models.Task;
-using TaskStatus = LekkoApp.Models.TaskStatus;
+using TaskStatus = LekkoApp.Models.Enums.TaskStatus;
 
 namespace LekkoApp.Controllers;
 

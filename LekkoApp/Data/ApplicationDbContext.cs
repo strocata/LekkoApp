@@ -1,3 +1,4 @@
+using LekkoApp.Controllers;
 using LekkoApp.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ namespace LekkoApp.Data
 
         public DbSet<Task> Tasks { get; set; }
         public DbSet<PomodoroSession> Pomodoros { get; set; }
-        public DbSet<TimerLog> TimerLogs { get; set; }
+        public DbSet<Project>  Projects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

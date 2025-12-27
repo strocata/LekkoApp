@@ -33,4 +33,14 @@
       <Folder Include="Services\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="LekkoAppClient\components.json" />
+      <_ContentIncludedByDefault Remove="LekkoAppClient\package-lock.json" />
+      <_ContentIncludedByDefault Remove="LekkoAppClient\package.json" />
+      <_ContentIncludedByDefault Remove="LekkoAppClient\src\app\dashboard\data.json" />
+      <_ContentIncludedByDefault Remove="LekkoAppClient\tsconfig.app.json" />
+      <_ContentIncludedByDefault Remove="LekkoAppClient\tsconfig.json" />
+      <_ContentIncludedByDefault Remove="LekkoAppClient\tsconfig.node.json" />
+    </ItemGroup>
+
 </Project>
