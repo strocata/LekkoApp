@@ -11,17 +11,20 @@
     <div class="modern-tabs mb-5">
         <ul class="nav nav-tabs" id="filledTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pomodoro-tab" data-bs-toggle="tab" data-bs-target="#pomodoro" type="button" role="tab">
+                <button class="nav-link active" id="pomodoro-tab" data-bs-toggle="tab" data-bs-target="#pomodoro"
+                        type="button" role="tab">
                     Pomodoro
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="short-break-tab" data-bs-toggle="tab" data-bs-target="#short-break" type="button" role="tab">
+                <button class="nav-link" id="short-break-tab" data-bs-toggle="tab" data-bs-target="#short-break"
+                        type="button" role="tab">
                     Short Break
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="long-break-tab" data-bs-toggle="tab" data-bs-target="#long-break" type="button" role="tab">
+                <button class="nav-link" id="long-break-tab" data-bs-toggle="tab" data-bs-target="#long-break"
+                        type="button" role="tab">
                     Long Break
                 </button>
             </li>
@@ -64,26 +67,85 @@
     {
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card card-glow hvr-glow mb-3 flex-fill">
+                <div class="card mb-3 flex-fill">
                     <div class="card-body">
-                        <p class="card-title">Current Task</p>
-                        <input type="hidden" id="taskId" value="@Model.SelectedTask.Id" />
-                        <input type="hidden" id="taskStatus" value="@Model.SelectedTask.Status" />
-                        <h5 class="card-text">Title: @Model.SelectedTask.Title</h5>
-                        <p class="card-text">Description: @Model.SelectedTask.Description</p>
-                        <p class="card-text">Estimated pomodoros: @Model.SelectedTask.EstimatedPomodoros</p>
-                        <div class="progress" style="height: 10px;" id="completedPomodoros">
-                            <div class="progress-bar b"
+
+                        <div class="d-flex align-items-start justify-content-between mb-2">
+                            <p class="card-title mb-0">
+                                Current Task
+                            </p>
+
+                            <span class="badge bg-blue-lt">
+                        @Model.SelectedTask.Status
+                    </span>
+                        </div>
+
+                        <input type="hidden" id="taskId" value="@Model.SelectedTask.Id"/>
+                        <input type="hidden" id="taskStatus" value="@Model.SelectedTask.Status"/>
+
+                        <!-- Title -->
+                        <h5 class="mb-1">
+                            @Model.SelectedTask.Title
+                        </h5>
+
+                        <!-- Description -->
+                        <p class="text-muted mb-3">
+                            @Model.SelectedTask.Description
+                        </p>
+
+                        <!-- Meta row -->
+                        <div class="row g-2 mb-3">
+                            <div class="col-auto">
+                                <span class="text-secondary">Estimated</span>
+                                <div class="fw-semibold">
+                                    @Model.SelectedTask.EstimatedPomodoros
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <span class="text-secondary">Completed</span>
+                                <div class="fw-semibold">
+                                    @Model.SelectedTask.CompletedPomodoros
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <span class="text-secondary">Deadline</span>
+                                <div class="text-muted font-monospace">
+                                    @Model.SelectedTask.DueDate?.ToString("yyyy-MM-dd")
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Progress -->
+                        @{
+                            var progress =
+                                Model.SelectedTask.EstimatedPomodoros > 0
+                                    ? (Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros) * 100
+                                    : 0;
+                        }
+
+                        <div class="progress progress-sm mb-1">
+                            <div class="progress-bar bg-blue"
                                  role="progressbar"
-                                 style="width:@(Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros * 100)%"
-                                 aria-valuenow="@(Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros * 100)"
+                                 style="width:@progress%"
+                                 aria-valuenow="@progress"
                                  aria-valuemin="0"
                                  aria-valuemax="100">
                             </div>
                         </div>
-                        <small class="text-muted">@($"{(Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros) * 100:F0}% Complete")</small>
-                        <p class="card-text">Deadline: @Model.SelectedTask.DueDate</p>
-                        <a href="#" class="btn btn-glow">Edit</a>
+
+                        <small class="text-secondary d-block mb-3">
+                            @($"{progress:F0}% complete")
+                        </small>
+
+                        <!-- Action -->
+                        <a asp-action="Edit"
+                           asp-route-taskId="@Model.SelectedTask.Id"
+                           class="btn btn-primary btn-sm">
+                            Edit
+                        </a>
+
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 using LekkoApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using LekkoApp.Data;
+using LekkoApp.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using LekkoApp.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -12,30 +13,83 @@ namespace LekkoApp.Controllers
     public class TasksController : Controller
     {
         private readonly ILogger<TasksController> _logger;
-        private readonly ApplicationDbContext _context;
-        private readonly List<Task> _userTasks;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly TaskRepository _taskRepository;
-        
-        
-        public TasksController(ILogger<TasksController> logger, ApplicationDbContext context, TaskRepository taskRepository, UserManager<ApplicationUser> userManager)
+
+
+        public TasksController(ILogger<TasksController> logger,
+            TaskRepository taskRepository, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
-            _context = context;
             _taskRepository = taskRepository;
             _userManager = userManager;
         }
 
         [Authorize]
-        public async Task<IActionResult> Index(Guid taskId)
+        public async Task<IActionResult> Index(Guid taskId, string sortOrder, string searchString, string currentFilter,
+            int? pageNumber, int pageSize = 10)
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            var userTasks = await _taskRepository.GetByUserAsync(user);
+            IQueryable<Task> userTasks = _taskRepository.GetByUser(user);
+            int numberOfAllTasks = userTasks.Count();
             var selectedTask = await _taskRepository.GetByIdAsync(taskId);
-            
+
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewData["CreationDateSortParm"] = sortOrder == "CreationDate" ? "creation_date_desc" : "CreationDate";
+            ViewData["TaskNumberSortParm"] = sortOrder == "TaskNumber" ? "task_number_desc" : "TaskNumber";
+            ViewData["DueDateSortParm"] = sortOrder == "DueDate" ? "due_date_desc" : "DueDate";
+            ViewData["SearchString"] = searchString;
+            ViewData["PageSize"] = pageSize;
+            ViewData["NumberOfAllTasks"] = numberOfAllTasks;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var searchString1 = searchString;
+                userTasks = userTasks.Where(s => s.Title.Contains(searchString1)
+                                                 || s.TaskNumber.ToString() == searchString1);
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    userTasks = userTasks.OrderByDescending(s => s.Title);
+                    break;
+                case "CreationDate":
+                    userTasks = userTasks.OrderBy(s => s.CreatedAt);
+                    break;
+                case "creation_date_desc":
+                    userTasks = userTasks.OrderByDescending(s => s.CreatedAt);
+                    break;
+                case "TaskNumber":
+                    userTasks = userTasks.OrderBy(s => s.TaskNumber);
+                    break;
+                case "task_number_desc":
+                    userTasks = userTasks.OrderByDescending(s => s.TaskNumber);
+                    break;
+                case "DueDate":
+                    userTasks = userTasks.OrderBy(s => s.DueDate);
+                    break;
+                case "due_date_desc":
+                    userTasks = userTasks.OrderByDescending(s => s.DueDate);
+                    break;
+                default:
+                    userTasks = userTasks.OrderBy(s => s.TaskNumber);
+                    break;
+            }
+
             var model = new TasksViewModel
             {
-                Tasks = userTasks,
+                Tasks = await PaginatedList<Task>.CreateAsync(userTasks.AsNoTracking(), pageNumber ?? 1, pageSize),
                 SelectedTask = selectedTask
             };
 
@@ -46,16 +100,15 @@ namespace LekkoApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var model =  new Models.Task { EstimatedPomodoros = 1, Status = Models.TaskStatus.NotStarted };
-            return View(model);
+            return View();
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Models.Task task)
+        public async Task<IActionResult> Create(Task task)
         {
-            _logger.LogInformation("Create POST invoked. Title={Title}", task?.Title);
+            _logger.LogInformation("Create POST invoked. Title={Title}", task.Title);
 
             if (!ModelState.IsValid)
             {
@@ -73,7 +126,7 @@ namespace LekkoApp.Controllers
                 _logger.LogWarning("ModelState invalid");
                 return View(task);
             }
-            
+
             ApplicationUser? user = await _userManager.GetUserAsync(HttpContext.User);
 
             await _taskRepository.Create(task, user);
@@ -82,24 +135,30 @@ namespace LekkoApp.Controllers
         }
 
         [Authorize]
-        [HttpPost] 
-        public async Task<RedirectToActionResult> UpdateCardTask(Task selectedTask)
+        [HttpPost]
+        public async Task<RedirectToActionResult> UpdateCardTask(Task? selectedTask)
         {
             selectedTask = await _taskRepository.Update(selectedTask);
-            
-            return RedirectToAction("Index", new { selectedId = selectedTask.Id });
+
+            return RedirectToAction("Index", new { selectedId = selectedTask!.Id });
         }
-        
+
         [Authorize]
         public async Task<IActionResult> StartTimer(Guid taskId)
         {
             var selectedTask = await _taskRepository.GetByIdAsync(taskId);
-            
+
             var session = new TimerViewModel
             {
                 SelectedTask = selectedTask
             };
-            return View("~/Views/Timer/Index.cshtml",  session);
+            return View("~/Views/Timer/Index.cshtml", session);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Edit(Guid taskId)
+        {
+            return View(await _taskRepository.GetByIdAsync(taskId));
         }
     }
 }

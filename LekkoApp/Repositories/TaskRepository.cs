@@ -1,5 +1,4 @@
 using LekkoApp.Data;
-using Microsoft.EntityFrameworkCore;
 using Task = LekkoApp.Models.Task;
 namespace LekkoApp.Repositories;
 
@@ -28,16 +27,16 @@ public class TaskRepository : ITaskRepository
         return selectedTask;
     }
 
-    public async Task<List<Task>> GetByUserAsync(ApplicationUser user)
+    public IQueryable<Task> GetByUser(ApplicationUser? user)
     {
-        var selectedTasks = await _context.Tasks.Where(t => t.UserId.ToString() == user.Id).ToListAsync();
+        var selectedTasks =  _context.Tasks.Where(t => t.User == user);
         return selectedTasks;
     }
 
-    public async Task<Task> Create(Task task, ApplicationUser user)
+    public async Task<Task> Create(Task task, ApplicationUser? user)
     {
         task.Id = Guid.NewGuid();
-        task.UserId = new Guid(user.Id);
+        task.User = user;
         task.CreatedAt = DateTime.UtcNow;
         task.CompletedPomodoros = 0;
 
@@ -46,7 +45,7 @@ public class TaskRepository : ITaskRepository
         return task;
     }
 
-    public async Task<Task> Update(Task updatedTask)
+    public async Task<Task?> Update(Task? updatedTask)
     {
         var currentTask = await _context.Tasks.FindAsync(updatedTask.Id);
         if (currentTask != null)

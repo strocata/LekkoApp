@@ -1,94 +1,220 @@
+@using LekkoApp.Helpers
 @model LekkoApp.Models.TasksViewModel
 
 <div class="row">
-    <div class="col-12 col-lg-6">
-        <div class="list-group d-grid gap-3 border-0">
-            @foreach (var item in Model.Tasks)
-            {
-                <a class="list-group-item list-group-item-action rounded-3 py-3"
-                   asp-controller="Tasks"
-                   asp-action="Index"
-                   asp-route-taskId="@item.Id">
-                    @item.Title
-                    <span class="d-block small opacity-50">@item.DueDate</span>
-                </a>
-            }
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Tasks</h3>
+		</div>
+		<div class="card-body border-bottom py-3">
 
-    @if (Model.SelectedTask != null)
-    {
-        <div class="col-12 col-lg-6">
-            <div class="p-3 border rounded">
-                <h4>Task Number: @Model.SelectedTask.TaskNumber</h4>
+			<div class="d-flex">
+				<div class="text-secondary">
+					<form asp-action="Index" method="get">
+						Show
+						<div class="mx-2 d-inline-block">
+							<input type="text" name="PageSize" class="form-control form-control-sm"
+							       value=@ViewData["PageSize"] size="3"
+							       aria-label="Tasks count">
+						</div>
+						entries
+					</form>
+				</div>
 
-                <!-- Save Form --> 
-                <form asp-controller="Tasks" asp-action="UpdateCardTask" method="post">
-                    <input type="hidden" asp-for="@Model.SelectedTask.Id"/>
+				<div class="ms-auto text-secondary">
+					<form asp-action="Index" method="get">
+						Search:
+						<div class="ms-2 d-inline-block">
 
-                    <div class="mb-3">
-                        <label asp-for="@Model.SelectedTask.Title" class="form-label"></label>
-                        <input asp-for="@Model.SelectedTask.Title" class="form-control"/>
-                        <span asp-validation-for="@Model.SelectedTask.Title" class="text-danger"></span>
-                    </div>
+							<div class="form-actions no-color">
+								<input type="text" name="SearchString" class="form-control form-control-sm"
+								       value=@ViewData["SearchString"]
+								       aria-label="Search task">
+							</div>
+						</div>
+					</form>
+				</div>
 
-                    <div class="mb-3">
-                        <label asp-for="@Model.SelectedTask.Description" class="form-label"></label>
-                        <textarea asp-for="@Model.SelectedTask.Description" class="form-control"></textarea>
-                        <span asp-validation-for="@Model.SelectedTask.Description" class="text-danger"></span>
-                    </div>
+				@if (!String.IsNullOrEmpty((string?)ViewData["SearchString"]))
+				{
+					<a asp-action="Index"
+					   class="btn btn-animate-icon btn-animate-icon-rotate ms-2">@await Html.PartialAsync("_Icon", ("x", "")) Clear</a>
+				}
+			</div>
 
-                    <div class="mb-3">
-                        <label asp-for="@Model.SelectedTask.Status" class="form-label"></label>
-                        <select asp-for="@Model.SelectedTask.Status"
-                                asp-items="Html.GetEnumSelectList<LekkoApp.Models.TaskStatus>()"
-                                class="form-select">
-                            <option value="">-- Select --</option>
-                        </select>
-                        <span asp-validation-for="@Model.SelectedTask.Status" class="text-danger"></span>
-                    </div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-selectable card-table table-vcenter text-nowrap datatable">
+				<thead>
+				<tr>
+					<th class="w-1"><input class="form-check-input m-0 align-middle" type="checkbox"
+					                       aria-label="Select all tasks"></th>
+					<th class="w-1"><a asp-action="Index"
+					                   asp-route-sortOrder="@ViewData["TaskNumberSortParm"]">No.</a> @await Html.PartialAsync("_Icon", ("chevron-up", "icon-sm icon-thick"))
+					</th>
+					<th><a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]"
+					       asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a></th>
+					<th>Completed pomodoros</th>
+					<th><a asp-action="Index" asp-route-sortOrder="@ViewData["CreationDateSortParm"]"
+					       asp-route-currentFilter="@ViewData["CurrentFilter"]">CreationDate</a>
+					</th>
+					<th><a asp-action="Index" asp-route-sortOrder="@ViewData["DueDateSortParm"]"
+					       asp-route-currentFilter="@ViewData["CurrentFilter"]">Due Date</a></th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+				</tr>
+				</thead>
 
-                    <div class="row row-cols-2 mb-3">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Creation Date</h5>
-                                    <p class="card-text">@Model.SelectedTask.CreatedAt</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row row-cols-2 mb-3">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Estimated Pomodoros</h5>
-                                    <p class="card-text">@Model.SelectedTask.EstimatedPomodoros</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Completed Pomodoros</h5>
-                                    <p class="card-text">@Model.SelectedTask.CompletedPomodoros</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary mt-2">Save</button>
-                </form>
+				<tbody>
+				@foreach (var item in Model.Tasks!)
+				{
+					<tr>
+						<td>
+							<input class="form-check-input m-0 align-middle table-selectable-check" type="checkbox"
+							       aria-label="Select invoice"></td>
+						<td><span class="text-secondary">@item.TaskNumber</span></td>
+						<td><a class="text-reset" tabindex="-1" asp-controller="Tasks" asp-action="Index"
+						       asp-route-taskId="@item.Id">@item.Title</a></td>
+						<td>
+							@item.CompletedPomodoros
+						</td>
+						<td>
+							@item.CreatedAt
+						</td>
+						<td>
+							@item.DueDate
+						</td>
+						<td>
+							<span class="badge @BadgeStyles.Get(@item.Status) me-1"></span> @item.Status
+						</td>
 
-                <!-- Start Timer Form -->
-                <form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-2">
-                    <input type="hidden" name="taskId" value="@Model.SelectedTask.Id" />
-                    <button type="submit" class="btn btn-success">Start Timer</button>
-                </form>
-            </div>
-        </div>
-    }
+						<td class="text-end">
+							<span class="dropdown">
+								<button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
+								        data-bs-toggle="dropdown">Actions</button>
+								<div class="dropdown-menu">
+									<a asp-action="Edit" asp-route-taskId="@item.Id" class="dropdown-item"> Edit </a>
+									<form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-2">
+										<input type="hidden" name="taskId" value="@item.Id"/>
+										<button class="dropdown-item" type="submit">Start Timer</button>
+									</form>
+								</div>
+							</span>
+						</td>
+					</tr>
+				}
+				</tbody>
+			</table>
+			@{
+				var prevDisabled = !Model.Tasks.HasPreviousPage ? "disabled" : "";
+				var nextDisabled = !Model.Tasks.HasNextPage ? "disabled" : "";
+			}
+
+		</div>
+		<div class="card-footer">
+			<div class="row g-2 justify-content-center justify-content-sm-between">
+				<div class="col-auto d-flex align-items-center">
+					<p class="m-0 text-secondary">Showing
+						<strong>@Model.Tasks.PageElementsStart to @Model.Tasks.PageElementsEnd</strong> of
+						<strong>@ViewData["NumberOfAllTasks"] entries</strong></p>
+				</div>
+				<div class="col-auto">
+					@* {% include "ui/pagination.html" class="m-0 ms-auto" %} *@
+					<a asp-action="Index"
+					   asp-route-sortOrder="@ViewData["CurrentSort"]"
+					   asp-route-pageNumber="@(Model.Tasks.PageIndex - 1)"
+					   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+					   asp-route-pageSize="@ViewData["PageSize"]"
+					   asp-route-searchString="@ViewData["SearchString"]"
+					   class="btn btn-default @prevDisabled">
+						Previous
+					</a>
+					<a asp-action="Index"
+					   asp-route-sortOrder="@ViewData["CurrentSort"]"
+					   asp-route-pageNumber="@(Model.Tasks.PageIndex + 1)"
+					   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+					   asp-route-pageSize="@ViewData["PageSize"]"
+					   asp-route-searchString="@ViewData["SearchString"]"
+					   class="btn btn-default @nextDisabled">
+						Next
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@if (Model.SelectedTask != null)
+	{
+		<div class="col-12 col-lg-6">
+			<div class="p-3 border rounded">
+				<h4>Task Number: @Model.SelectedTask.TaskNumber</h4>
+
+				<!-- Save Form -->
+				<form asp-controller="Tasks" asp-action="UpdateCardTask" method="post">
+					<input type="hidden" asp-for="@Model.SelectedTask.Id"/>
+
+					<div class="mb-3">
+						<label asp-for="@Model.SelectedTask.Title" class="form-label"></label>
+						<input asp-for="@Model.SelectedTask.Title" class="form-control"/>
+						<span asp-validation-for="@Model.SelectedTask.Title" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="@Model.SelectedTask.Description" class="form-label"></label>
+						<textarea asp-for="@Model.SelectedTask.Description" class="form-control"></textarea>
+						<span asp-validation-for="@Model.SelectedTask.Description" class="text-danger"></span>
+					</div>
+
+					<div class="mb-3">
+						<label asp-for="@Model.SelectedTask.Status" class="form-label"></label>
+						<select asp-for="@Model.SelectedTask.Status"
+						        asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.TaskStatus>()"
+						        class="form-select">
+							<option value="">-- Select --</option>
+						</select>
+						<span asp-validation-for="@Model.SelectedTask.Status" class="text-danger"></span>
+					</div>
+
+					<div class="row row-cols-2 mb-3">
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">Creation Date</h5>
+									<p class="card-text">@Model.SelectedTask.CreatedAt</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row row-cols-2 mb-3">
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">Estimated Pomodoros</h5>
+									<p class="card-text">@Model.SelectedTask.EstimatedPomodoros</p>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">Completed Pomodoros</h5>
+									<p class="card-text">@Model.SelectedTask.CompletedPomodoros</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-primary mt-2">Save</button>
+				</form>
+
+				<!-- Start Timer Form -->
+				<form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-2">
+					<input type="hidden" name="taskId" value="@Model.SelectedTask.Id"/>
+					<button type="submit" class="btn btn-success">Start Timer</button>
+				</form>
+			</div>
+		</div>
+	}
 </div>
-
-@section Styles {<link rel="stylesheet" href="~/css/tasks-index.css" asp-append-version="true" />}

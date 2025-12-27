@@ -1,33 +1,25 @@
-namespace LekkoApp.Models;
 using System.ComponentModel.DataAnnotations;
+using LekkoApp.Data;
+
+namespace LekkoApp.Models;
+using Enums;
 
 public class Task
 {
     public Guid Id { get; set; }
-    public Guid UserId { get; set; }
+    public required ApplicationUser? User { get; set; }
+    public Project? Project { get; set; }
     public int TaskNumber { get; set; }
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public int EstimatedPomodoros { get; set; }
+    [MaxLength(50)]
+    public required string Title { get; set; }
+    [MaxLength(300)]
+    public string? Description { get; set; }
+
+    public int EstimatedPomodoros { get; set; } = 1;
     public int CompletedPomodoros { get; set; }
-    public TaskStatus Status { get; set; }
+    public TaskStatus Status { get; set; } = TaskStatus.NotStarted;
     public DateTime CreatedAt { get; set; }
     public DateTime? DueDate { get; set; }
     
     public ICollection<PomodoroSession>? PomodoroSessions { get; set; }
-    public ICollection<TimerLog>? TimerLogs { get; set; }
-}
-
-public enum TaskStatus
-{
-    [Display(Name = "Not Started")]
-    NotStarted = 0,
-    [Display(Name = "In Progress")]
-    InProgress = 1,
-    [Display(Name = "Done")]
-    Completed = 2,
-    [Display(Name = "On Hold")]
-    OnHold = 3,
-    [Display(Name = "Cancelled")]
-    Cancelled = 4
 }
