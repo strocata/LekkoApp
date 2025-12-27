@@ -1,0 +1,18 @@
+@model (string Icon, string Class)
+
+@{
+    var icon = Model.Icon.ToLowerInvariant();
+    var css = Model.Class;
+}
+
+@if (icon == "chevron-up")
+{
+    <svg class="@css" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M6 15l6 -6l6 6"></path>
+    </svg>
+}
+else if (icon == "plus")
+{
+    <svg class="@css" ...>...</svg>
+}
+<!-- Add more icons -->
