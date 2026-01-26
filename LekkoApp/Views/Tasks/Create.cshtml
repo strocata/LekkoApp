@@ -1,45 +1,132 @@
-@model LekkoApp.Models.Task
-@using LekkoApp.Models.Enums
-
+@model LekkoApp.Models.TaskCreateViewModel
 @{
     ViewData["Title"] = "Create Task";
 }
 
-<h2>Create Task</h2>
+<div class="page-body">
+    <div class="container-xl">
 
-<form asp-action="Create" method="post">
-    @Html.AntiForgeryToken()
+        <!-- HEADER -->
+        <div class="page-header mb-4">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="page-pretitle">
+                        <a asp-controller="Tasks" asp-action="Index" class="text-muted">
+                            Tasks
+                        </a>
+                    </div>
+                    <h2 class="page-title">
+                        Create task
+                    </h2>
+                </div>
 
-    <div class="mb-3">
-        <label asp-for="Title" class="form-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+                <div class="col-auto ms-auto">
+                    <button form="create-task-form"
+                            type="submit"
+                            class="btn btn-primary">
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cards">
+
+            <!-- TASK FORM -->
+            <div class="col-12 col-lg-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Task details</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="create-task-form"
+                              asp-action="Create"
+                              method="post">
+                            @Html.AntiForgeryToken()
+
+                            <div class="mb-3">
+                                <label asp-for="Title" class="form-label"></label>
+                                <input asp-for="Title" class="form-control"/>
+                                <span asp-validation-for="Title"
+                                      class="invalid-feedback d-block"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label"></label>
+                                <textarea asp-for="Description"
+                                          class="form-control"
+                                          rows="4"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 mb-3">
+                                    <label asp-for="EstimatedPomodoros" class="form-label"></label>
+                                    <input asp-for="EstimatedPomodoros"
+                                           type="number"
+                                           min="1"
+                                           class="form-control"/>
+                                </div>
+
+                                <div class="col-sm-6 mb-3">
+                                    <label asp-for="DueDate" class="form-label"></label>
+                                    <input asp-for="DueDate"
+                                           type="date"
+                                           class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="mb-0">
+                                <label asp-for="Status" class="form-label"></label>
+                                <select asp-for="Status"
+                                        asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.TaskStatus>()"
+                                        class="form-select">
+                                    <option value="">Select status</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label asp-for="ProjectId" class="form-label">Project</label>
+
+                                <select asp-for="ProjectId"
+                                        asp-items="Model.Projects"
+                                        class="form-select">
+                                    <option value="">Select project</option>
+                                </select>
+
+                                <span asp-validation-for="ProjectId" class="text-danger"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HELP / DEFAULTS -->
+            <div class="col-12 col-lg-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="subheader mb-2">
+                            Tips
+                        </div>
+
+                        <ul class="list-unstyled text-secondary mb-0">
+                            <li class="mb-2">
+                                • Keep tasks small (1–4 pomodoros)
+                            </li>
+                            <li class="mb-2">
+                                • Use description for acceptance criteria
+                            </li>
+                            <li class="mb-2">
+                                • You can change status later
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label asp-for="Description" class="form-label"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="EstimatedPomodoros" class="form-label"></label>
-        <input asp-for="EstimatedPomodoros" type="number" min="1" class="form-control" />
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="DueDate" class="form-label"></label>
-        <input asp-for="DueDate" type="date" class="form-control" />
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Status" class="form-label"></label>
-        <select asp-for="Status" asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.TaskStatus>()" class="form-select">
-            <option value="">-- Select --</option>
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create Task</button>
-</form>
+</div>
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }

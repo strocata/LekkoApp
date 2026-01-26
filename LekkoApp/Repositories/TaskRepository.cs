@@ -36,7 +36,10 @@ public class TaskRepository : ITaskRepository
     public async Task<Task> Create(Task task, ApplicationUser? user)
     {
         task.Id = Guid.NewGuid();
-        task.User = user;
+        if (user != null)
+        {
+            task.User = user;
+        }
         task.CreatedAt = DateTime.UtcNow;
         task.CompletedPomodoros = 0;
 

@@ -1,73 +1,147 @@
-@model LekkoApp.Models.ProjectViewModel
+@using LekkoApp.Models.Enums
+@model LekkoApp.Models.ProjectsViewModel
+
+@{
+    ViewData["Title"] = "Projects";
+}
 
 <div class="card">
+
     <!-- Card header -->
     <div class="card-header">
         <div class="row w-100 align-items-center">
             <div class="col">
-                <h3 class="card-title mb-0">Employee</h3>
-                <p class="text-secondary mb-0">Table description.</p>
+                <h3 class="card-title mb-0">Projects</h3>
+                <p class="text-secondary mb-0">
+                    Manage your projects and track progress
+                </p>
             </div>
 
-            <div class="col-md-auto col-sm-12 mt-2 mt-md-0">
+            <div class="col-md-auto col-sm-12 mt-2 mt-md-0 d-flex gap-2">
+                <!-- Search -->
                 <form asp-action="Index" method="get" class="d-flex align-items-center">
-                    <span class="me-2 text-secondary">Search</span>
                     <input type="text"
                            name="SearchString"
                            class="form-control form-control-sm"
-                           value="@ViewData["SearchString"]"
-                           aria-label="Search project">
+                           placeholder="Search projects..."
+                           value="@ViewData["SearchString"]" />
                 </form>
+
+                <!-- Create project -->
+                <a asp-action="Create" class="btn btn-primary btn-sm">
+                    <i class="ti ti-plus me-1"></i>
+                    New project
+                </a>
             </div>
         </div>
     </div>
 
     <!-- Table -->
     <div class="table-responsive">
-        <table class="table table-vcenter table-hover table-selectable">
+        <table class="table table-vcenter table-hover">
             <thead>
             <tr>
-                <th>Project Name</th>
-                <th>Creation Date</th>
-                <th>Due Date</th>
+                <th>Project</th>
+                <th>Start</th>
+                <th>Due</th>
                 <th>Status</th>
-                <th>No of Tasks</th>
+                <th>Tasks</th>
                 <th class="text-end">Actions</th>
             </tr>
             </thead>
 
             <tbody class="table-tbody">
-            @foreach (var item in Model.Projects)
+            @if (!Model.Projects.Any())
             {
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@item.StartDate</td>
-                    <td>@item.EndDate</td>
-                    <td>@item.Status</td>
-                    <td>@Model.ProjectsCount</td>
-
-                    <td class="text-end">
-                        <div class="dropdown">
-                            <button class="btn btn-sm dropdown-toggle"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Actions
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">
-                                    Edit
-                                </a>
-                            </div>
-                        </div>
+                    <td colspan="6" class="text-center text-secondary py-4">
+                        No projects found
                     </td>
                 </tr>
+            }
+            else
+            {
+                @foreach (var project in Model.Projects)
+                {
+                    <tr>
+                        <!-- Name -->
+                        <td>
+                            <div class="fw-medium">
+                                <a asp-action="Details"
+                                   asp-route-projectid="@project.Id"
+                                   class="text-reset">
+                                    @project.Name
+                                </a>
+                            </div>
+                        </td>
+
+                        <!-- Start -->
+                        <td class="text-secondary">
+                            @project.StartDate.ToString("dd MMM yyyy")
+                        </td>
+
+                        <!-- Due -->
+                        <td class="text-secondary">
+                            @project.EndDate.ToString("dd MMM yyyy")
+                        </td>
+
+                        <!-- Status -->
+                        <td>
+                            <span class="badge
+                                @(project.Status == ProjectStatus.InProgress ? "bg-green" :
+                                  project.Status == ProjectStatus.Completed ? "bg-blue" :
+                                  "bg-secondary")">
+                                @project.Status
+                            </span>
+                        </td>
+
+                        <!-- Tasks -->
+                        <td>
+                            <span class="text-secondary">
+                                100
+                            </span>
+                        </td>
+
+                        <!-- Actions -->
+                        <td class="text-end">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                                        data-bs-toggle="dropdown">
+                                    Actions
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item"
+                                       asp-action="Details"
+                                       asp-route-projectid="@project.Id">
+                                        <i class="ti ti-eye me-1"></i>
+                                        View
+                                    </a>
+
+                                    <a class="dropdown-item"
+                                       asp-action="Details"
+                                       asp-route-projectid="@project.Id">
+                                        <i class="ti ti-edit me-1"></i>
+                                        Edit
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
             }
             </tbody>
         </table>
     </div>
 
     <!-- Card footer -->
-    <div class="card-footer d-flex align-items-center">
-        <!-- pagination / info here -->
+    <div class="card-footer d-flex align-items-center justify-content-between">
+        <div class="text-secondary">
+            Total projects: <strong>@Model.Projects.Count()</strong>
+        </div>
+
+        <!-- pagination placeholder -->
+        @* future pagination *@
     </div>
 </div>
+

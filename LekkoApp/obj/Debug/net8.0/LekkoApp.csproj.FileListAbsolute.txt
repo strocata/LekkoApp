@@ -129,14 +129,12 @@
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.LekkoApp.props
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/staticwebassets.pack.json
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/scopedcss/bundle/LekkoApp.styles.css
-/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/scopedcss/projectbundle/LekkoApp.bundle.scp.css
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/LekkoApp.csproj.Up2Date
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/LekkoApp.dll
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/refint/LekkoApp.dll
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/LekkoApp.pdb
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/LekkoApp.genruntimeconfig.cache
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/ref/LekkoApp.dll
-/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/scopedcss/Views/Timer/Index.cshtml.rz.scp.css
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/LekkoApp.sourcelink.json
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
 /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll

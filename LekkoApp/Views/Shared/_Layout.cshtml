@@ -4,23 +4,31 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - LekkoApp</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/css/tabler.min.css">
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/LekkoApp.styles.css" asp-append-version="true"/>
+
+    @await RenderSectionAsync("Styles", required: false)
 </head>
+
 <body>
 <div class="page">
-    <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+
+    <!-- SIDEBAR -->
+    <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
         <div class="container-fluid">
 
             <!-- Brand -->
             <h1 class="navbar-brand navbar-brand-autodark">
-                <a asp-controller="Home" asp-action="Index">
+                <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center gap-2">
                     <img src="/static/logo-white.svg"
                          width="110"
                          height="32"
@@ -36,31 +44,20 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Sidebar content -->
+            <!-- Sidebar -->
             <div class="collapse navbar-collapse flex-column" id="sidebar-menu">
 
-                <!-- NAVIGATION -->
                 <ul class="navbar-nav pt-lg-3 gap-1">
 
+                    <!-- Core -->
                     <li class="nav-item">
                         <a class="nav-link"
                            asp-controller="Projects"
                            asp-action="Index">
-                        <span class="nav-link-icon">
-                            @await Html.PartialAsync("_Icon", ("home", "icon"))
-                        </span>
+                            <span class="nav-link-icon">
+                                @await Html.PartialAsync("_Icon", ("folder", "icon"))
+                            </span>
                             <span class="nav-link-title">Projects</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           asp-controller="Dashboard"
-                           asp-action="Index">
-                        <span class="nav-link-icon">
-                            @await Html.PartialAsync("_Icon", ("layout-dashboard", "icon"))
-                        </span>
-                            <span class="nav-link-title">Dashboard</span>
                         </a>
                     </li>
 
@@ -68,47 +65,64 @@
                         <a class="nav-link"
                            asp-controller="Tasks"
                            asp-action="Index">
-                        <span class="nav-link-icon">
-                            @await Html.PartialAsync("_Icon", ("checklist", "icon"))
-                        </span>
+                            <span class="nav-link-icon">
+                                @await Html.PartialAsync("_Icon", ("checklist", "icon"))
+                            </span>
                             <span class="nav-link-title">Tasks</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link"
+                           asp-controller="Dashboard"
+                           asp-action="Index">
+                            <span class="nav-link-icon">
+                                @await Html.PartialAsync("_Icon", ("layout-dashboard", "icon"))
+                            </span>
+                            <span class="nav-link-title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- Divider -->
+                    <li class="nav-item my-2">
+                        <hr class="navbar-divider">
+                    </li>
+
+                    <!-- Productivity -->
+                    <li class="nav-item">
+                        <a class="nav-link"
                            asp-controller="Timer"
                            asp-action="Index">
-                        <span class="nav-link-icon">
-                            @await Html.PartialAsync("_Icon", ("clock", "icon"))
-                        </span>
-                            <span class="nav-link-title">Timer</span>
+                            <span class="nav-link-icon">
+                                @await Html.PartialAsync("_Icon", ("clock", "icon"))
+                            </span>
+                            <span class="nav-link-title">Pomodoro</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link">
-                        <span class="nav-link-icon">
-                            @await Html.PartialAsync("_Icon", ("award", "icon"))
-                        </span>
-                            <span class="nav-link-title">Achievements</span>
+                        <a class="nav-link disabled">
+                            <span class="nav-link-icon">
+                                @await Html.PartialAsync("_Icon", ("calendar", "icon"))
+                            </span>
+                            <span class="nav-link-title">Calendar</span>
                         </a>
                     </li>
                 </ul>
 
-                <!-- PUSH USER TO BOTTOM -->
+                <!-- USER -->
                 <div class="mt-auto w-100">
+                    <hr class="navbar-divider my-3"/>
 
-                    <hr class="navbar-divider my-3">
-
-                    <!-- USER / IDENTITY -->
                     <div class="nav-item dropdown">
                         <a href="#"
                            class="nav-link d-flex align-items-center"
                            data-bs-toggle="dropdown">
-                        <span class="avatar avatar-sm me-2">
-                            @UserManager.GetUserName(User)?.Substring(0, 1)
-                        </span>
+
+                            <span class="avatar avatar-sm me-2">
+                                @UserManager.GetUserName(User)?.Substring(0, 1)
+                            </span>
+
                             <div class="flex-fill">
                                 <div class="fw-semibold">
                                     @UserManager.GetUserName(User)
@@ -121,78 +135,69 @@
 
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <a class="dropdown-item"
-                                   asp-area="Identity"
-                                   asp-page="/Account/Manage/Index">
+                            <a class="dropdown-item"
+                               asp-area="Identity"
+                               asp-page="/Account/Manage/Index">
                                 <span class="dropdown-item-icon">
                                     @await Html.PartialAsync("_Icon", ("settings", "icon"))
                                 </span>
-                                    Settings
-                                </a>
+                                Settings
+                            </a>
 
-                                <div class="dropdown-divider"></div>
+                            <div class="dropdown-divider"></div>
 
-                                <form asp-area="Identity"
-                                      asp-page="/Account/Logout"
-                                      asp-route-returnUrl="@Url.Action("Index", "Home")">
-                                    <button type="submit"
-                                            class="dropdown-item text-danger">
+                            <form asp-area="Identity"
+                                  asp-page="/Account/Logout"
+                                  asp-route-returnUrl="@Url.Action("Index", "Home")">
+                                <button type="submit"
+                                        class="dropdown-item text-danger">
                                     <span class="dropdown-item-icon">
                                         @await Html.PartialAsync("_Icon", ("logout", "icon"))
                                     </span>
-                                        Logout
-                                    </button>
-                                </form>
-                            }
-                            else
-                            {
-                                <a class="dropdown-item"
-                                   asp-area="Identity"
-                                   asp-page="/Account/Login">
-                                    Login
-                                </a>
-
-                                <a class="dropdown-item"
-                                   asp-area="Identity"
-                                   asp-page="/Account/Register">
-                                    Register
-                                </a>
-                            }
-
+                                    Logout
+                                </button>
+                            </form>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </aside>
 
-
+    <!-- PAGE -->
     <div class="page-wrapper">
+
+        <!-- Header -->
         <div class="page-header d-print-none">
             <div class="container-xl">
                 <div class="row g-2 align-items-center">
                     <div class="col">
-                        <h2 class="page-title">Vertical layout</h2>
+                        <h2 class="page-title">
+                            @ViewData["Title"]
+                        </h2>
+                    </div>
+
+                    <div class="col-auto ms-auto d-print-none">
+                        @RenderSection("PageActions", required: false)
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Body -->
         <div class="page-body">
             <div class="container-xl">
-                <div class="row row-deck row-cards">
-                    @RenderBody()
-                </div>
+                @RenderBody()
             </div>
         </div>
+
     </div>
 </div>
 
-<script src="~/js/site.js" asp-append-version="true"></script>
 <script src="https://cdn.jsdelivr.net/npm/@@tabler/core@latest/dist/js/tabler.min.js"></script>
-@await RenderSectionAsync("Styles", required: false)
+<script src="~/js/site.js" asp-append-version="true"></script>
+
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

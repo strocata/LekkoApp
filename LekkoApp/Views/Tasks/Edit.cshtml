@@ -1,80 +1,136 @@
 @model LekkoApp.Models.Task
 
-<div class="col-12 col-lg-6">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                Task <span class="text-muted">#@Model.TaskNumber</span>
+<div class="page-body">
+    <div class="container-xl">
+
+        <div class="page-header mb-4">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="page-pretitle">
+                        <a asp-controller="Projects" asp-action="Index" class="text-muted">
+                            Projects
+                        </a>
+                    </div>
+                    <h2 class="page-title">
+                        Task
+                        <span class="text-muted">#@Model.TaskNumber</span>
+
+                        <span class="badge bg-blue-lt ms-2">
+                            @Model.Status
+                        </span>
+                    </h2>
+                </div>
+
+                <div class="col-auto ms-auto">
+                    <button form="task-form" type="submit" class="btn btn-primary">
+                        Save
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div class="card-body">
-            <!-- Save Form -->
-            <form asp-controller="Tasks" asp-action="UpdateCardTask" method="post">
-                <input type="hidden" asp-for="Id" />
+        <div class="row row-cards">
 
-                <div class="mb-3">
-                    <label asp-for="Title" class="form-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="invalid-feedback d-block"></span>
+            <!-- TASK DETAILS -->
+            <div class="col-12 col-lg-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Task details</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="task-form"
+                              asp-controller="Tasks"
+                              asp-action="UpdateCardTask"
+                              method="post">
+
+                            <input type="hidden" asp-for="Id"/>
+
+                            <div class="mb-3">
+                                <label asp-for="Title" class="form-label"></label>
+                                <input asp-for="Title" class="form-control"/>
+                                <span asp-validation-for="Title"
+                                      class="invalid-feedback d-block"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label"></label>
+                                <textarea asp-for="Description"
+                                          class="form-control"
+                                          rows="4"></textarea>
+                                <span asp-validation-for="Description"
+                                      class="invalid-feedback d-block"></span>
+                            </div>
+
+                            <div class="mb-0">
+                                <label asp-for="Status" class="form-label"></label>
+                                <select asp-for="Status"
+                                        asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.TaskStatus>()"
+                                        class="form-select">
+                                </select>
+                                <span asp-validation-for="Status"
+                                      class="invalid-feedback d-block"></span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
 
-                <div class="mb-3">
-                    <label asp-for="Description" class="form-label"></label>
-                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
-                    <span asp-validation-for="Description" class="invalid-feedback d-block"></span>
-                </div>
+            <div class="col-12 col-lg-5">
 
-                <div class="mb-4">
-                    <label asp-for="Status" class="form-label"></label>
-                    <select asp-for="Status"
-                            asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.TaskStatus>()"
-                            class="form-select">
-                        <option value="">Select status</option>
-                    </select>
-                    <span asp-validation-for="Status" class="invalid-feedback d-block"></span>
-                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3 class="card-title">Task stats</h3>
+                    </div>
 
-                <!-- Meta info -->
-                <div class="row g-3 mb-4">
-                    <div class="col-12 col-sm-6">
-                        <div class="border rounded p-3 h-100">
-                            <div class="text-secondary mb-1">Created</div>
-                            <div class="font-monospace text-muted">
-                                @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")
+                    <div class="card-body">
+                        <div class="row text-center">
+
+                            <div class="col-12 mb-3">
+                                <div class="text-secondary">Created</div>
+                                <div class="font-monospace text-muted">
+                                    @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="subheader">Estimated</div>
+                                <div class="h2">@Model.EstimatedPomodoros</div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="subheader">Completed</div>
+                                <div class="h2">@Model.CompletedPomodoros</div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-6 col-sm-3">
-                        <div class="border rounded p-3 h-100 text-center">
-                            <div class="text-secondary mb-1">Estimated</div>
-                            <div class="h2 m-0">@Model.EstimatedPomodoros</div>
+                <div class="card border-success">
+                    <div class="card-body text-center">
+                        <div class="subheader text-success mb-2">
+                            Focus session
                         </div>
-                    </div>
 
-                    <div class="col-6 col-sm-3">
-                        <div class="border rounded p-3 h-100 text-center">
-                            <div class="text-secondary mb-1">Completed</div>
-                            <div class="h2 m-0">@Model.CompletedPomodoros</div>
+                        <form asp-controller="Tasks"
+                              asp-action="StartTimer"
+                              method="post">
+                            <input type="hidden" name="taskId" value="@Model.Id"/>
+
+                            <button type="submit"
+                                    class="btn btn-success btn-lg w-100">
+                                ▶ Start Pomodoro
+                            </button>
+                        </form>
+
+                        <div class="text-secondary mt-3">
+                            Work on this task for 25 minutes
                         </div>
                     </div>
                 </div>
 
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">
-                        Save changes
-                    </button>
-                </div>
-            </form>
-
-            <!-- Start Timer -->
-            <form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-3">
-                <input type="hidden" name="taskId" value="@Model.Id" />
-                <button type="submit" class="btn btn-success w-100">
-                    Start Timer
-                </button>
-            </form>
+            </div>
         </div>
+
     </div>
 </div>

@@ -1,220 +1,208 @@
 @using LekkoApp.Helpers
 @model LekkoApp.Models.TasksViewModel
 
-<div class="row">
-	<div class="card">
-		<div class="card-header">
-			<h3 class="card-title">Tasks</h3>
-		</div>
-		<div class="card-body border-bottom py-3">
+<div class="page-body">
+    <div class="container-xl">
 
-			<div class="d-flex">
-				<div class="text-secondary">
-					<form asp-action="Index" method="get">
-						Show
-						<div class="mx-2 d-inline-block">
-							<input type="text" name="PageSize" class="form-control form-control-sm"
-							       value=@ViewData["PageSize"] size="3"
-							       aria-label="Tasks count">
-						</div>
-						entries
-					</form>
-				</div>
+        <!-- HEADER -->
+        <div class="page-header mb-4">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h2 class="page-title">Tasks</h2>
+                </div>
 
-				<div class="ms-auto text-secondary">
-					<form asp-action="Index" method="get">
-						Search:
-						<div class="ms-2 d-inline-block">
+                <div class="col-auto ms-auto">
+                    <a asp-controller="Tasks"
+                       asp-action="Create"
+                       class="btn btn-primary">
+                        + Create task
+                    </a>
+                </div>
+            </div>
+        </div>
 
-							<div class="form-actions no-color">
-								<input type="text" name="SearchString" class="form-control form-control-sm"
-								       value=@ViewData["SearchString"]
-								       aria-label="Search task">
-							</div>
-						</div>
-					</form>
-				</div>
+        <!-- TASKS TABLE -->
+        <div class="card">
 
-				@if (!String.IsNullOrEmpty((string?)ViewData["SearchString"]))
-				{
-					<a asp-action="Index"
-					   class="btn btn-animate-icon btn-animate-icon-rotate ms-2">@await Html.PartialAsync("_Icon", ("x", "")) Clear</a>
-				}
-			</div>
+            <!-- FILTERS -->
+            <div class="card-body border-bottom py-3">
+                <div class="row g-2 align-items-center">
 
-		</div>
-		<div class="table-responsive">
-			<table class="table table-selectable card-table table-vcenter text-nowrap datatable">
-				<thead>
-				<tr>
-					<th class="w-1"><input class="form-check-input m-0 align-middle" type="checkbox"
-					                       aria-label="Select all tasks"></th>
-					<th class="w-1"><a asp-action="Index"
-					                   asp-route-sortOrder="@ViewData["TaskNumberSortParm"]">No.</a> @await Html.PartialAsync("_Icon", ("chevron-up", "icon-sm icon-thick"))
-					</th>
-					<th><a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]"
-					       asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a></th>
-					<th>Completed pomodoros</th>
-					<th><a asp-action="Index" asp-route-sortOrder="@ViewData["CreationDateSortParm"]"
-					       asp-route-currentFilter="@ViewData["CurrentFilter"]">CreationDate</a>
-					</th>
-					<th><a asp-action="Index" asp-route-sortOrder="@ViewData["DueDateSortParm"]"
-					       asp-route-currentFilter="@ViewData["CurrentFilter"]">Due Date</a></th>
-					<th>Status</th>
-					<th></th>
-					<th></th>
-				</tr>
-				</thead>
+                    <!-- PAGE SIZE -->
+                    <div class="col-auto text-secondary">
+                        <form asp-action="Index" method="get" class="d-flex align-items-center">
+                            Show
+                            <input type="text"
+                                   name="PageSize"
+                                   class="form-control form-control-sm mx-2"
+                                   value="@ViewData["PageSize"]"
+                                   size="3">
+                            entries
+                        </form>
+                    </div>
 
-				<tbody>
-				@foreach (var item in Model.Tasks!)
-				{
-					<tr>
-						<td>
-							<input class="form-check-input m-0 align-middle table-selectable-check" type="checkbox"
-							       aria-label="Select invoice"></td>
-						<td><span class="text-secondary">@item.TaskNumber</span></td>
-						<td><a class="text-reset" tabindex="-1" asp-controller="Tasks" asp-action="Index"
-						       asp-route-taskId="@item.Id">@item.Title</a></td>
-						<td>
-							@item.CompletedPomodoros
-						</td>
-						<td>
-							@item.CreatedAt
-						</td>
-						<td>
-							@item.DueDate
-						</td>
-						<td>
-							<span class="badge @BadgeStyles.Get(@item.Status) me-1"></span> @item.Status
-						</td>
+                    <!-- SEARCH -->
+                    <div class="col-auto ms-auto text-secondary">
+                        <form asp-action="Index" method="get" class="d-flex align-items-center">
+                            Search:
+                            <input type="text"
+                                   name="SearchString"
+                                   class="form-control form-control-sm ms-2"
+                                   value="@ViewData["SearchString"]">
+                        </form>
+                    </div>
 
-						<td class="text-end">
-							<span class="dropdown">
-								<button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
-								        data-bs-toggle="dropdown">Actions</button>
-								<div class="dropdown-menu">
-									<a asp-action="Edit" asp-route-taskId="@item.Id" class="dropdown-item"> Edit </a>
-									<form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-2">
-										<input type="hidden" name="taskId" value="@item.Id"/>
-										<button class="dropdown-item" type="submit">Start Timer</button>
-									</form>
-								</div>
-							</span>
-						</td>
-					</tr>
-				}
-				</tbody>
-			</table>
-			@{
-				var prevDisabled = !Model.Tasks.HasPreviousPage ? "disabled" : "";
-				var nextDisabled = !Model.Tasks.HasNextPage ? "disabled" : "";
-			}
+                    @if (!string.IsNullOrEmpty((string?)ViewData["SearchString"]))
+                    {
+                        <div class="col-auto">
+                            <a asp-action="Index"
+                               class="btn btn-sm btn-outline-secondary">
+                                Clear
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
 
-		</div>
-		<div class="card-footer">
-			<div class="row g-2 justify-content-center justify-content-sm-between">
-				<div class="col-auto d-flex align-items-center">
-					<p class="m-0 text-secondary">Showing
-						<strong>@Model.Tasks.PageElementsStart to @Model.Tasks.PageElementsEnd</strong> of
-						<strong>@ViewData["NumberOfAllTasks"] entries</strong></p>
-				</div>
-				<div class="col-auto">
-					@* {% include "ui/pagination.html" class="m-0 ms-auto" %} *@
-					<a asp-action="Index"
-					   asp-route-sortOrder="@ViewData["CurrentSort"]"
-					   asp-route-pageNumber="@(Model.Tasks.PageIndex - 1)"
-					   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-					   asp-route-pageSize="@ViewData["PageSize"]"
-					   asp-route-searchString="@ViewData["SearchString"]"
-					   class="btn btn-default @prevDisabled">
-						Previous
-					</a>
-					<a asp-action="Index"
-					   asp-route-sortOrder="@ViewData["CurrentSort"]"
-					   asp-route-pageNumber="@(Model.Tasks.PageIndex + 1)"
-					   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-					   asp-route-pageSize="@ViewData["PageSize"]"
-					   asp-route-searchString="@ViewData["SearchString"]"
-					   class="btn btn-default @nextDisabled">
-						Next
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+            <!-- TABLE -->
+            <div class="table-responsive">
+                <table class="table table-vcenter card-table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="w-1">
+                            <input class="form-check-input m-0 align-middle" type="checkbox">
+                        </th>
+                        <th class="w-1">
+                            <a asp-action="Index"
+                               asp-route-sortOrder="@ViewData["TaskNumberSortParm"]">
+                                No.
+                            </a>
+                        </th>
+                        <th>
+                            <a asp-action="Index"
+                               asp-route-sortOrder="@ViewData["TitleSortParm"]">
+                                Title
+                            </a>
+                        </th>
+                        <th>Pomodoros</th>
+                        <th>
+                            <a asp-action="Index"
+                               asp-route-sortOrder="@ViewData["CreationDateSortParm"]">
+                                Created
+                            </a>
+                        </th>
+                        <th>
+                            <a asp-action="Index"
+                               asp-route-sortOrder="@ViewData["DueDateSortParm"]">
+                                Due
+                            </a>
+                        </th>
+                        <th>Status</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                    </thead>
 
-	@if (Model.SelectedTask != null)
-	{
-		<div class="col-12 col-lg-6">
-			<div class="p-3 border rounded">
-				<h4>Task Number: @Model.SelectedTask.TaskNumber</h4>
+                    <tbody>
+                    @foreach (var item in Model.Tasks!)
+                    {
+                        <tr>
+                            <td>
+                                <input class="form-check-input m-0 align-middle" type="checkbox">
+                            </td>
 
-				<!-- Save Form -->
-				<form asp-controller="Tasks" asp-action="UpdateCardTask" method="post">
-					<input type="hidden" asp-for="@Model.SelectedTask.Id"/>
+                            <td class="text-secondary">
+                                @item.TaskNumber
+                            </td>
 
-					<div class="mb-3">
-						<label asp-for="@Model.SelectedTask.Title" class="form-label"></label>
-						<input asp-for="@Model.SelectedTask.Title" class="form-control"/>
-						<span asp-validation-for="@Model.SelectedTask.Title" class="text-danger"></span>
-					</div>
+                            <td>
+                                <a asp-controller="Tasks"
+                                   asp-action="Edit"
+                                   asp-route-taskId="@item.Id"
+                                   class="text-reset fw-medium">
+                                    @item.Title
+                                </a>
+                            </td>
 
-					<div class="mb-3">
-						<label asp-for="@Model.SelectedTask.Description" class="form-label"></label>
-						<textarea asp-for="@Model.SelectedTask.Description" class="form-control"></textarea>
-						<span asp-validation-for="@Model.SelectedTask.Description" class="text-danger"></span>
-					</div>
+                            <td>
+                                @item.CompletedPomodoros
+                            </td>
 
-					<div class="mb-3">
-						<label asp-for="@Model.SelectedTask.Status" class="form-label"></label>
-						<select asp-for="@Model.SelectedTask.Status"
-						        asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.TaskStatus>()"
-						        class="form-select">
-							<option value="">-- Select --</option>
-						</select>
-						<span asp-validation-for="@Model.SelectedTask.Status" class="text-danger"></span>
-					</div>
+                            <td class="text-secondary">
+                                @item.CreatedAt.ToString("yyyy-MM-dd")
+                            </td>
 
-					<div class="row row-cols-2 mb-3">
-						<div class="col">
-							<div class="card">
-								<div class="card-body">
-									<h5 class="card-title">Creation Date</h5>
-									<p class="card-text">@Model.SelectedTask.CreatedAt</p>
-								</div>
-							</div>
-						</div>
-					</div>
+                            <td class="text-secondary">
+                                @item.DueDate?.ToString("yyyy-MM-dd")
+                            </td>
 
-					<div class="row row-cols-2 mb-3">
-						<div class="col">
-							<div class="card">
-								<div class="card-body">
-									<h5 class="card-title">Estimated Pomodoros</h5>
-									<p class="card-text">@Model.SelectedTask.EstimatedPomodoros</p>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card">
-								<div class="card-body">
-									<h5 class="card-title">Completed Pomodoros</h5>
-									<p class="card-text">@Model.SelectedTask.CompletedPomodoros</p>
-								</div>
-							</div>
-						</div>
-					</div>
+                            <td>
+                                <span class="badge @BadgeStyles.Get(@item.Status)">
+                                    @item.Status
+                                </span>
+                            </td>
 
-					<button type="submit" class="btn btn-primary mt-2">Save</button>
-				</form>
+                            <td class="text-end">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle"
+                                            data-bs-toggle="dropdown">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a asp-action="Edit"
+                                           asp-route-taskId="@item.Id"
+                                           class="dropdown-item">
+                                            Edit
+                                        </a>
 
-				<!-- Start Timer Form -->
-				<form asp-controller="Tasks" asp-action="StartTimer" method="post" class="mt-2">
-					<input type="hidden" name="taskId" value="@Model.SelectedTask.Id"/>
-					<button type="submit" class="btn btn-success">Start Timer</button>
-				</form>
-			</div>
-		</div>
-	}
+                                        <form asp-controller="Tasks"
+                                              asp-action="StartTimer"
+                                              method="post">
+                                            <input type="hidden"
+                                                   name="taskId"
+                                                   value="@item.Id" />
+                                            <button type="submit"
+                                                    class="dropdown-item">
+                                                Start Pomodoro
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- FOOTER / PAGINATION -->
+            <div class="card-footer d-flex align-items-center">
+                <div class="text-secondary">
+                    Showing
+                    <strong>@Model.Tasks.PageElementsStart–@Model.Tasks.PageElementsEnd</strong>
+                    of
+                    <strong>@ViewData["NumberOfAllTasks"]</strong>
+                </div>
+
+                <div class="ms-auto">
+                    @{
+                        var prevDisabled = !Model.Tasks.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !Model.Tasks.HasNextPage ? "disabled" : "";
+                    }
+
+                    <a asp-action="Index"
+                       asp-route-pageNumber="@(Model.Tasks.PageIndex - 1)"
+                       class="btn btn-sm btn-outline-secondary @prevDisabled">
+                        Previous
+                    </a>
+
+                    <a asp-action="Index"
+                       asp-route-pageNumber="@(Model.Tasks.PageIndex + 1)"
+                       class="btn btn-sm btn-outline-secondary @nextDisabled">
+                        Next
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

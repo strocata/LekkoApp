@@ -1,9 +1,8 @@
-@model Project
+@model ProjectDetailsViewModel
 
 <div class="page-body">
     <div class="container-xl">
 
-        <!-- HEADER -->
         <div class="page-header mb-4">
             <div class="row align-items-center">
                 <div class="col">
@@ -11,7 +10,7 @@
                         <a href="/projects" class="text-muted">Projects</a>
                     </div>
                     <h2 class="page-title">
-                        Pomodoro App v1
+                        @Model.Project?.Name
                         <span class="badge bg-green-lt ms-2">Active</span>
                     </h2>
                     <div class="text-secondary">
@@ -28,27 +27,26 @@
             </div>
         </div>
 
-        <!-- PROJECT PROGRESS -->
         <div class="card mb-4">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col">
                         <div class="subheader">Project progress</div>
-                        <div class="h3 mb-1">42 / 60 pomodoros</div>
+                        <div class="h3 mb-1">@Model.DonePomodoroCount / @Model.EstimatedPomodoroCount pomodoros</div>
 
                         <div class="progress">
                             <div class="progress-bar" style="width: 70%" role="progressbar"></div>
                         </div>
 
                         <div class="text-secondary mt-2">
-                            Tasks completed: 14 / 20
+                            Tasks completed: @Model.DoneTasksCount / @Model.TasksCount
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- CURRENT MILESTONE -->
+        <!-- Milestone needs to be implemented -->
         <div class="card mb-4 border-primary">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -82,7 +80,6 @@
             </div>
         </div>
 
-        <!-- TASKS -->
         <div class="card mb-4">
             <div class="card-header">
                 <h3 class="card-title">Tasks</h3>
@@ -92,52 +89,37 @@
             </div>
 
             <div class="list-group list-group-flush">
-                <div class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <input class="form-check-input" type="checkbox">
-                        </div>
-                        <div class="col">
-                            Implement start / stop timer
-                        </div>
-                        <div class="col-auto">
-                            <button class="btn btn-sm btn-outline-primary">
-                                ▶ Pomodoro
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                @if (Model.Tasks != null)
+                {
+                    foreach (var item in Model.Tasks)
+                    {
+                        <div class="list-group-item">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                                <div class="col">
+                                    @item.Title
+                                </div>
+                                <div class="col-auto">
+                                    <form asp-controller="Tasks"
+                                          asp-action="StartTimer"
+                                          method="post">
+                                        <input type="hidden" name="taskId" value="@item.Id"/>
 
-                <div class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <input class="form-check-input" type="checkbox">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-outline-primary">
+                                            ▶ Pomodoro
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            Handle pause logic
-                        </div>
-                        <div class="col-auto">
-                            <button class="btn btn-sm btn-outline-primary">
-                                ▶ Pomodoro
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="list-group-item bg-light">
-                    <div class="row align-items-center text-muted">
-                        <div class="col-auto">
-                            <input class="form-check-input" type="checkbox" checked disabled>
-                        </div>
-                        <div class="col text-decoration-line-through">
-                            Timer UI
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
             </div>
         </div>
 
-        <!-- OTHER MILESTONES -->
         <div class="card mb-4">
             <div class="card-header">
                 <h3 class="card-title">Other milestones</h3>
@@ -156,7 +138,6 @@
             </div>
         </div>
 
-        <!-- ACTIVITY -->
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Activity</h3>
