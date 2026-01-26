@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/obj/Debug/net8.0/scopedcss/projectbundle/LekkoApp.bundle.scp.css",
-      "PackagePath": "staticwebassets/LekkoApp.bundle.scp.css"
-    },
-    {
       "Id": "/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/app/assets/exampleWidget-r-FhjycQ.js",
       "PackagePath": "staticwebassets/app/assets/exampleWidget-r-FhjycQ.js"
     },

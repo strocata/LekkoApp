@@ -1,13 +1,15 @@
+using System.Diagnostics;
 using LekkoApp.Data;
 using LekkoApp.Models;
 using LekkoApp.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Task = LekkoApp.Models.Task;
 
 namespace LekkoApp.Controllers;
 
-public class ProjectsController: Controller
+public class ProjectsController : Controller
 {
     private readonly ILogger<TasksController> _logger;
     private readonly ApplicationDbContext _context;
@@ -30,14 +32,30 @@ public class ProjectsController: Controller
         var user = await _userManager.GetUserAsync(HttpContext.User);
 
         List<Project> projects = await _projectRepository.GetProjectsByUserAsync(user) as List<Project>;
-        
-        var model = new ProjectViewModel
+
+        var model = new ProjectsViewModel
         {
             Projects = projects,
             ProjectsCount = projects.Count()
         };
-        
+
         return View(model);
     }
-    
+
+    public async Task<IActionResult> Details(Guid projectId)
+    {
+        var project = await _projectRepository.GetProjectByIdAsync(projectId);
+
+        var tasks = await _projectRepository.GetProjectTasksByIdAsync(projectId) as List<Task>;
+
+        var model = new ProjectDetailsViewModel()
+        {
+            Project = project,
+            Tasks = tasks,
+            DonePomodoroCount = tasks.Select(item => item.CompletedPomodoros).Sum(),
+            EstimatedPomodoroCount = tasks.Select(item => item.EstimatedPomodoros).Sum()
+        };
+
+        return View(model);
+    }
 }

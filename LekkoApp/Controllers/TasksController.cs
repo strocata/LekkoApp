@@ -5,6 +5,7 @@ using LekkoApp.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using LekkoApp.Repositories;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Task = LekkoApp.Models.Task;
 
@@ -15,14 +16,17 @@ namespace LekkoApp.Controllers
         private readonly ILogger<TasksController> _logger;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly TaskRepository _taskRepository;
+        private readonly ProjectRepository _projectRepository;
 
 
         public TasksController(ILogger<TasksController> logger,
-            TaskRepository taskRepository, UserManager<ApplicationUser> userManager)
+            TaskRepository taskRepository, UserManager<ApplicationUser> userManager,
+            ProjectRepository projectRepository)
         {
             _logger = logger;
             _taskRepository = taskRepository;
             _userManager = userManager;
+            _projectRepository = projectRepository;
         }
 
         [Authorize]
@@ -98,40 +102,58 @@ namespace LekkoApp.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            var projects = await _projectRepository.GetProjectsByUserAsync(user);
+
+            var vm = new TaskCreateViewModel
+            {
+                Projects = projects.Select(p => new SelectListItem
+                {
+                    Value = p.Id.ToString(),
+                    Text = p.Name
+                })
+            };
+
+            return View(vm);
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Task task)
+        public async Task<IActionResult> Create(TaskCreateViewModel model)
         {
-            _logger.LogInformation("Create POST invoked. Title={Title}", task.Title);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
 
             if (!ModelState.IsValid)
             {
-                foreach (var entry in ModelState)
-                {
-                    var key = entry.Key;
-                    var errors = entry.Value.Errors;
-
-                    foreach (var error in errors)
+                // reload dropdown
+                model.Projects = (await _projectRepository.GetProjectsByUserAsync(user))
+                    .Select(p => new SelectListItem
                     {
-                        _logger.LogInformation($"Property: {key}, Error: {error.ErrorMessage}");
-                    }
-                }
+                        Value = p.Id.ToString(),
+                        Text = p.Name
+                    });
 
-                _logger.LogWarning("ModelState invalid");
-                return View(task);
+                return View(model);
             }
 
-            ApplicationUser? user = await _userManager.GetUserAsync(HttpContext.User);
+            var task = new Task
+            {
+                Title = model.Title,
+                Description = model.Description,
+                EstimatedPomodoros = model.EstimatedPomodoros,
+                DueDate = model.DueDate,
+                Status = model.Status,
+                ProjectId = model.ProjectId,
+                User = null
+            };
 
             await _taskRepository.Create(task, user);
 
-            return RedirectToAction("Create");
+            return RedirectToAction(nameof(Index));
         }
 
         [Authorize]

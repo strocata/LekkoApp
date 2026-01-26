@@ -1,158 +1,287 @@
 @model TimerViewModel
+@{
+    ViewData["Title"] = "Pomodoro Timer";
+}
 
-<!DOCTYPE html>
+@section PageActions {
+    @if (Model?.SelectedTask != null)
+    {
+        <span class="badge bg-blue-lt">
+            @Model.SelectedTask.Status
+        </span>
+    }
+}
 
-<html>
-<head>
-    <title>Timer</title>
-</head>
-<body>
-<div class="container mt-4">
-    <div class="modern-tabs mb-5">
-        <ul class="nav nav-tabs" id="filledTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pomodoro-tab" data-bs-toggle="tab" data-bs-target="#pomodoro"
-                        type="button" role="tab">
-                    Pomodoro
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="short-break-tab" data-bs-toggle="tab" data-bs-target="#short-break"
-                        type="button" role="tab">
-                    Short Break
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="long-break-tab" data-bs-toggle="tab" data-bs-target="#long-break"
-                        type="button" role="tab">
-                    Long Break
-                </button>
-            </li>
-        </ul>
+<div class="row justify-content-center">
 
-        <div class="tab-content mt-3" id="filledTabsContent">
-            <div class="tab-pane fade show active" id="pomodoro" role="tabpanel">
-                <div class="timer-container d-flex flex-column align-items-center justify-content-center">
-                    <div id="pomodoro-timer" class="timer-display mb-4">00:00</div>
-                    <div class="btn-group">
-                        <button id="startPomodoroBtn" class="btn btn-primary">Start</button>
-                        <button id="resetPomodoroBtn" class="btn btn-secondary">Reset</button>
-                    </div>
-                </div>
+    <!-- TIMER HERO -->
+    <div class="col-12 col-lg-8">
+        <div class="card card-lg text-center">
+
+            <!-- Tabs -->
+            <div class="card-header justify-content-center">
+                <ul class="nav nav-pills card-header-pills" id="timerTabs">
+                    <li class="nav-item">
+                        <button class="nav-link active"
+                                data-bs-toggle="tab"
+                                data-bs-target="#pomodoro"
+                                data-timer-type="Work">
+                            🍅 Pomodoro
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link"
+                                data-bs-toggle="tab"
+                                data-bs-target="#short-break"
+                                data-timer-type="ShortBreak">
+                            ☕ Short break
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link"
+                                data-bs-toggle="tab"
+                                data-bs-target="#long-break"
+                                data-timer-type="LongBreak">
+                            🛌 Long break
+                        </button>
+                    </li>
+                </ul>
             </div>
+            
+            <!-- Timer -->
+            <div class="card-body">
 
-            <div class="tab-pane fade" id="short-break" role="tabpanel">
-                <div class="timer-container d-flex flex-column align-items-center justify-content-center">
-                    <div id="short-break-timer" class="timer-display mb-4">00:00</div>
-                    <div class="btn-group">
-                        <button id="startShortBtn" class="btn btn-primary">Start</button>
-                        <button id="resetShortBtn" class="btn btn-secondary">Reset</button>
-                    </div>
-                </div>
-            </div>
+                @if (Model?.SelectedTask?.Status == LekkoApp.Models.Enums.TaskStatus.Completed)
+                {
+                    <!-- COMPLETED STATE -->
+                    <div class="py-6">
 
-            <div class="tab-pane fade" id="long-break" role="tabpanel">
-                <div class="timer-container d-flex flex-column align-items-center justify-content-center">
-                    <div id="long-break-timer" class="timer-display mb-4">00:00</div>
-                    <div class="btn-group">
-                        <button id="startLongBtn" class="btn btn-primary">Start</button>
-                        <button id="resetLongBtn" class="btn btn-secondary">Reset</button>
+                        <div class="mb-4">
+                <span class="avatar avatar-xl bg-success-lt">
+                    @await Html.PartialAsync("_Icon", ("check", "icon-lg"))
+                </span>
+                        </div>
+
+                        <h2 class="mb-1">
+                            Task completed 🎉
+                        </h2>
+
+                        <p class="text-muted mb-4">
+                            This task is already finished. Great job!
+                        </p>
+
+                        <div class="d-flex justify-content-center gap-2">
+                            <a asp-controller="Tasks"
+                               asp-action="Index"
+                               class="btn btn-primary">
+                                Go to tasks
+                            </a>
+
+                            <a asp-controller="Tasks"
+                               asp-action="Create"
+                               class="btn btn-outline-secondary">
+                                New task
+                            </a>
+                        </div>
+
                     </div>
-                </div>
+                }
+                else
+                {
+                    <!-- ACTIVE TIMER -->
+                    <div class="tab-content">
+
+                        <!-- Pomodoro -->
+                        <div class="tab-pane fade show active" id="pomodoro">
+                            <div id="pomodoro-timer"
+                                 class="display-1 fw-bold my-4 font-monospace">
+                                25:00
+                            </div>
+
+                            <div class="d-flex justify-content-center gap-2">
+                                <button id="startPomodoroBtn"
+                                        class="btn btn-primary btn-lg">
+                                    ▶ Start
+                                </button>
+
+                                <button id="resetPomodoroBtn"
+                                        class="btn btn-outline-secondary btn-lg">
+                                    ⟲ Reset
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Short break -->
+                        <div class="tab-pane fade" id="short-break">
+                            <div id="short-break-timer"
+                                 class="display-1 fw-bold my-4 font-monospace">
+                                05:00
+                            </div>
+
+                            <div class="d-flex justify-content-center gap-2">
+                                <button id="startShortBtn"
+                                        class="btn btn-primary btn-lg">
+                                    ▶ Start
+                                </button>
+                                <button id="resetShortBtn"
+                                        class="btn btn-outline-secondary btn-lg">
+                                    ⟲ Reset
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Long break -->
+                        <div class="tab-pane fade" id="long-break">
+                            <div id="long-break-timer"
+                                 class="display-1 fw-bold my-4 font-monospace">
+                                15:00
+                            </div>
+
+                            <div class="d-flex justify-content-center gap-2">
+                                <button id="startLongBtn"
+                                        class="btn btn-primary btn-lg">
+                                    ▶ Start
+                                </button>
+                                <button id="resetLongBtn"
+                                        class="btn btn-outline-secondary btn-lg">
+                                    ⟲ Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
+</div>
+@if (Model?.SelectedTask != null)
+{
+    <input type="hidden" id="taskId" value="@Model.SelectedTask.Id"/>
+    <input type="hidden" id="taskStatus" value="@Model.SelectedTask.Status"/>
 
-    @if (Model != null)
-    {
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card mb-3 flex-fill">
-                    <div class="card-body">
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-lg-8">
 
-                        <div class="d-flex align-items-start justify-content-between mb-2">
-                            <p class="card-title mb-0">
-                                Current Task
-                            </p>
+            <div class="card">
+                <div class="card-body">
 
-                            <span class="badge bg-blue-lt">
-                        @Model.SelectedTask.Status
-                    </span>
-                        </div>
-
-                        <input type="hidden" id="taskId" value="@Model.SelectedTask.Id"/>
-                        <input type="hidden" id="taskStatus" value="@Model.SelectedTask.Status"/>
-
-                        <!-- Title -->
-                        <h5 class="mb-1">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h3 class="card-title mb-0">
                             @Model.SelectedTask.Title
-                        </h5>
+                        </h3>
 
-                        <!-- Description -->
-                        <p class="text-muted mb-3">
-                            @Model.SelectedTask.Description
-                        </p>
+                        <span class="badge bg-blue-lt">
+                            @Model.SelectedTask.Status
+                        </span>
+                    </div>
 
-                        <!-- Meta row -->
-                        <div class="row g-2 mb-3">
-                            <div class="col-auto">
-                                <span class="text-secondary">Estimated</span>
-                                <div class="fw-semibold">
-                                    @Model.SelectedTask.EstimatedPomodoros
-                                </div>
-                            </div>
+                    <p class="text-muted">
+                        @Model.SelectedTask.Description
+                    </p>
 
-                            <div class="col-auto">
-                                <span class="text-secondary">Completed</span>
-                                <div class="fw-semibold">
-                                    @Model.SelectedTask.CompletedPomodoros
-                                </div>
-                            </div>
-
-                            <div class="col-auto">
-                                <span class="text-secondary">Deadline</span>
-                                <div class="text-muted font-monospace">
-                                    @Model.SelectedTask.DueDate?.ToString("yyyy-MM-dd")
-                                </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-auto">
+                            <div class="text-secondary">Estimated</div>
+                            <div class="fw-semibold">
+                                @Model.SelectedTask.EstimatedPomodoros
                             </div>
                         </div>
 
-                        <!-- Progress -->
-                        @{
-                            var progress =
-                                Model.SelectedTask.EstimatedPomodoros > 0
-                                    ? (Model.SelectedTask.CompletedPomodoros / (double)Model.SelectedTask.EstimatedPomodoros) * 100
-                                    : 0;
-                        }
-
-                        <div class="progress progress-sm mb-1">
-                            <div class="progress-bar bg-blue"
-                                 role="progressbar"
-                                 style="width:@progress%"
-                                 aria-valuenow="@progress"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
+                        <div class="col-auto">
+                            <div class="text-secondary">Completed</div>
+                            <div class="fw-semibold">
+                                @Model.SelectedTask.CompletedPomodoros
                             </div>
                         </div>
 
-                        <small class="text-secondary d-block mb-3">
-                            @($"{progress:F0}% complete")
-                        </small>
+                        <div class="col-auto">
+                            <div class="text-secondary">Due</div>
+                            <div class="font-monospace text-muted">
+                                @Model.SelectedTask.DueDate?.ToString("yyyy-MM-dd")
+                            </div>
+                        </div>
+                    </div>
 
-                        <!-- Action -->
+                    @{
+                        var progress =
+                            Model.SelectedTask.EstimatedPomodoros > 0
+                                ? (Model.SelectedTask.CompletedPomodoros /
+                                   (double)Model.SelectedTask.EstimatedPomodoros) * 100
+                                : 0;
+                    }
+
+                    <div class="progress progress-sm mb-1">
+                        <div class="progress-bar bg-blue"
+                             style="width:@progress%">
+                        </div>
+                    </div>
+
+                    <small class="text-secondary">
+                        @($"{progress:F0}% complete")
+                    </small>
+
+                    <div class="mt-3">
                         <a asp-action="Edit"
                            asp-route-taskId="@Model.SelectedTask.Id"
-                           class="btn btn-primary btn-sm">
-                            Edit
+                           class="btn btn-outline-primary btn-sm">
+                            Edit task
                         </a>
-
                     </div>
+
                 </div>
             </div>
+
         </div>
-    }
+    </div>
+}
+
+<div class="modal modal-blur fade"
+     id="interruptModal"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Interrupt session</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p class="text-muted mb-3">
+                    Why did you stop this session?
+                </p>
+
+                <select id="interruptReasonSelect" class="form-select mb-2">
+                    <option value="">Select reason</option>
+                    <option value="Lost focus">Lost focus</option>
+                    <option value="Task was harder than expected">Task harder than expected</option>
+                    <option value="External interruption">External interruption</option>
+                    <option value="Wrong estimation">Wrong estimation</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <textarea id="interruptReasonText"
+                          class="form-control"
+                          rows="2"
+                          placeholder="Optional comment..."></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+                <button id="confirmInterruptBtn"
+                        class="btn btn-danger">
+                    Interrupt session
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <script src="~/js/timer/index.js" asp-append-version="true"></script>
-</body>
-</html>
