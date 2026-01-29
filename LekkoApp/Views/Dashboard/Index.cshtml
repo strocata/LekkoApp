@@ -1,6 +1,10 @@
 @model DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
 
 <div class="row row-deck row-cards">
+    <!-- STATS -->
     <div class="col-sm-6 col-lg-3">
         <div class="card">
             <div class="card-body">
@@ -18,41 +22,129 @@
             </div>
         </div>
     </div>
-</div>
 
-<canvas id="tasksChart"></canvas>
-
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title text-danger">Overdue tasks</h3>
-    </div>
-    <div class="list-group list-group-flush">
-        @foreach (var t in Model.OverdueTaskList)
-        {
-            <a class="list-group-item">
-                @t.Title
-                <span class="text-muted float-end">
-                    @t.DueDate?.ToString("yyyy-MM-dd")
-                </span>
-            </a>
-        }
+    <div class="col-sm-6 col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="subheader">Pomodoros Today</div>
+                <div class="h1">@Model.PomodorosToday</div>
+            </div>
+        </div>
     </div>
 </div>
 
-<script>
-    new Chart(document.getElementById('tasksChart'), {
-        type: 'doughnut',
-        data: {
-            labels: @Json.Serialize(Model.TasksByStatus.Select(x => x.Label)),
-            datasets: [{
-                data: @Json.Serialize(Model.TasksByStatus.Select(x => x.Value))
-            }]
-        }
-    });
+<div class="row row-deck row-cards mt-3">
+    <!-- CHART: TASKS STATUS -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Task Status</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="tasksChart" style="max-height: 300px;"></canvas>
+            </div>
+        </div>
+    </div>
 
-</script>
+    <!-- CHART: POMODORO ACTIVITY -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Pomodoro Activity</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="pomodoroChart" style="max-height: 300px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title text-danger">Overdue tasks</h3>
+            </div>
+            <div class="list-group list-group-flush">
+                @if (Model.OverdueTaskList != null && Model.OverdueTaskList.Any())
+                {
+                    @foreach (var t in Model.OverdueTaskList)
+                    {
+                        <div class="list-group-item">
+                            <div class="row align-items-center">
+                                <div class="col text-truncate">
+                                    <span class="text-body d-block">@t.Title</span>
+                                </div>
+                                <div class="col-auto">
+                                    <span class="text-danger">
+                                        @t.DueDate?.ToString("yyyy-MM-dd")
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="list-group-item text-muted">
+                        No overdue tasks
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Tasks Chart
+            new Chart(document.getElementById('tasksChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: @Json.Serialize(Model.TasksByStatus.Select(x => x.Label)),
+                    datasets: [{
+                        data: @Json.Serialize(Model.TasksByStatus.Select(x => x.Value)),
+                        backgroundColor: [
+                            '#206bc4', // Blue
+                            '#2fb344', // Green
+                            '#f76707', // Orange
+                            '#d63939'  // Red
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
 
-
-
+            // Pomodoro Chart
+            new Chart(document.getElementById('pomodoroChart'), {
+                type: 'bar',
+                data: {
+                    labels: @Json.Serialize(Model.PomodorosByDay.Select(x => x.Date.ToString("MM-dd"))),
+                    datasets: [{
+                        label: 'Pomodoros',
+                        data: @Json.Serialize(Model.PomodorosByDay.Select(x => x.Value)),
+                        backgroundColor: '#206bc4',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+}

@@ -99,9 +99,6 @@ namespace LekkoApp.Migrations
                     b.Property<string>("InterruptReason")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PlannedDurationMinutes")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("StartedAt")
                         .HasColumnType("datetime2");
 
@@ -159,6 +156,33 @@ namespace LekkoApp.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("LekkoApp.Models.Tag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("LekkoApp.Models.Task", b =>
                 {
                     b.Property<Guid>("Id")
@@ -181,8 +205,17 @@ namespace LekkoApp.Migrations
                     b.Property<int>("EstimatedPomodoros")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("ParentTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
                     b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Recurrence")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -202,6 +235,8 @@ namespace LekkoApp.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentTaskId");
 
                     b.HasIndex("ProjectId");
 
@@ -347,6 +382,21 @@ namespace LekkoApp.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TagTask", b =>
+                {
+                    b.Property<Guid>("TagsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TasksId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TagsId", "TasksId");
+
+                    b.HasIndex("TasksId");
+
+                    b.ToTable("TagTask");
+                });
+
             modelBuilder.Entity("LekkoApp.Models.PomodoroSession", b =>
                 {
                     b.HasOne("LekkoApp.Models.Task", "Task")
@@ -358,8 +408,23 @@ namespace LekkoApp.Migrations
                     b.Navigation("Task");
                 });
 
+            modelBuilder.Entity("LekkoApp.Models.Tag", b =>
+                {
+                    b.HasOne("LekkoApp.Data.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("LekkoApp.Models.Task", b =>
                 {
+                    b.HasOne("LekkoApp.Models.Task", "ParentTask")
+                        .WithMany("Subtasks")
+                        .HasForeignKey("ParentTaskId");
+
                     b.HasOne("LekkoApp.Models.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectId");
@@ -367,6 +432,8 @@ namespace LekkoApp.Migrations
                     b.HasOne("LekkoApp.Data.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("ParentTask");
 
                     b.Navigation("Project");
 
@@ -424,9 +491,26 @@ namespace LekkoApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TagTask", b =>
+                {
+                    b.HasOne("LekkoApp.Models.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LekkoApp.Models.Task", null)
+                        .WithMany()
+                        .HasForeignKey("TasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("LekkoApp.Models.Task", b =>
                 {
                     b.Navigation("PomodoroSessions");
+
+                    b.Navigation("Subtasks");
                 });
 #pragma warning restore 612, 618
         }

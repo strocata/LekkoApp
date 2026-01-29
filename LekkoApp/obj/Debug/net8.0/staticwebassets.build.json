@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yKQcp9iX/0q5o4JIheTGgTB33zkqAYDvWbbns+ASrcA=",
+  "Hash": "QPI3Be5WCezkFRfgIu38D7uWzDJPG8UZut5KPg34QcI=",
   "Source": "LekkoApp",
   "BasePath": "_content/LekkoApp",
   "Mode": "Default",
@@ -1402,6 +1402,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lekko_app_logo.png"
+    },
+    {
+      "Identity": "/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/lekkoapplogo.svg",
+      "SourceId": "LekkoApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/",
+      "BasePath": "_content/LekkoApp",
+      "RelativePath": "lekkoapplogo.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lekkoapplogo.svg"
     },
     {
       "Identity": "/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",

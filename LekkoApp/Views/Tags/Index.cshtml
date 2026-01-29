@@ -1,0 +1,49 @@
+@model IEnumerable<LekkoApp.Models.Tag>
+@{
+    ViewData["Title"] = "Tags";
+}
+
+<div class="page-header d-print-none">
+    <div class="row align-items-center">
+        <div class="col">
+            <h2 class="page-title">Tags</h2>
+        </div>
+        <div class="col-auto ms-auto d-print-none">
+            <a asp-action="Create" class="btn btn-primary d-none d-sm-inline-block">
+                Create new tag
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="table-responsive">
+        <table class="table table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th class="w-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>
+                            <span class="badge" style="background-color: @item.Color; color: #fff;">@item.Name</span>
+                        </td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post"
+                                onsubmit="return confirm('Are you sure?');" style="display:inline;">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

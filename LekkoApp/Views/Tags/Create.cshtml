@@ -1,0 +1,46 @@
+@model LekkoApp.Models.Tag
+@{
+    ViewData["Title"] = "Create Tag";
+}
+
+<div class="page-header d-print-none">
+    <div class="row align-items-center">
+        <div class="col">
+            <h2 class="page-title">Create Tag</h2>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="card mt-3">
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Color" class="form-label"></label>
+                    <input asp-for="Color" type="color" class="form-control form-control-color" value="#206bc4"
+                        title="Choose your color">
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a asp-action="Index" class="btn btn-link">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

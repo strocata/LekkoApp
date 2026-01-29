@@ -17,7 +17,7 @@ public class HomeController : Controller
     [Authorize]
     public IActionResult Index()
     {
-        return View();
+        return View("/Views/Timer/Index.cshtml");
     }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
