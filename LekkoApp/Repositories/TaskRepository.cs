@@ -2,7 +2,7 @@ using LekkoApp.Data;
 using Task = LekkoApp.Models.Task;
 namespace LekkoApp.Repositories;
 
-public class TaskRepository : ITaskRepository 
+public class TaskRepository : ITaskRepository
 {
     private readonly ApplicationDbContext _context;
 
@@ -15,7 +15,7 @@ public class TaskRepository : ITaskRepository
     {
         if (task != null)
         {
-            var selectedTask  = await _context.Tasks.FindAsync(task.Id);
+            var selectedTask = await _context.Tasks.FindAsync(task.Id);
             return selectedTask;
         }
         return null;
@@ -29,7 +29,7 @@ public class TaskRepository : ITaskRepository
 
     public IQueryable<Task> GetByUser(ApplicationUser? user)
     {
-        var selectedTasks =  _context.Tasks.Where(t => t.User == user);
+        var selectedTasks = _context.Tasks.Where(t => t.User == user);
         return selectedTasks;
     }
 
@@ -56,6 +56,10 @@ public class TaskRepository : ITaskRepository
             currentTask.Status = updatedTask.Status;
             currentTask.Title = updatedTask.Title;
             currentTask.Description = updatedTask.Description;
+            currentTask.DueDate = updatedTask.DueDate;
+            currentTask.EstimatedPomodoros = updatedTask.EstimatedPomodoros;
+            currentTask.Priority = updatedTask.Priority;
+            currentTask.Recurrence = updatedTask.Recurrence;
             _context.Tasks.Update(currentTask);
             await _context.SaveChangesAsync();
         }

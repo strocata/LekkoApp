@@ -21,6 +21,15 @@ public class Task
     public TaskStatus Status { get; set; } = TaskStatus.NotStarted;
     public DateTime CreatedAt { get; set; }
     public DateTime? DueDate { get; set; }
-    
+
     public ICollection<PomodoroSession>? PomodoroSessions { get; set; }
+
+    public ICollection<Tag>? Tags { get; set; }
+
+    public Priority Priority { get; set; } = Priority.Medium;
+    public RecurrencePattern Recurrence { get; set; } = RecurrencePattern.None;
+
+    public Guid? ParentTaskId { get; set; }
+    public Task? ParentTask { get; set; }
+    public ICollection<Task>? Subtasks { get; set; }
 }

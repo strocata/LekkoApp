@@ -62,6 +62,23 @@
                                       class="invalid-feedback d-block"></span>
                             </div>
 
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <label asp-for="Priority" class="form-label"></label>
+                                    <select asp-for="Priority" 
+                                            asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.Priority>()" 
+                                            class="form-select">
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label asp-for="Recurrence" class="form-label"></label>
+                                    <select asp-for="Recurrence" 
+                                            asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.RecurrencePattern>()" 
+                                            class="form-select">
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="mb-0">
                                 <label asp-for="Status" class="form-label"></label>
                                 <select asp-for="Status"

@@ -15,5 +15,8 @@ public class TaskCreateViewModel
 
     public Guid? ProjectId { get; set; }
 
+    public Enums.Priority Priority { get; set; } = Enums.Priority.Medium;
+    public Enums.RecurrencePattern Recurrence { get; set; } = Enums.RecurrencePattern.None;
+
     public IEnumerable<SelectListItem> Projects { get; set; } = [];
 }

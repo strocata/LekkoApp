@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LekkoApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3031f7eccfcf29c5dd43f2e574c5e1e0ba52bb0f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+188f21d65cfbf30c78788b6e18b5502ab0abeec3")]
 [assembly: System.Reflection.AssemblyProductAttribute("LekkoApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LekkoApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

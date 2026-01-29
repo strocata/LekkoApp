@@ -43,6 +43,7 @@ namespace LekkoApp.Controllers
             ViewData["CreationDateSortParm"] = sortOrder == "CreationDate" ? "creation_date_desc" : "CreationDate";
             ViewData["TaskNumberSortParm"] = sortOrder == "TaskNumber" ? "task_number_desc" : "TaskNumber";
             ViewData["DueDateSortParm"] = sortOrder == "DueDate" ? "due_date_desc" : "DueDate";
+            ViewData["PrioritySortParm"] = sortOrder == "Priority" ? "priority_desc" : "Priority";
             ViewData["SearchString"] = searchString;
             ViewData["PageSize"] = pageSize;
             ViewData["NumberOfAllTasks"] = numberOfAllTasks;
@@ -85,6 +86,12 @@ namespace LekkoApp.Controllers
                     break;
                 case "due_date_desc":
                     userTasks = userTasks.OrderByDescending(s => s.DueDate);
+                    break;
+                case "Priority":
+                    userTasks = userTasks.OrderBy(s => s.Priority);
+                    break;
+                case "priority_desc":
+                    userTasks = userTasks.OrderByDescending(s => s.Priority);
                     break;
                 default:
                     userTasks = userTasks.OrderBy(s => s.TaskNumber);
@@ -148,6 +155,8 @@ namespace LekkoApp.Controllers
                 DueDate = model.DueDate,
                 Status = model.Status,
                 ProjectId = model.ProjectId,
+                Priority = model.Priority,
+                Recurrence = model.Recurrence,
                 User = null
             };
 
@@ -160,9 +169,54 @@ namespace LekkoApp.Controllers
         [HttpPost]
         public async Task<RedirectToActionResult> UpdateCardTask(Task? selectedTask)
         {
+            if (selectedTask == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var oldTask = await _taskRepository.GetByIdAsync(selectedTask.Id);
+            var wasCompleted = oldTask?.Status == Models.Enums.TaskStatus.Completed;
+
             selectedTask = await _taskRepository.Update(selectedTask);
 
-            return RedirectToAction("Index", new { selectedId = selectedTask!.Id });
+            if (selectedTask != null
+                && wasCompleted == false
+                && selectedTask.Status == Models.Enums.TaskStatus.Completed
+                && selectedTask.Recurrence != Models.Enums.RecurrencePattern.None)
+            {
+                var nextDueDate = selectedTask.DueDate ?? DateTime.UtcNow;
+
+                switch (selectedTask.Recurrence)
+                {
+                    case Models.Enums.RecurrencePattern.Daily:
+                        nextDueDate = nextDueDate.AddDays(1);
+                        break;
+                    case Models.Enums.RecurrencePattern.Weekly:
+                        nextDueDate = nextDueDate.AddDays(7);
+                        break;
+                    case Models.Enums.RecurrencePattern.Monthly:
+                        nextDueDate = nextDueDate.AddMonths(1);
+                        break;
+                }
+
+                var newTask = new Task
+                {
+                    Title = selectedTask.Title,
+                    Description = selectedTask.Description,
+                    EstimatedPomodoros = selectedTask.EstimatedPomodoros,
+                    Priority = selectedTask.Priority,
+                    Recurrence = selectedTask.Recurrence,
+                    ProjectId = selectedTask.ProjectId,
+                    Status = Models.Enums.TaskStatus.NotStarted,
+                    DueDate = nextDueDate,
+                    User = null
+                };
+
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                await _taskRepository.Create(newTask, user);
+            }
+
+            return RedirectToAction("Index", new { selectedId = selectedTask?.Id });
         }
 
         [Authorize]

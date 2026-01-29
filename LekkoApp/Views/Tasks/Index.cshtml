@@ -97,6 +97,12 @@
                                 Due
                             </a>
                         </th>
+                        <th>
+                            <a asp-action="Index"
+                               asp-route-sortOrder="@ViewData["PrioritySortParm"]">
+                                Priority
+                            </a>
+                        </th>
                         <th>Status</th>
                         <th class="text-end">Actions</th>
                     </tr>
@@ -133,6 +139,10 @@
 
                             <td class="text-secondary">
                                 @item.DueDate?.ToString("yyyy-MM-dd")
+                            </td>
+
+                            <td class="text-secondary">
+                                @item.Priority
                             </td>
 
                             <td>
