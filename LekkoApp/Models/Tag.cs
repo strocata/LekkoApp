@@ -3,7 +3,7 @@ using LekkoApp.Data;
 
 namespace LekkoApp.Models;
 
-public class Tag
+public class TaskViewModel
 {
     public Guid Id { get; set; }
 

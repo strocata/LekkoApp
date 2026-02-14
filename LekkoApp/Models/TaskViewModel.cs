@@ -1,9 +1,6 @@
-using LekkoApp.Helpers;
-
 namespace LekkoApp.Models;
 
-public class TasksViewModel
+public class TaskViewModel
 {
-    public PaginatedList<Task>? Tasks { get; set; }
-    public Task? SelectedTask { get; set; }
+    
 }
