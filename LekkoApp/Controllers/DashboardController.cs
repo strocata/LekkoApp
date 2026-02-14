@@ -25,7 +25,7 @@ public class DashboardController : Controller
         var today = DateTime.UtcNow.Date;
         var weekStart = today.AddDays(-6);
 
-        var tasks = _context.Tasks.AsQueryable();
+        var tasks = _context.PomodoroTasks.AsQueryable();
 
         var dailyCounts = await _context.Pomodoros
             .Where(p => p.StartedAt >= weekStart)

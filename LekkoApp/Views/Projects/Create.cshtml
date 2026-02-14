@@ -1,18 +1,122 @@
-@model TModel
+@model ProjectCreateViewModel
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+<div class="page-body">
+    <div class="container-xl">
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+        <!-- HEADER -->
+        <div class="page-header mb-4">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="page-pretitle">
+                        <a asp-controller="Projects" asp-action="Index" class="text-muted">
+                            Projects
+                        </a>
+                    </div>
+                    <h2 class="page-title">
+                        Create project
+                    </h2>
+                </div>
+
+                <div class="col-auto ms-auto">
+                    <button form="create-project-form"
+                            type="submit"
+                            class="btn btn-primary">
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cards">
+
+            <!-- TASK FORM -->
+            <div class="col-12 col-lg-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Task details</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="create-project-form" asp-action="Create" method="post">
+                            @Html.AntiForgeryToken()
+
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="invalid-feedback d-block"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label"></label>
+                                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 mb-3">
+                                    <label asp-for="StartDate" class="form-label"></label>
+                                    <input asp-for="StartDate" type="date" class="form-control" />
+                                </div>
+
+                                <div class="col-sm-6 mb-3">
+                                    <label asp-for="EndDate" class="form-label"></label>
+                                    <input asp-for="EndDate" type="date" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Status" class="form-label"></label>
+                                <select asp-for="Status"
+                                    asp-items="Html.GetEnumSelectList<LekkoApp.Models.Enums.ProjectStatus>()"
+                                    class="form-select">
+                                    <option value="">Select status</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Tasks</label>
+
+                                <select asp-for="SelectedTaskIds" asp-items="Model.PomodoroTasks" class="form-select" multiple
+                                    size="8">
+                                </select>
+                                <small class="form-hint">Hold Ctrl (Cmd on Mac) to select multiple tasks.</small>
+
+                                <span asp-validation-for="SelectedTaskIds" class="text-danger"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HELP / DEFAULTS -->
+            <div class="col-12 col-lg-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="subheader mb-2">
+                            Tips
+                        </div>
+
+                        <ul class="list-unstyled text-secondary mb-0">
+                            <li class="mb-2">
+                                • Keep tasks small (1–4 pomodoros)
+                            </li>
+                            <li class="mb-2">
+                                • Use description for acceptance criteria
+                            </li>
+                            <li class="mb-2">
+                                • You can change status later
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-</body>
-</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

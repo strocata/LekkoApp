@@ -99,10 +99,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Tasks Chart
+            // PomodoroTasks Chart
             new Chart(document.getElementById('tasksChart'), {
                 type: 'doughnut',
                 data: {
+                    labels: @Json.Serialize(Model.TasksByStatus.Select(x => x.Label)),
                     labels: @Json.Serialize(Model.TasksByStatus.Select(x => x.Label)),
                     datasets: [{
                         data: @Json.Serialize(Model.TasksByStatus.Select(x => x.Value)),
@@ -128,7 +129,7 @@
                     datasets: [{
                         label: 'Pomodoros',
                         data: @Json.Serialize(Model.PomodorosByDay.Select(x => x.Value)),
-                        backgroundColor: '#206bc4',
+                        backgroundColor: '#c420c1',
                         borderRadius: 4
                     }]
                 },

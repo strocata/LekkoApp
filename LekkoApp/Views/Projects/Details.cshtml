@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="text-secondary mt-2">
-                            Tasks completed: @Model.DoneTasksCount / @Model.TasksCount
+                            Tasks completed: @Model.DoneTasksCount / @Model.PomodoroTasksCount
                         </div>
                     </div>
                 </div>
@@ -89,9 +89,9 @@
             </div>
 
             <div class="list-group list-group-flush">
-                @if (Model.Tasks != null)
+                @if (Model.PomodoroTasks != null)
                 {
-                    foreach (var item in Model.Tasks)
+                    foreach (var item in Model.PomodoroTasks)
                     {
                         <div class="list-group-item">
                             <div class="row align-items-center">

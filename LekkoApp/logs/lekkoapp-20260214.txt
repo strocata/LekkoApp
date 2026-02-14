@@ -1,0 +1,1208 @@
+2026-02-14 15:03:19.531 +02:00 [INF] User profile is available. Using '/Users/pavlotaranovskyi/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-02-14 15:03:20.703 +02:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-02-14 15:03:20.766 +02:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-02-14 15:03:20.769 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-02-14 15:03:20.771 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-02-14 15:03:20.865 +02:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-02-14 15:03:20.875 +02:00 [INF] No migrations were applied. The database is already up to date.
+2026-02-14 15:03:20.876 +02:00 [INF] Database ready
+2026-02-14 15:03:20.880 +02:00 [INF] LekkoApp starting up...
+2026-02-14 15:03:20.924 +02:00 [INF] Now listening on: http://localhost:5056
+2026-02-14 15:03:20.926 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-14 15:03:20.926 +02:00 [INF] Hosting environment: Development
+2026-02-14 15:03:20.926 +02:00 [INF] Content root path: /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp
+2026-02-14 15:03:22.475 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/ - null null
+2026-02-14 15:03:22.564 +02:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2026-02-14 15:03:22.569 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-02-14 15:03:22.575 +02:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-02-14 15:03:22.582 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/ - 302 0 null 108.9727ms
+2026-02-14 15:03:22.593 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - null null
+2026-02-14 15:03:22.598 +02:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2026-02-14 15:03:22.602 +02:00 [INF] Executing endpoint '/Account/Login'
+2026-02-14 15:03:22.642 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-02-14 15:03:22.677 +02:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-02-14 15:03:22.682 +02:00 [INF] AuthenticationScheme: Identity.External signed out.
+2026-02-14 15:03:22.683 +02:00 [INF] Executed handler method OnGetAsync, returned result .
+2026-02-14 15:03:22.688 +02:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-02-14 15:03:22.689 +02:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-02-14 15:03:22.823 +02:00 [INF] Executed page /Account/Login in 178.1057ms
+2026-02-14 15:03:22.824 +02:00 [INF] Executed endpoint '/Account/Login'
+2026-02-14 15:03:22.827 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - 200 null text/html; charset=utf-8 233.8331ms
+2026-02-14 15:03:22.874 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/css/site.css?v=vrRxJXuj542W2ccBTH-W6Uzxut1Bco7cQclBAZAYSmg - null null
+2026-02-14 15:03:22.881 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:03:22.883 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/css/site.css'
+2026-02-14 15:03:22.883 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/css/site.css?v=vrRxJXuj542W2ccBTH-W6Uzxut1Bco7cQclBAZAYSmg - 200 112 text/css 9.3531ms
+2026-02-14 15:03:22.886 +02:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2026-02-14 15:03:22.889 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 6.6076ms
+2026-02-14 15:03:22.891 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:03:22.891 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/js/site.js?v=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM - null null
+2026-02-14 15:03:22.903 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Identity/lib/jquery-validation/dist/jquery.validate.js - null null
+2026-02-14 15:03:22.905 +02:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/js/site.js'
+2026-02-14 15:03:22.905 +02:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation/dist/jquery.validate.js'. Physical path: '/Users/pavlotaranovskyi/.nuget/packages/microsoft.aspnetcore.identity.ui/8.0.18/staticwebassets/V5/lib/jquery-validation/dist/jquery.validate.js'
+2026-02-14 15:03:22.907 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Identity/lib/jquery-validation/dist/jquery.validate.js - 200 51171 text/javascript 4.8105ms
+2026-02-14 15:03:22.907 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/js/site.js?v=y_Ngd8W21UpuCUhEqGbUKDEqFnNfTjAfb24GhJJGUyM - 200 227 text/javascript 16.0845ms
+2026-02-14 15:03:23.728 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/favicon.ico - null null
+2026-02-14 15:03:23.730 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/favicon.ico'
+2026-02-14 15:03:23.731 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/favicon.ico - 200 5430 image/x-icon 3.4005ms
+2026-02-14 15:03:23.740 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/apple-touch-icon-precomposed.png - null null
+2026-02-14 15:03:23.741 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/apple-touch-icon.png - null null
+2026-02-14 15:03:23.741 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/favicon.ico - null null
+2026-02-14 15:03:23.742 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/apple-touch-icon.png - 404 0 null 0.7801ms
+2026-02-14 15:03:23.742 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/apple-touch-icon.png, Response status code: 404
+2026-02-14 15:03:23.742 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/favicon.ico'
+2026-02-14 15:03:23.742 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/apple-touch-icon-precomposed.png - 404 0 null 1.8892ms
+2026-02-14 15:03:23.743 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/apple-touch-icon-precomposed.png, Response status code: 404
+2026-02-14 15:03:23.742 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/favicon.ico - 200 5430 image/x-icon 1.1972ms
+2026-02-14 15:03:23.767 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/apple-touch-icon-precomposed.png - null null
+2026-02-14 15:03:23.768 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/apple-touch-icon-precomposed.png - 404 0 null 1.1233ms
+2026-02-14 15:03:23.769 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/apple-touch-icon-precomposed.png, Response status code: 404
+2026-02-14 15:03:23.772 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/apple-touch-icon.png - null null
+2026-02-14 15:03:23.772 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/apple-touch-icon.png - 404 0 null 0.6015ms
+2026-02-14 15:03:23.772 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/apple-touch-icon.png, Response status code: 404
+2026-02-14 15:03:23.774 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/favicon.ico - null null
+2026-02-14 15:03:23.774 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/favicon.ico'
+2026-02-14 15:03:23.775 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/favicon.ico - 200 5430 image/x-icon 0.8635ms
+2026-02-14 15:03:31.393 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - application/x-www-form-urlencoded 279
+2026-02-14 15:03:31.406 +02:00 [INF] Identity.Application was not authenticated. Failure message: Ticket expired
+2026-02-14 15:03:31.408 +02:00 [INF] Executing endpoint '/Account/Login'
+2026-02-14 15:03:31.422 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-02-14 15:03:31.477 +02:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnPostAsync - ModelState is "Valid"
+2026-02-14 15:03:31.870 +02:00 [INF] Executed DbCommand (100ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-02-14 15:03:32.030 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-02-14 15:03:32.036 +02:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2026-02-14 15:03:32.038 +02:00 [INF] User logged in.
+2026-02-14 15:03:32.039 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2026-02-14 15:03:32.043 +02:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2026-02-14 15:03:32.044 +02:00 [INF] Executed page /Account/Login in 621.7951ms
+2026-02-14 15:03:32.045 +02:00 [INF] Executed endpoint '/Account/Login'
+2026-02-14 15:03:32.050 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - 302 0 null 658.5636ms
+2026-02-14 15:03:32.074 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/ - null null
+2026-02-14 15:03:32.086 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.HomeController.Index (LekkoApp)'
+2026-02-14 15:03:32.095 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller LekkoApp.Controllers.HomeController (LekkoApp).
+2026-02-14 15:03:32.097 +02:00 [INF] Executing action method LekkoApp.Controllers.HomeController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:03:32.107 +02:00 [INF] Executed action method LekkoApp.Controllers.HomeController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.4227ms.
+2026-02-14 15:03:32.117 +02:00 [INF] Executing ViewResult, running view /Views/Timer/Index.cshtml.
+2026-02-14 15:03:32.160 +02:00 [INF] Executed ViewResult - view /Views/Timer/Index.cshtml executed in 47.4276ms.
+2026-02-14 15:03:32.163 +02:00 [INF] Executed action LekkoApp.Controllers.HomeController.Index (LekkoApp) in 67.4614ms
+2026-02-14 15:03:32.163 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.HomeController.Index (LekkoApp)'
+2026-02-14 15:03:32.163 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/ - 200 null text/html; charset=utf-8 89.2708ms
+2026-02-14 15:03:32.182 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:03:32.184 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 2.2768ms
+2026-02-14 15:03:32.184 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:03:32.185 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/js/timer/index.js?v=eslATFz00_qo3xUFqksCFFA5jQD3jtPX_JqOAt1Ffug - null null
+2026-02-14 15:03:32.187 +02:00 [INF] Sending file. Request path: '/js/timer/index.js'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/js/timer/index.js'
+2026-02-14 15:03:32.188 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/js/timer/index.js?v=eslATFz00_qo3xUFqksCFFA5jQD3jtPX_JqOAt1Ffug - 200 6339 text/javascript 2.5604ms
+2026-02-14 15:03:52.051 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/ - null null
+2026-02-14 15:03:52.059 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-02-14 15:03:52.062 +02:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-02-14 15:03:52.063 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/ - 302 0 null 11.5624ms
+2026-02-14 15:03:52.068 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - null null
+2026-02-14 15:03:52.070 +02:00 [INF] Executing endpoint '/Account/Login'
+2026-02-14 15:03:52.072 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-02-14 15:03:52.076 +02:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-02-14 15:03:52.077 +02:00 [INF] AuthenticationScheme: Identity.External signed out.
+2026-02-14 15:03:52.077 +02:00 [INF] Executed handler method OnGetAsync, returned result .
+2026-02-14 15:03:52.077 +02:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-02-14 15:03:52.077 +02:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-02-14 15:03:52.114 +02:00 [INF] Executed page /Account/Login in 42.0298ms
+2026-02-14 15:03:52.114 +02:00 [INF] Executed endpoint '/Account/Login'
+2026-02-14 15:03:52.115 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - 200 null text/html; charset=utf-8 46.4179ms
+2026-02-14 15:03:53.968 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - application/x-www-form-urlencoded 279
+2026-02-14 15:03:53.972 +02:00 [INF] Executing endpoint '/Account/Login'
+2026-02-14 15:03:53.972 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-02-14 15:03:53.977 +02:00 [INF] Antiforgery token validation failed. The provided antiforgery token was meant for a different claims-based user than the current user.
+Microsoft.AspNetCore.Antiforgery.AntiforgeryValidationException: The provided antiforgery token was meant for a different claims-based user than the current user.
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateTokens(HttpContext httpContext, AntiforgeryTokenSet antiforgeryTokenSet)
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateRequestAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.ValidateAntiforgeryTokenAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+2026-02-14 15:03:54.000 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.AutoValidateAntiforgeryTokenAuthorizationFilter'.
+2026-02-14 15:03:54.004 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 400
+2026-02-14 15:03:54.004 +02:00 [INF] Executed page /Account/Login in 31.4087ms
+2026-02-14 15:03:54.004 +02:00 [INF] Executed endpoint '/Account/Login'
+2026-02-14 15:03:54.005 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - 400 0 null 36.3355ms
+2026-02-14 15:03:55.278 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - application/x-www-form-urlencoded 279
+2026-02-14 15:03:55.280 +02:00 [INF] Executing endpoint '/Account/Login'
+2026-02-14 15:03:55.280 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-02-14 15:03:55.280 +02:00 [INF] Antiforgery token validation failed. The provided antiforgery token was meant for a different claims-based user than the current user.
+Microsoft.AspNetCore.Antiforgery.AntiforgeryValidationException: The provided antiforgery token was meant for a different claims-based user than the current user.
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateTokens(HttpContext httpContext, AntiforgeryTokenSet antiforgeryTokenSet)
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateRequestAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.ValidateAntiforgeryTokenAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+2026-02-14 15:03:55.281 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.AutoValidateAntiforgeryTokenAuthorizationFilter'.
+2026-02-14 15:03:55.281 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 400
+2026-02-14 15:03:55.282 +02:00 [INF] Executed page /Account/Login in 1.6553ms
+2026-02-14 15:03:55.282 +02:00 [INF] Executed endpoint '/Account/Login'
+2026-02-14 15:03:55.282 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - 400 0 null 4.0032ms
+2026-02-14 15:03:56.109 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - application/x-www-form-urlencoded 279
+2026-02-14 15:03:56.111 +02:00 [INF] Executing endpoint '/Account/Login'
+2026-02-14 15:03:56.111 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-02-14 15:03:56.112 +02:00 [INF] Antiforgery token validation failed. The provided antiforgery token was meant for a different claims-based user than the current user.
+Microsoft.AspNetCore.Antiforgery.AntiforgeryValidationException: The provided antiforgery token was meant for a different claims-based user than the current user.
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateTokens(HttpContext httpContext, AntiforgeryTokenSet antiforgeryTokenSet)
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateRequestAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.ValidateAntiforgeryTokenAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+2026-02-14 15:03:56.113 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.AutoValidateAntiforgeryTokenAuthorizationFilter'.
+2026-02-14 15:03:56.113 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 400
+2026-02-14 15:03:56.113 +02:00 [INF] Executed page /Account/Login in 1.422ms
+2026-02-14 15:03:56.113 +02:00 [INF] Executed endpoint '/Account/Login'
+2026-02-14 15:03:56.113 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - 400 0 null 4.4576ms
+2026-02-14 15:04:00.029 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - application/x-www-form-urlencoded 279
+2026-02-14 15:04:00.038 +02:00 [INF] Executing endpoint '/Account/Login'
+2026-02-14 15:04:00.039 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-02-14 15:04:00.040 +02:00 [INF] Antiforgery token validation failed. The provided antiforgery token was meant for a different claims-based user than the current user.
+Microsoft.AspNetCore.Antiforgery.AntiforgeryValidationException: The provided antiforgery token was meant for a different claims-based user than the current user.
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateTokens(HttpContext httpContext, AntiforgeryTokenSet antiforgeryTokenSet)
+   at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.ValidateRequestAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.ValidateAntiforgeryTokenAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+2026-02-14 15:04:00.041 +02:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.AutoValidateAntiforgeryTokenAuthorizationFilter'.
+2026-02-14 15:04:00.041 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 400
+2026-02-14 15:04:00.042 +02:00 [INF] Executed page /Account/Login in 2.8605ms
+2026-02-14 15:04:00.042 +02:00 [INF] Executed endpoint '/Account/Login'
+2026-02-14 15:04:00.042 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Identity/Account/Login?ReturnUrl=%2F - 400 0 null 13.7142ms
+2026-02-14 15:04:04.879 +02:00 [INF] Application is shutting down...
+2026-02-14 15:04:09.339 +02:00 [INF] User profile is available. Using '/Users/pavlotaranovskyi/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-02-14 15:04:10.450 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-02-14 15:04:10.479 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-02-14 15:04:10.482 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-02-14 15:04:10.483 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-02-14 15:04:10.493 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-02-14 15:04:10.508 +02:00 [INF] No migrations were applied. The database is already up to date.
+2026-02-14 15:04:10.509 +02:00 [INF] Database ready
+2026-02-14 15:04:10.512 +02:00 [INF] LekkoApp starting up...
+2026-02-14 15:04:10.562 +02:00 [INF] Now listening on: http://localhost:5056
+2026-02-14 15:04:10.566 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-14 15:04:10.567 +02:00 [INF] Hosting environment: Development
+2026-02-14 15:04:10.567 +02:00 [INF] Content root path: /Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp
+2026-02-14 15:04:11.210 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/ - null null
+2026-02-14 15:04:11.426 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.HomeController.Index (LekkoApp)'
+2026-02-14 15:04:11.463 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller LekkoApp.Controllers.HomeController (LekkoApp).
+2026-02-14 15:04:11.518 +02:00 [INF] Executing action method LekkoApp.Controllers.HomeController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:04:11.527 +02:00 [INF] Executed action method LekkoApp.Controllers.HomeController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.8797ms.
+2026-02-14 15:04:11.557 +02:00 [INF] Executing ViewResult, running view /Views/Timer/Index.cshtml.
+2026-02-14 15:04:11.838 +02:00 [INF] Executed ViewResult - view /Views/Timer/Index.cshtml executed in 300.4294ms.
+2026-02-14 15:04:11.842 +02:00 [INF] Executed action LekkoApp.Controllers.HomeController.Index (LekkoApp) in 378.2622ms
+2026-02-14 15:04:11.845 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.HomeController.Index (LekkoApp)'
+2026-02-14 15:04:11.879 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/ - 200 null text/html; charset=utf-8 685.9933ms
+2026-02-14 15:04:11.895 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:04:11.917 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 21.6592ms
+2026-02-14 15:04:11.920 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:04:31.670 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:04:31.708 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:04:31.721 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:04:31.726 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:04:32.054 +02:00 [INF] Executed DbCommand (89ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:04:32.201 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:04:32.213 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:04:32.296 +02:00 [INF] Executed DbCommand (71ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:04:32.301 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 574.9997ms.
+2026-02-14 15:04:32.305 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:04:32.332 +02:00 [INF] Executed ViewResult - view Index executed in 28.9288ms.
+2026-02-14 15:04:32.333 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 611.8621ms
+2026-02-14 15:04:32.333 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:04:32.338 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 668.8989ms
+2026-02-14 15:04:32.370 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:04:32.374 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 4.4642ms
+2026-02-14 15:04:32.375 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:04:32.405 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/apple-touch-icon-precomposed.png - null null
+2026-02-14 15:04:32.406 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/apple-touch-icon-precomposed.png - 404 0 null 1.1232ms
+2026-02-14 15:04:32.406 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/apple-touch-icon-precomposed.png, Response status code: 404
+2026-02-14 15:04:32.406 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/apple-touch-icon.png - null null
+2026-02-14 15:04:32.407 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/favicon.ico - null null
+2026-02-14 15:04:32.407 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/apple-touch-icon.png - 404 0 null 1.1337ms
+2026-02-14 15:04:32.408 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/apple-touch-icon.png, Response status code: 404
+2026-02-14 15:04:32.417 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/favicon.ico'
+2026-02-14 15:04:32.418 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/favicon.ico - 200 5430 image/x-icon 10.8106ms
+2026-02-14 15:04:37.117 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks/Edit?taskId=dab8d884-09e4-4bce-8530-47ade364eaee - null null
+2026-02-14 15:04:37.129 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Edit (LekkoApp)'
+2026-02-14 15:04:37.140 +02:00 [INF] Route matched with {action = "Edit", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:04:37.154 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Edit (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:04:37.204 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:04:37.229 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Id] = @__get_Item_0
+2026-02-14 15:04:37.273 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Edit (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 118.5922ms.
+2026-02-14 15:04:37.274 +02:00 [INF] Executing ViewResult, running view Edit.
+2026-02-14 15:04:37.325 +02:00 [INF] Executed ViewResult - view Edit executed in 51.6851ms.
+2026-02-14 15:04:37.325 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Edit (LekkoApp) in 184.8912ms
+2026-02-14 15:04:37.326 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Edit (LekkoApp)'
+2026-02-14 15:04:37.326 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks/Edit?taskId=dab8d884-09e4-4bce-8530-47ade364eaee - 200 null text/html; charset=utf-8 208.8802ms
+2026-02-14 15:04:37.355 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:04:37.359 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 4.4137ms
+2026-02-14 15:04:37.359 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:04:40.522 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Tasks/StartTimer - application/x-www-form-urlencoded 269
+2026-02-14 15:04:40.525 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.StartTimer (LekkoApp)'
+2026-02-14 15:04:40.529 +02:00 [INF] Route matched with {action = "StartTimer", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartTimer(System.Guid) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:04:40.541 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.StartTimer (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:04:40.549 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:04:40.553 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Id] = @__get_Item_0
+2026-02-14 15:04:40.555 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.StartTimer (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 13.7298ms.
+2026-02-14 15:04:40.556 +02:00 [INF] Executing ViewResult, running view ~/Views/Timer/Index.cshtml.
+2026-02-14 15:04:40.561 +02:00 [INF] Executed ViewResult - view ~/Views/Timer/Index.cshtml executed in 4.914ms.
+2026-02-14 15:04:40.561 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.StartTimer (LekkoApp) in 31.9645ms
+2026-02-14 15:04:40.561 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.StartTimer (LekkoApp)'
+2026-02-14 15:04:40.561 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Tasks/StartTimer - 200 null text/html; charset=utf-8 39.3627ms
+2026-02-14 15:04:40.933 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:04:40.934 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.7241ms
+2026-02-14 15:04:40.934 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:23:16.336 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Projects - null null
+2026-02-14 15:23:16.442 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Index (LekkoApp)'
+2026-02-14 15:23:16.504 +02:00 [INF] Route matched with {action = "Index", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:23:16.517 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:16.830 +02:00 [INF] Executed DbCommand (44ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:23:16.907 +02:00 [INF] Executed DbCommand (25ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+LEFT JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__user_Id_0
+2026-02-14 15:23:16.909 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 392.0598ms.
+2026-02-14 15:23:16.914 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:23:16.941 +02:00 [INF] Executed ViewResult - view Index executed in 30.9996ms.
+2026-02-14 15:23:16.941 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Index (LekkoApp) in 434.9622ms
+2026-02-14 15:23:16.941 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Index (LekkoApp)'
+2026-02-14 15:23:16.942 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Projects - 200 null text/html; charset=utf-8 612.3647ms
+2026-02-14 15:23:17.020 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:23:17.023 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 2.5557ms
+2026-02-14 15:23:17.024 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:23:18.030 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:23:18.032 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:23:18.034 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:23:18.035 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:18.042 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:23:18.056 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:23:18.062 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:23:18.192 +02:00 [INF] Executed DbCommand (125ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:23:18.192 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 157.1035ms.
+2026-02-14 15:23:18.193 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:23:18.194 +02:00 [INF] Executed ViewResult - view Index executed in 1.7215ms.
+2026-02-14 15:23:18.194 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 160.0429ms
+2026-02-14 15:23:18.194 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:23:18.194 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 164.9554ms
+2026-02-14 15:23:18.224 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:23:18.226 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.6889ms
+2026-02-14 15:23:18.226 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:23:22.297 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks/Edit?taskId=dab8d884-09e4-4bce-8530-47ade364eaee - null null
+2026-02-14 15:23:22.301 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Edit (LekkoApp)'
+2026-02-14 15:23:22.301 +02:00 [INF] Route matched with {action = "Edit", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:23:22.303 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Edit (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:22.318 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:23:22.327 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Id] = @__get_Item_0
+2026-02-14 15:23:22.329 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Edit (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 25.6766ms.
+2026-02-14 15:23:22.329 +02:00 [INF] Executing ViewResult, running view Edit.
+2026-02-14 15:23:22.341 +02:00 [INF] Executed ViewResult - view Edit executed in 12.2667ms.
+2026-02-14 15:23:22.342 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Edit (LekkoApp) in 40.642ms
+2026-02-14 15:23:22.342 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Edit (LekkoApp)'
+2026-02-14 15:23:22.342 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks/Edit?taskId=dab8d884-09e4-4bce-8530-47ade364eaee - 200 null text/html; charset=utf-8 45.7782ms
+2026-02-14 15:23:22.692 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:23:22.694 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 2.3149ms
+2026-02-14 15:23:22.695 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:23:30.785 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tags - null null
+2026-02-14 15:23:30.792 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:23:30.801 +02:00 [INF] Route matched with {action = "Index", controller = "Tags", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:23:30.803 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:30.861 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:23:31.020 +02:00 [INF] Executed DbCommand (151ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Color], [t].[Name], [t].[UserId]
+FROM [Tags] AS [t]
+WHERE [t].[UserId] = @__user_Id_0
+ORDER BY [t].[Name]
+2026-02-14 15:23:31.023 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 219.006ms.
+2026-02-14 15:23:31.024 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:23:31.032 +02:00 [INF] Executed ViewResult - view Index executed in 9.33ms.
+2026-02-14 15:23:31.032 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Index (LekkoApp) in 231.1156ms
+2026-02-14 15:23:31.032 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:23:31.033 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tags - 200 null text/html; charset=utf-8 247.9645ms
+2026-02-14 15:23:31.068 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:23:31.073 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 5.3472ms
+2026-02-14 15:23:31.073 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:23:33.192 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tags/Create - null null
+2026-02-14 15:23:33.194 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:23:33.195 +02:00 [INF] Route matched with {action = "Create", controller = "Tags", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:23:33.196 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:33.196 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.293ms.
+2026-02-14 15:23:33.197 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:23:33.221 +02:00 [INF] Executed ViewResult - view Create executed in 24.5843ms.
+2026-02-14 15:23:33.221 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Create (LekkoApp) in 25.5626ms
+2026-02-14 15:23:33.221 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:23:33.221 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tags/Create - 200 null text/html; charset=utf-8 29.3387ms
+2026-02-14 15:23:33.548 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:23:33.550 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 2.0547ms
+2026-02-14 15:23:33.550 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:23:33.553 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - null null
+2026-02-14 15:23:33.565 +02:00 [INF] Sending file. Request path: '/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'. Physical path: '/Users/pavlotaranovskyi/RiderProjects/LekkoApp/LekkoApp/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'
+2026-02-14 15:23:33.565 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - 200 5824 text/javascript 12.2024ms
+2026-02-14 15:23:43.084 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Tags/Create - application/x-www-form-urlencoded 255
+2026-02-14 15:23:43.095 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:23:43.128 +02:00 [INF] Route matched with {action = "Create", controller = "Tags", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LekkoApp.Models.Tag) on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:23:43.145 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:43.170 +02:00 [INF] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:23:43.397 +02:00 [INF] Executed DbCommand (115ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 20), @p2='?' (Size = 50), @p3='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Tags] ([Id], [Color], [Name], [UserId])
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-14 15:23:43.406 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 260.8484ms.
+2026-02-14 15:23:43.408 +02:00 [INF] Executing RedirectResult, redirecting to /Tags.
+2026-02-14 15:23:43.408 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Create (LekkoApp) in 279.4172ms
+2026-02-14 15:23:43.408 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:23:43.408 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Tags/Create - 302 0 null 324.1975ms
+2026-02-14 15:23:43.419 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tags - null null
+2026-02-14 15:23:43.419 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:23:43.420 +02:00 [INF] Route matched with {action = "Index", controller = "Tags", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:23:43.420 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:43.423 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:23:43.489 +02:00 [INF] Executed DbCommand (65ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Color], [t].[Name], [t].[UserId]
+FROM [Tags] AS [t]
+WHERE [t].[UserId] = @__user_Id_0
+ORDER BY [t].[Name]
+2026-02-14 15:23:43.490 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 70.3641ms.
+2026-02-14 15:23:43.490 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:23:43.493 +02:00 [INF] Executed ViewResult - view Index executed in 2.2917ms.
+2026-02-14 15:23:43.493 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Index (LekkoApp) in 73.0977ms
+2026-02-14 15:23:43.493 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:23:43.493 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tags - 200 null text/html; charset=utf-8 74.3065ms
+2026-02-14 15:23:43.526 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:23:43.530 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 3.4275ms
+2026-02-14 15:23:43.530 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:23:45.062 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tags/Create - null null
+2026-02-14 15:23:45.064 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:23:45.064 +02:00 [INF] Route matched with {action = "Create", controller = "Tags", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:23:45.065 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:23:45.065 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0159ms.
+2026-02-14 15:23:45.065 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:23:45.073 +02:00 [INF] Executed ViewResult - view Create executed in 7.4187ms.
+2026-02-14 15:23:45.073 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Create (LekkoApp) in 8.2268ms
+2026-02-14 15:23:45.073 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:23:45.073 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tags/Create - 200 null text/html; charset=utf-8 11.1146ms
+2026-02-14 15:23:45.103 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:23:45.107 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 3.4952ms
+2026-02-14 15:23:45.107 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:06.305 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Tags/Create - application/x-www-form-urlencoded 256
+2026-02-14 15:24:06.316 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:24:06.317 +02:00 [INF] Route matched with {action = "Create", controller = "Tags", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LekkoApp.Models.Tag) on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:24:06.343 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:06.413 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:06.435 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 20), @p2='?' (Size = 50), @p3='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Tags] ([Id], [Color], [Name], [UserId])
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-14 15:24:06.435 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 92.702ms.
+2026-02-14 15:24:06.436 +02:00 [INF] Executing RedirectResult, redirecting to /Tags.
+2026-02-14 15:24:06.437 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Create (LekkoApp) in 119.8076ms
+2026-02-14 15:24:06.437 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:24:06.437 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Tags/Create - 302 0 null 133.0787ms
+2026-02-14 15:24:06.443 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tags - null null
+2026-02-14 15:24:06.444 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:24:06.444 +02:00 [INF] Route matched with {action = "Index", controller = "Tags", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:24:06.444 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:06.450 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:06.460 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Color], [t].[Name], [t].[UserId]
+FROM [Tags] AS [t]
+WHERE [t].[UserId] = @__user_Id_0
+ORDER BY [t].[Name]
+2026-02-14 15:24:06.461 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.4854ms.
+2026-02-14 15:24:06.461 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:24:06.464 +02:00 [INF] Executed ViewResult - view Index executed in 2.7081ms.
+2026-02-14 15:24:06.464 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Index (LekkoApp) in 19.7426ms
+2026-02-14 15:24:06.464 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:24:06.464 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tags - 200 null text/html; charset=utf-8 21.1392ms
+2026-02-14 15:24:06.498 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:06.500 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.8965ms
+2026-02-14 15:24:06.501 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:08.142 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tags/Create - null null
+2026-02-14 15:24:08.144 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:24:08.144 +02:00 [INF] Route matched with {action = "Create", controller = "Tags", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:24:08.144 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:08.144 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.019ms.
+2026-02-14 15:24:08.145 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:24:08.149 +02:00 [INF] Executed ViewResult - view Create executed in 4.364ms.
+2026-02-14 15:24:08.149 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Create (LekkoApp) in 5.1175ms
+2026-02-14 15:24:08.149 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:24:08.150 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tags/Create - 200 null text/html; charset=utf-8 7.3554ms
+2026-02-14 15:24:08.153 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:08.155 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 2.3981ms
+2026-02-14 15:24:08.155 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:17.046 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Tags/Create - application/x-www-form-urlencoded 260
+2026-02-14 15:24:17.047 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:24:17.048 +02:00 [INF] Route matched with {action = "Create", controller = "Tags", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LekkoApp.Models.Tag) on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:24:17.049 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:17.056 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:17.074 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 20), @p2='?' (Size = 50), @p3='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Tags] ([Id], [Color], [Name], [UserId])
+VALUES (@p0, @p1, @p2, @p3);
+2026-02-14 15:24:17.075 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 25.4945ms.
+2026-02-14 15:24:17.075 +02:00 [INF] Executing RedirectResult, redirecting to /Tags.
+2026-02-14 15:24:17.075 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Create (LekkoApp) in 26.945ms
+2026-02-14 15:24:17.075 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Create (LekkoApp)'
+2026-02-14 15:24:17.075 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Tags/Create - 302 0 null 29.1174ms
+2026-02-14 15:24:17.085 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tags - null null
+2026-02-14 15:24:17.087 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:24:17.087 +02:00 [INF] Route matched with {action = "Index", controller = "Tags", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.TagsController (LekkoApp).
+2026-02-14 15:24:17.087 +02:00 [INF] Executing action method LekkoApp.Controllers.TagsController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:17.097 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:17.106 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Color], [t].[Name], [t].[UserId]
+FROM [Tags] AS [t]
+WHERE [t].[UserId] = @__user_Id_0
+ORDER BY [t].[Name]
+2026-02-14 15:24:17.107 +02:00 [INF] Executed action method LekkoApp.Controllers.TagsController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 20.0509ms.
+2026-02-14 15:24:17.108 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:24:17.110 +02:00 [INF] Executed ViewResult - view Index executed in 2.2928ms.
+2026-02-14 15:24:17.111 +02:00 [INF] Executed action LekkoApp.Controllers.TagsController.Index (LekkoApp) in 23.6636ms
+2026-02-14 15:24:17.111 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TagsController.Index (LekkoApp)'
+2026-02-14 15:24:17.111 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tags - 200 null text/html; charset=utf-8 26.0362ms
+2026-02-14 15:24:17.141 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:17.147 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 6.4255ms
+2026-02-14 15:24:17.147 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:18.477 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Dashboard - null null
+2026-02-14 15:24:18.480 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.DashboardController.Index (LekkoApp)'
+2026-02-14 15:24:18.488 +02:00 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.DashboardController (LekkoApp).
+2026-02-14 15:24:18.490 +02:00 [INF] Executing action method LekkoApp.Controllers.DashboardController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:18.572 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__weekStart_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+    SELECT CONVERT(date, [p].[StartedAt]) AS [Key]
+    FROM [Pomodoros] AS [p]
+    WHERE [p].[StartedAt] >= @__weekStart_0
+) AS [t]
+GROUP BY [t].[Key]
+2026-02-14 15:24:18.579 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+2026-02-14 15:24:18.584 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+2026-02-14 15:24:18.595 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Status] = 2
+2026-02-14 15:24:18.601 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Status] = 1
+2026-02-14 15:24:18.613 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[DueDate] < GETUTCDATE() AND [p].[Status] <> 2
+2026-02-14 15:24:18.620 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__today_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Pomodoros] AS [p]
+WHERE CONVERT(date, [p].[StartedAt]) = @__today_0
+2026-02-14 15:24:18.625 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__weekStart_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Pomodoros] AS [p]
+WHERE CONVERT(date, [p].[StartedAt]) >= @__weekStart_0
+2026-02-14 15:24:18.643 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Status], COUNT(*)
+FROM [PomodoroTasks] AS [p]
+GROUP BY [p].[Status]
+2026-02-14 15:24:18.655 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__weekStart_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Key] AS [Date], COUNT(*) AS [Value]
+FROM (
+    SELECT CONVERT(date, [p].[StartedAt]) AS [Key]
+    FROM [Pomodoros] AS [p]
+    WHERE CONVERT(date, [p].[StartedAt]) >= @__weekStart_0
+) AS [t]
+GROUP BY [t].[Key]
+ORDER BY [t].[Key]
+2026-02-14 15:24:18.666 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[DueDate] < GETUTCDATE() AND [p].[Status] <> 2
+ORDER BY [p].[DueDate]
+2026-02-14 15:24:18.667 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-02-14 15:24:18.676 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Status] = 1
+2026-02-14 15:24:18.677 +02:00 [INF] Executed action method LekkoApp.Controllers.DashboardController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 187.0515ms.
+2026-02-14 15:24:18.677 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:24:18.758 +02:00 [INF] Executed ViewResult - view Index executed in 81.5217ms.
+2026-02-14 15:24:18.758 +02:00 [INF] Executed action LekkoApp.Controllers.DashboardController.Index (LekkoApp) in 269.9119ms
+2026-02-14 15:24:18.759 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.DashboardController.Index (LekkoApp)'
+2026-02-14 15:24:18.759 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Dashboard - 200 null text/html; charset=utf-8 281.3942ms
+2026-02-14 15:24:18.783 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:18.785 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.5089ms
+2026-02-14 15:24:18.785 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:22.446 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:24:22.447 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:24:22.448 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:24:22.448 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:22.457 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:22.472 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:24:22.483 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:24:22.493 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:24:22.494 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 45.1404ms.
+2026-02-14 15:24:22.494 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:24:22.496 +02:00 [INF] Executed ViewResult - view Index executed in 2.1665ms.
+2026-02-14 15:24:22.496 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 48.3818ms
+2026-02-14 15:24:22.496 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:24:22.496 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 50.7091ms
+2026-02-14 15:24:22.498 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:22.500 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.1717ms
+2026-02-14 15:24:22.500 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:25.825 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks/Create - null null
+2026-02-14 15:24:25.828 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:24:25.835 +02:00 [INF] Route matched with {action = "Create", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:24:25.836 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:25.848 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:25.854 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+LEFT JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__user_Id_0
+2026-02-14 15:24:25.856 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 20.7157ms.
+2026-02-14 15:24:25.858 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:24:25.905 +02:00 [INF] Executed ViewResult - view Create executed in 48.429ms.
+2026-02-14 15:24:25.905 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Create (LekkoApp) in 70.0881ms
+2026-02-14 15:24:25.905 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:24:25.906 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks/Create - 200 null text/html; charset=utf-8 81.0696ms
+2026-02-14 15:24:25.928 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:25.929 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.5958ms
+2026-02-14 15:24:25.931 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:54.292 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Tasks/Create - application/x-www-form-urlencoded 386
+2026-02-14 15:24:54.301 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:24:54.323 +02:00 [INF] Route matched with {action = "Create", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LekkoApp.Models.TaskCreateViewModel) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:24:54.355 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:54.410 +02:00 [INF] Executed DbCommand (38ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:54.508 +02:00 [INF] Executed DbCommand (52ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 300), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (DbType = Boolean), @p7='?' (DbType = Guid), @p8='?' (DbType = Int32), @p9='?' (DbType = Guid), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32), @p12='?' (Size = 50), @p13='?' (DbType = DateTime2), @p14='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [PomodoroTasks] ([Id], [CompletedPomodoros], [CreatedAt], [Description], [DueDate], [EstimatedPomodoros], [IsDeleted], [ParentTaskId], [Priority], [ProjectId], [Recurrence], [Status], [Title], [UpdatedAt], [UserId])
+OUTPUT INSERTED.[TaskNumber]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2026-02-14 15:24:54.517 +02:00 [INF] Created pomodoroTask "52621f53-667d-40c9-af15-92effea16ccc" for user 67867391-1838-4852-9222-cc77fcf2283f
+2026-02-14 15:24:54.517 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 162.4333ms.
+2026-02-14 15:24:54.518 +02:00 [INF] Executing RedirectResult, redirecting to /Tasks.
+2026-02-14 15:24:54.524 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Create (LekkoApp) in 200.9947ms
+2026-02-14 15:24:54.524 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:24:54.524 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Tasks/Create - 302 0 null 232.2312ms
+2026-02-14 15:24:54.533 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:24:54.534 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:24:54.534 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:24:54.534 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:54.538 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:54.541 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:24:54.543 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:24:54.558 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:24:54.559 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 24.3554ms.
+2026-02-14 15:24:54.559 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:24:54.566 +02:00 [INF] Executed ViewResult - view Index executed in 6.9549ms.
+2026-02-14 15:24:54.566 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 31.7704ms
+2026-02-14 15:24:54.566 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:24:54.566 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 32.6455ms
+2026-02-14 15:24:54.606 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:54.608 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.9325ms
+2026-02-14 15:24:54.608 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:24:57.391 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks/Create - null null
+2026-02-14 15:24:57.393 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:24:57.393 +02:00 [INF] Route matched with {action = "Create", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:24:57.394 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:24:57.401 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:24:57.405 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+LEFT JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__user_Id_0
+2026-02-14 15:24:57.406 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 12.4722ms.
+2026-02-14 15:24:57.406 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:24:57.411 +02:00 [INF] Executed ViewResult - view Create executed in 4.3581ms.
+2026-02-14 15:24:57.411 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Create (LekkoApp) in 17.8414ms
+2026-02-14 15:24:57.411 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:24:57.411 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks/Create - 200 null text/html; charset=utf-8 19.8931ms
+2026-02-14 15:24:57.448 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:24:57.450 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.669ms
+2026-02-14 15:24:57.450 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:25:12.582 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Projects - null null
+2026-02-14 15:25:12.592 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Index (LekkoApp)'
+2026-02-14 15:25:12.593 +02:00 [INF] Route matched with {action = "Index", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:25:12.594 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:25:12.606 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:25:12.611 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+LEFT JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__user_Id_0
+2026-02-14 15:25:12.611 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 17.0018ms.
+2026-02-14 15:25:12.612 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:25:12.615 +02:00 [INF] Executed ViewResult - view Index executed in 3.2655ms.
+2026-02-14 15:25:12.615 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Index (LekkoApp) in 21.6773ms
+2026-02-14 15:25:12.615 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Index (LekkoApp)'
+2026-02-14 15:25:12.616 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Projects - 200 null text/html; charset=utf-8 34.0685ms
+2026-02-14 15:25:12.622 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:25:12.630 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 3.8327ms
+2026-02-14 15:25:12.633 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:25:13.961 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Projects/Create - null null
+2026-02-14 15:25:13.963 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Create (LekkoApp)'
+2026-02-14 15:25:13.970 +02:00 [INF] Route matched with {action = "Create", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:25:13.970 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:25:13.978 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:25:14.084 +02:00 [INF] Executed DbCommand (90ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id
+2026-02-14 15:25:14.085 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 115.0217ms.
+2026-02-14 15:25:14.087 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:25:14.121 +02:00 [INF] Executed ViewResult - view Create executed in 34.9674ms.
+2026-02-14 15:25:14.121 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Create (LekkoApp) in 150.7642ms
+2026-02-14 15:25:14.121 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Create (LekkoApp)'
+2026-02-14 15:25:14.121 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Projects/Create - 200 null text/html; charset=utf-8 160.3053ms
+2026-02-14 15:25:14.149 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:25:14.151 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.8875ms
+2026-02-14 15:25:14.152 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:25:35.250 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Projects/Create - application/x-www-form-urlencoded 403
+2026-02-14 15:25:35.264 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Create (LekkoApp)'
+2026-02-14 15:25:35.322 +02:00 [INF] Route matched with {action = "Create", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LekkoApp.Models.ProjectCreateViewModel) on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:25:35.342 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:25:35.361 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:25:35.432 +02:00 [INF] Executed DbCommand (47ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 300), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 50), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32), @p8='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Projects] ([Id], [CreatedAt], [Description], [EndDate], [IsActive], [Name], [StartDate], [Status], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2026-02-14 15:25:35.725 +02:00 [INF] Executed DbCommand (256ms) [Parameters=[@__model_SelectedTaskIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Id] IN (
+    SELECT [m].[value]
+    FROM OPENJSON(@__model_SelectedTaskIds_0) WITH ([value] uniqueidentifier '$') AS [m]
+)
+2026-02-14 15:25:35.843 +02:00 [INF] Executed DbCommand (113ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [PomodoroTasks] SET [ProjectId] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2026-02-14 15:25:35.845 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 502.8263ms.
+2026-02-14 15:25:35.845 +02:00 [INF] Executing RedirectResult, redirecting to /Projects.
+2026-02-14 15:25:35.845 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Create (LekkoApp) in 522.4792ms
+2026-02-14 15:25:35.845 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Create (LekkoApp)'
+2026-02-14 15:25:35.845 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Projects/Create - 302 0 null 595.9624ms
+2026-02-14 15:25:35.854 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Projects - null null
+2026-02-14 15:25:35.855 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Index (LekkoApp)'
+2026-02-14 15:25:35.855 +02:00 [INF] Route matched with {action = "Index", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:25:35.855 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:25:35.857 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:25:35.885 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+LEFT JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__user_Id_0
+2026-02-14 15:25:35.887 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 31.7907ms.
+2026-02-14 15:25:35.887 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:25:35.892 +02:00 [INF] Executed ViewResult - view Index executed in 4.5861ms.
+2026-02-14 15:25:35.892 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Index (LekkoApp) in 36.7367ms
+2026-02-14 15:25:35.892 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Index (LekkoApp)'
+2026-02-14 15:25:35.892 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Projects - 200 null text/html; charset=utf-8 37.6755ms
+2026-02-14 15:25:35.930 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:25:35.932 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.9402ms
+2026-02-14 15:25:35.932 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:25:40.414 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Projects/Details?projectid=db591073-353a-438b-a2e0-34e5b3fc65d4 - null null
+2026-02-14 15:25:40.417 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Details (LekkoApp)'
+2026-02-14 15:25:40.424 +02:00 [INF] Route matched with {action = "Details", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:25:40.425 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Details (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:25:40.474 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+WHERE [p].[Id] = @__get_Item_0
+2026-02-14 15:25:40.490 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[ProjectId] = @__id_0
+2026-02-14 15:25:40.495 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Details (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 69.6532ms.
+2026-02-14 15:25:40.495 +02:00 [INF] Executing ViewResult, running view Details.
+2026-02-14 15:25:40.500 +02:00 [INF] Executed ViewResult - view Details executed in 5.6896ms.
+2026-02-14 15:25:40.501 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Details (LekkoApp) in 76.3359ms
+2026-02-14 15:25:40.501 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Details (LekkoApp)'
+2026-02-14 15:25:40.501 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Projects/Details?projectid=db591073-353a-438b-a2e0-34e5b3fc65d4 - 200 null text/html; charset=utf-8 87.1436ms
+2026-02-14 15:25:40.524 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:25:40.528 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 3.9605ms
+2026-02-14 15:25:40.528 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:26:36.816 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Projects/Details?projectid=db591073-353a-438b-a2e0-34e5b3fc65d4 - null null
+2026-02-14 15:26:36.827 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Details (LekkoApp)'
+2026-02-14 15:26:36.828 +02:00 [INF] Route matched with {action = "Details", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:26:36.831 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Details (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:26:36.875 +02:00 [INF] Executed DbCommand (30ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+WHERE [p].[Id] = @__get_Item_0
+2026-02-14 15:26:36.885 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[ProjectId] = @__id_0
+2026-02-14 15:26:36.886 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Details (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 54.9172ms.
+2026-02-14 15:26:36.887 +02:00 [INF] Executing ViewResult, running view Details.
+2026-02-14 15:26:36.891 +02:00 [INF] Executed ViewResult - view Details executed in 4.6871ms.
+2026-02-14 15:26:36.891 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Details (LekkoApp) in 62.6456ms
+2026-02-14 15:26:36.891 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Details (LekkoApp)'
+2026-02-14 15:26:36.891 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Projects/Details?projectid=db591073-353a-438b-a2e0-34e5b3fc65d4 - 200 null text/html; charset=utf-8 75.4047ms
+2026-02-14 15:26:36.926 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:26:36.929 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 2.1715ms
+2026-02-14 15:26:36.929 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:27:13.528 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Projects/Details?projectid=db591073-353a-438b-a2e0-34e5b3fc65d4 - null null
+2026-02-14 15:27:13.549 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.ProjectsController.Details (LekkoApp)'
+2026-02-14 15:27:13.557 +02:00 [INF] Route matched with {action = "Details", controller = "Projects", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Guid) on controller LekkoApp.Controllers.ProjectsController (LekkoApp).
+2026-02-14 15:27:13.559 +02:00 [INF] Executing action method LekkoApp.Controllers.ProjectsController.Details (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:27:13.602 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[@__get_Item_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+WHERE [p].[Id] = @__get_Item_0
+2026-02-14 15:27:13.610 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[ProjectId] = @__id_0
+2026-02-14 15:27:13.611 +02:00 [INF] Executed action method LekkoApp.Controllers.ProjectsController.Details (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 51.7447ms.
+2026-02-14 15:27:13.613 +02:00 [INF] Executing ViewResult, running view Details.
+2026-02-14 15:27:13.622 +02:00 [INF] Executed ViewResult - view Details executed in 11.5012ms.
+2026-02-14 15:27:13.622 +02:00 [INF] Executed action LekkoApp.Controllers.ProjectsController.Details (LekkoApp) in 65.0124ms
+2026-02-14 15:27:13.622 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.ProjectsController.Details (LekkoApp)'
+2026-02-14 15:27:13.623 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Projects/Details?projectid=db591073-353a-438b-a2e0-34e5b3fc65d4 - 200 null text/html; charset=utf-8 94.6799ms
+2026-02-14 15:27:13.665 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:27:13.667 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.7097ms
+2026-02-14 15:27:13.667 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:27:34.444 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:27:34.465 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:27:34.488 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:27:34.493 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:27:34.614 +02:00 [INF] Executed DbCommand (86ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:27:34.618 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:27:34.622 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:27:34.729 +02:00 [INF] Executed DbCommand (107ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:27:34.730 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 236.9509ms.
+2026-02-14 15:27:34.731 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:27:34.735 +02:00 [INF] Executed ViewResult - view Index executed in 4.0633ms.
+2026-02-14 15:27:34.735 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 247.0302ms
+2026-02-14 15:27:34.735 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:27:34.736 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 292.3698ms
+2026-02-14 15:27:34.741 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:27:34.741 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 0.8665ms
+2026-02-14 15:27:34.742 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:27:39.757 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks/Create - null null
+2026-02-14 15:27:39.759 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:27:39.764 +02:00 [INF] Route matched with {action = "Create", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:27:39.765 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:27:39.772 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:27:39.777 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+LEFT JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__user_Id_0
+2026-02-14 15:27:39.778 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 13.4833ms.
+2026-02-14 15:27:39.779 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:27:39.794 +02:00 [INF] Executed ViewResult - view Create executed in 16.0841ms.
+2026-02-14 15:27:39.795 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Create (LekkoApp) in 30.5649ms
+2026-02-14 15:27:39.795 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:27:39.795 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks/Create - 200 null text/html; charset=utf-8 38.386ms
+2026-02-14 15:27:39.834 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:27:39.836 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 2.1066ms
+2026-02-14 15:27:39.837 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:28:07.024 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Tasks/Create - application/x-www-form-urlencoded 431
+2026-02-14 15:28:07.033 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:28:07.045 +02:00 [INF] Route matched with {action = "Create", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LekkoApp.Models.TaskCreateViewModel) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:28:07.073 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:28:07.104 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:28:07.152 +02:00 [INF] Executed DbCommand (43ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 300), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (DbType = Boolean), @p7='?' (DbType = Guid), @p8='?' (DbType = Int32), @p9='?' (DbType = Guid), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32), @p12='?' (Size = 50), @p13='?' (DbType = DateTime2), @p14='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [PomodoroTasks] ([Id], [CompletedPomodoros], [CreatedAt], [Description], [DueDate], [EstimatedPomodoros], [IsDeleted], [ParentTaskId], [Priority], [ProjectId], [Recurrence], [Status], [Title], [UpdatedAt], [UserId])
+OUTPUT INSERTED.[TaskNumber]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2026-02-14 15:28:07.153 +02:00 [INF] Created pomodoroTask "1d5cc3d8-066f-4012-a833-b836990cddfd" for user 67867391-1838-4852-9222-cc77fcf2283f
+2026-02-14 15:28:07.153 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 79.4528ms.
+2026-02-14 15:28:07.153 +02:00 [INF] Executing RedirectResult, redirecting to /Tasks.
+2026-02-14 15:28:07.155 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Create (LekkoApp) in 109.4827ms
+2026-02-14 15:28:07.155 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:28:07.155 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Tasks/Create - 302 0 null 130.9705ms
+2026-02-14 15:28:07.169 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:28:07.170 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:28:07.170 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:28:07.170 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:28:07.172 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:28:07.175 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:28:07.179 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:28:07.183 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:28:07.183 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 13.3764ms.
+2026-02-14 15:28:07.183 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:28:07.185 +02:00 [INF] Executed ViewResult - view Index executed in 1.5232ms.
+2026-02-14 15:28:07.185 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 15.3368ms
+2026-02-14 15:28:07.185 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:28:07.185 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 16.8194ms
+2026-02-14 15:28:07.223 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:28:07.224 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.4142ms
+2026-02-14 15:28:07.224 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:28:10.552 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks/Create - null null
+2026-02-14 15:28:10.553 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:28:10.553 +02:00 [INF] Route matched with {action = "Create", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:28:10.554 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:28:10.562 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:28:10.566 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreatedAt], [p].[Description], [p].[EndDate], [p].[IsActive], [p].[Name], [p].[StartDate], [p].[Status], [p].[UserId]
+FROM [Projects] AS [p]
+LEFT JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__user_Id_0
+2026-02-14 15:28:10.567 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 12.8875ms.
+2026-02-14 15:28:10.567 +02:00 [INF] Executing ViewResult, running view Create.
+2026-02-14 15:28:10.568 +02:00 [INF] Executed ViewResult - view Create executed in 1.3479ms.
+2026-02-14 15:28:10.568 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Create (LekkoApp) in 15.013ms
+2026-02-14 15:28:10.568 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:28:10.568 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks/Create - 200 null text/html; charset=utf-8 16.5595ms
+2026-02-14 15:28:10.571 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:28:10.571 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 0.4501ms
+2026-02-14 15:28:10.572 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:29:07.374 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5056/Tasks/Create - application/x-www-form-urlencoded 406
+2026-02-14 15:29:07.383 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:29:07.384 +02:00 [INF] Route matched with {action = "Create", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LekkoApp.Models.TaskCreateViewModel) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:29:07.396 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Create (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:29:07.488 +02:00 [INF] Executed DbCommand (76ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:29:07.524 +02:00 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 300), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (DbType = Boolean), @p7='?' (DbType = Guid), @p8='?' (DbType = Int32), @p9='?' (DbType = Guid), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32), @p12='?' (Size = 50), @p13='?' (DbType = DateTime2), @p14='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [PomodoroTasks] ([Id], [CompletedPomodoros], [CreatedAt], [Description], [DueDate], [EstimatedPomodoros], [IsDeleted], [ParentTaskId], [Priority], [ProjectId], [Recurrence], [Status], [Title], [UpdatedAt], [UserId])
+OUTPUT INSERTED.[TaskNumber]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2026-02-14 15:29:07.525 +02:00 [INF] Created pomodoroTask "2b11ade0-ec7e-4b09-80fd-ed8ac6c88f6d" for user 67867391-1838-4852-9222-cc77fcf2283f
+2026-02-14 15:29:07.525 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Create (LekkoApp), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 128.4319ms.
+2026-02-14 15:29:07.525 +02:00 [INF] Executing RedirectResult, redirecting to /Tasks.
+2026-02-14 15:29:07.526 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Create (LekkoApp) in 141.5953ms
+2026-02-14 15:29:07.526 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Create (LekkoApp)'
+2026-02-14 15:29:07.526 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5056/Tasks/Create - 302 0 null 152.7602ms
+2026-02-14 15:29:07.534 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:29:07.535 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:29:07.535 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:29:07.535 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:29:07.553 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:29:07.567 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:29:07.570 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:29:07.621 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:29:07.621 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 86.1754ms.
+2026-02-14 15:29:07.622 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:29:07.625 +02:00 [INF] Executed ViewResult - view Index executed in 3.174ms.
+2026-02-14 15:29:07.625 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 89.9345ms
+2026-02-14 15:29:07.625 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:29:07.625 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 90.728ms
+2026-02-14 15:29:07.666 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:29:07.667 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 1.5962ms
+2026-02-14 15:29:07.667 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:29:21.202 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Tasks - null null
+2026-02-14 15:29:21.208 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:29:21.210 +02:00 [INF] Route matched with {action = "Index", controller = "Tasks", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Guid], System.String, System.String, System.String, System.Nullable`1[System.Int32], Int32) on controller LekkoApp.Controllers.TasksController (LekkoApp).
+2026-02-14 15:29:21.213 +02:00 [INF] Executing action method LekkoApp.Controllers.TasksController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:29:21.283 +02:00 [INF] Executed DbCommand (60ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-02-14 15:29:21.297 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:29:21.301 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+2026-02-14 15:29:21.309 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__entity_equality_user_0_Id='?' (Size = 450), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[UserId] = [a].[Id]
+WHERE [a].[Id] = @__entity_equality_user_0_Id AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[TaskNumber]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2026-02-14 15:29:21.310 +02:00 [INF] Executed action method LekkoApp.Controllers.TasksController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 96.56ms.
+2026-02-14 15:29:21.310 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:29:21.312 +02:00 [INF] Executed ViewResult - view Index executed in 2.0758ms.
+2026-02-14 15:29:21.312 +02:00 [INF] Executed action LekkoApp.Controllers.TasksController.Index (LekkoApp) in 102.3075ms
+2026-02-14 15:29:21.312 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.TasksController.Index (LekkoApp)'
+2026-02-14 15:29:21.312 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Tasks - 200 null text/html; charset=utf-8 110.7138ms
+2026-02-14 15:29:21.343 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:29:21.344 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 0.9353ms
+2026-02-14 15:29:21.345 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:29:29.589 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/Dashboard - null null
+2026-02-14 15:29:29.599 +02:00 [INF] Executing endpoint 'LekkoApp.Controllers.DashboardController.Index (LekkoApp)'
+2026-02-14 15:29:29.608 +02:00 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller LekkoApp.Controllers.DashboardController (LekkoApp).
+2026-02-14 15:29:29.608 +02:00 [INF] Executing action method LekkoApp.Controllers.DashboardController.Index (LekkoApp) - Validation state: "Valid"
+2026-02-14 15:29:29.677 +02:00 [INF] Executed DbCommand (62ms) [Parameters=[@__weekStart_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM (
+    SELECT CONVERT(date, [p].[StartedAt]) AS [Key]
+    FROM [Pomodoros] AS [p]
+    WHERE [p].[StartedAt] >= @__weekStart_0
+) AS [t]
+GROUP BY [t].[Key]
+2026-02-14 15:29:29.682 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+2026-02-14 15:29:29.685 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+2026-02-14 15:29:29.689 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Status] = 2
+2026-02-14 15:29:29.691 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Status] = 1
+2026-02-14 15:29:29.699 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[DueDate] < GETUTCDATE() AND [p].[Status] <> 2
+2026-02-14 15:29:29.721 +02:00 [INF] Executed DbCommand (21ms) [Parameters=[@__today_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Pomodoros] AS [p]
+WHERE CONVERT(date, [p].[StartedAt]) = @__today_0
+2026-02-14 15:29:29.723 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__weekStart_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Pomodoros] AS [p]
+WHERE CONVERT(date, [p].[StartedAt]) >= @__weekStart_0
+2026-02-14 15:29:29.730 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Status], COUNT(*)
+FROM [PomodoroTasks] AS [p]
+GROUP BY [p].[Status]
+2026-02-14 15:29:29.733 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__weekStart_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Key] AS [Date], COUNT(*) AS [Value]
+FROM (
+    SELECT CONVERT(date, [p].[StartedAt]) AS [Key]
+    FROM [Pomodoros] AS [p]
+    WHERE CONVERT(date, [p].[StartedAt]) >= @__weekStart_0
+) AS [t]
+GROUP BY [t].[Key]
+ORDER BY [t].[Key]
+2026-02-14 15:29:29.736 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[DueDate] < GETUTCDATE() AND [p].[Status] <> 2
+ORDER BY [p].[DueDate]
+2026-02-14 15:29:29.737 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [p].[Id], [p].[CompletedPomodoros], [p].[CreatedAt], [p].[Description], [p].[DueDate], [p].[EstimatedPomodoros], [p].[IsDeleted], [p].[ParentTaskId], [p].[Priority], [p].[ProjectId], [p].[Recurrence], [p].[Status], [p].[TaskNumber], [p].[Title], [p].[UpdatedAt], [p].[UserId]
+FROM [PomodoroTasks] AS [p]
+WHERE [p].[Status] = 1
+2026-02-14 15:29:29.738 +02:00 [INF] Executed action method LekkoApp.Controllers.DashboardController.Index (LekkoApp), returned result Microsoft.AspNetCore.Mvc.ViewResult in 129.1334ms.
+2026-02-14 15:29:29.739 +02:00 [INF] Executing ViewResult, running view Index.
+2026-02-14 15:29:29.748 +02:00 [INF] Executed ViewResult - view Index executed in 10.0415ms.
+2026-02-14 15:29:29.748 +02:00 [INF] Executed action LekkoApp.Controllers.DashboardController.Index (LekkoApp) in 140.0957ms
+2026-02-14 15:29:29.748 +02:00 [INF] Executed endpoint 'LekkoApp.Controllers.DashboardController.Index (LekkoApp)'
+2026-02-14 15:29:29.748 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/Dashboard - 200 null text/html; charset=utf-8 159.7329ms
+2026-02-14 15:29:29.785 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - null null
+2026-02-14 15:29:29.785 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5056/LekkoApp.styles.css - 404 0 null 0.5801ms
+2026-02-14 15:29:29.786 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5056/LekkoApp.styles.css, Response status code: 404
+2026-02-14 15:36:05.671 +02:00 [INF] Application is shutting down...

@@ -5,10 +5,10 @@ namespace LekkoApp.Models;
 public class ProjectDetailsViewModel
 {
     public Project? Project { get; set; }
-    public List<Task>? Tasks { get; set; }
+    public List<PomodoroTask>? PomodoroTasks { get; set; }
     public int EstimatedPomodoroCount { get; set; }
     public int DonePomodoroCount { get; set; }
-    public int TasksCount => Tasks?.Count ?? 0;
+    public int PomodoroTasksCount => PomodoroTasks?.Count ?? 0;
     public int DoneTasksCount =>
-        Tasks.Count(item => item.Status == TaskStatus.Completed);
+        PomodoroTasks.Count(item => item.Status == TaskStatus.Completed);
 }

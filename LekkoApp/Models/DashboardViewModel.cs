@@ -16,8 +16,8 @@ public class DashboardViewModel
     public List<StatItem> TasksByStatus { get; set; } = [];
     public List<DailyStat> PomodorosByDay { get; set; } = [];
 
-    public List<Task> OverdueTaskList { get; set; } = [];
-    public List<Task> ActiveTasks { get; set; } = [];
+    public List<PomodoroTask> OverdueTaskList { get; set; } = [];
+    public List<PomodoroTask> ActiveTasks { get; set; } = [];
 }
 
 public class StatItem
