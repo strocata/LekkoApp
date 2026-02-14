@@ -1,6 +1,6 @@
 namespace LekkoApp.Models;
 
-public class TaskViewModel
+public class ProjectCreateViewModel
 {
     
 }
