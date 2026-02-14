@@ -3,7 +3,7 @@ using LekkoApp.Data;
 
 namespace LekkoApp.Models;
 
-public class TaskViewModel
+public class Tag
 {
     public Guid Id { get; set; }
 
@@ -13,8 +13,8 @@ public class TaskViewModel
     [MaxLength(20)]
     public string Color { get; set; } = "#206bc4"; // Default blue
 
-    public string UserId { get; set; }
+    public string? UserId { get; set; }
     public ApplicationUser? User { get; set; }
 
-    public ICollection<Task>? Tasks { get; set; }
+    public ICollection<PomodoroTask>? PomodoroTasks { get; set; }
 }

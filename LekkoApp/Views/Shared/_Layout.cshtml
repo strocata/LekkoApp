@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/LekkoApp.styles.css" asp-append-version="true"/>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
@@ -24,33 +24,46 @@
 </head>
 
 <body>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
 <div class="page">
 
     <!-- SIDEBAR -->
     <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
+        <div class="container-fluid px-3 py-3">
 
-            <!-- Brand -->
             <h1 class="navbar-brand navbar-brand-autodark flex-column">
-                <a class="nav-link" 
-                   style="font-family: 'Bitcount Single', cursive; font-size: 3rem; font-weight: normal" 
-                   asp-controller="Home" 
+                <a class="nav-link"
+                   style="font-family: 'Bitcount Single', cursive; font-size: 3rem; font-weight: normal"
+                   asp-controller="Home"
                    asp-action="Index">
                     LEKKO!
                 </a>
             </h1>
 
-            <!-- Mobile toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Sidebar -->
             <div class="collapse navbar-collapse flex-column" id="sidebar-menu">
 
                 <ul class="navbar-nav pt-lg-3 gap-1">
 
-                    <!-- Core -->
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Projects" asp-action="Index">
                             <span class="nav-link-icon">
@@ -87,12 +100,10 @@
                         </a>
                     </li>
 
-                    <!-- Divider -->
                     <li class="nav-item my-2">
                         <hr class="navbar-divider">
                     </li>
 
-                    <!-- Productivity -->
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Timer" asp-action="Index">
                             <span class="nav-link-icon">
@@ -112,7 +123,6 @@
                     </li>
                 </ul>
 
-                <!-- USER -->
                 <div class="mt-auto w-100">
                     <hr class="navbar-divider my-3"/>
 
@@ -175,7 +185,7 @@
                     </div>
 
                     <div class="col-auto ms-auto d-print-none">
-                        @RenderSection("PageActions", required: false)
+                        @await RenderSectionAsync("PageActions", required: false)
                     </div>
                 </div>
             </div>

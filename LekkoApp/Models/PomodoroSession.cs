@@ -6,7 +6,7 @@ public class PomodoroSession
     public Guid UserId { get; set; }
 
     public Guid TaskId { get; set; }
-    public Task? Task { get; set; } = null;
+    public PomodoroTask? Task { get; set; } = null;
 
     public DateTime StartedAt { get; set; }
     public DateTime? EndedAt { get; set; }

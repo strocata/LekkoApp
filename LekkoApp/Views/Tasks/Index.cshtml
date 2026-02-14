@@ -1,5 +1,5 @@
 @using LekkoApp.Helpers
-@model LekkoApp.Models.TasksViewModel
+@model LekkoApp.Models.PomodoroTasksViewModel
 
 <div class="page-body">
     <div class="container-xl">
@@ -109,7 +109,7 @@
                     </thead>
 
                     <tbody>
-                    @foreach (var item in Model.Tasks!)
+                    @foreach (var item in Model.PomodoroTasks!)
                     {
                         <tr>
                             <td>
@@ -188,25 +188,25 @@
             <div class="card-footer d-flex align-items-center">
                 <div class="text-secondary">
                     Showing
-                    <strong>@Model.Tasks.PageElementsStart–@Model.Tasks.PageElementsEnd</strong>
+                    <strong>@Model.PomodoroTasks.PageElementsStart–@Model.PomodoroTasks.PageElementsEnd</strong>
                     of
                     <strong>@ViewData["NumberOfAllTasks"]</strong>
                 </div>
 
                 <div class="ms-auto">
                     @{
-                        var prevDisabled = !Model.Tasks.HasPreviousPage ? "disabled" : "";
-                        var nextDisabled = !Model.Tasks.HasNextPage ? "disabled" : "";
+                        var prevDisabled = !Model.PomodoroTasks.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !Model.PomodoroTasks.HasNextPage ? "disabled" : "";
                     }
 
                     <a asp-action="Index"
-                       asp-route-pageNumber="@(Model.Tasks.PageIndex - 1)"
+                       asp-route-pageNumber="@(Model.PomodoroTasks.PageIndex - 1)"
                        class="btn btn-sm btn-outline-secondary @prevDisabled">
                         Previous
                     </a>
 
                     <a asp-action="Index"
-                       asp-route-pageNumber="@(Model.Tasks.PageIndex + 1)"
+                       asp-route-pageNumber="@(Model.PomodoroTasks.PageIndex + 1)"
                        class="btn btn-sm btn-outline-secondary @nextDisabled">
                         Next
                     </a>

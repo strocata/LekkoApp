@@ -1,4 +1,4 @@
-@model LekkoApp.Models.Task
+@model LekkoApp.Models.PomodoroTask
 
 <div class="page-body">
     <div class="container-xl">
@@ -12,7 +12,7 @@
                         </a>
                     </div>
                     <h2 class="page-title">
-                        Task
+                        PomodoroTask
                         <span class="text-muted">#@Model.TaskNumber</span>
 
                         <span class="badge bg-blue-lt ms-2">
@@ -25,6 +25,11 @@
                     <button form="task-form" type="submit" class="btn btn-primary">
                         Save
                     </button>
+                    <form asp-action="Delete" asp-route-taskid="@Model.Id" method="post"
+                          onsubmit="return confirm('Are you sure?');" style="display:inline;">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -35,7 +40,7 @@
             <div class="col-12 col-lg-7">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Task details</h3>
+                        <h3 class="card-title">PomodoroTask details</h3>
                     </div>
 
                     <div class="card-body">
@@ -97,7 +102,7 @@
 
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h3 class="card-title">Task stats</h3>
+                        <h3 class="card-title">PomodoroTask stats</h3>
                     </div>
 
                     <div class="card-body">

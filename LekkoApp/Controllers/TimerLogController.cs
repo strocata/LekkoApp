@@ -22,12 +22,12 @@ public class TimerLogController : ControllerBase
     [HttpPost("start")]
     public async Task<IActionResult> StartSession([FromBody] TimerSessionStartDto dto)
     {
-        var task = await _context.Tasks.FindAsync(dto.TaskId);
+        var task = await _context.PomodoroTasks.FindAsync(dto.TaskId);
         if (task == null)
-            return NotFound("Task not found");
+            return NotFound("PomodoroTask not found");
 
         if (task.Status == TaskStatus.Completed)
-            return BadRequest("Task already completed");
+            return BadRequest("PomodoroTask already completed");
 
         var hasActiveSession = await _context.Pomodoros
             .AnyAsync(s => s.TaskId == dto.TaskId && s.EndedAt == null);
@@ -95,9 +95,9 @@ public class TimerLogController : ControllerBase
     [HttpPost("LogIteration")]
     public async Task<IActionResult> LogIteration([FromBody] TimerLogDto dto)
     {
-        var task = await _context.Tasks.FindAsync(dto.TaskId);
+        var task = await _context.PomodoroTasks.FindAsync(dto.TaskId);
         if (task == null)
-            return NotFound("Task not found");
+            return NotFound("PomodoroTask not found");
 
         if (task.Status == TaskStatus.Completed)
         {

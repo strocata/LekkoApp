@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using LekkoApp.Data;
 using LekkoApp.Models.Enums;
 
 namespace LekkoApp.Models;
@@ -14,7 +15,7 @@ public class Project
     public DateTime EndDate { get; set; }
     public bool IsActive { get; set; }
     public ProjectStatus Status { get; set; }
-    public Guid UserId { get; set; }
-    
+    public required ApplicationUser? User { get; set; }
+    public DateTime CreatedAt { get; set; }
 }
 

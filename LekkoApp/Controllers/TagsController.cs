@@ -41,10 +41,10 @@ public class TagsController : Controller
     {
         var user = await _userManager.GetUserAsync(User);
 
-        // Remove validation for User and Tasks
+        // Remove validation for User and PomodoroTasks
         ModelState.Remove(nameof(Tag.User));
         ModelState.Remove(nameof(Tag.UserId));
-        ModelState.Remove(nameof(Tag.Tasks));
+        ModelState.Remove(nameof(Tag.PomodoroTasks));
 
         if (ModelState.IsValid)
         {
@@ -60,6 +60,7 @@ public class TagsController : Controller
     }
 
     [HttpPost]
+    [Authorize]
     // Usually Delete is via POST to prevent CSRF, or Delete method
     public async Task<IActionResult> Delete(Guid id)
     {
