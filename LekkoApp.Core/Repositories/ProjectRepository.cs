@@ -16,8 +16,10 @@ public class ProjectRepository: IProjectRepository
     
     public async Task<IEnumerable<Project>> GetProjectsByUserAsync(ApplicationUser user)
     {
+        if (user == null) return [];
+
         return await _context.Projects
-            .Where(p => p.User.Id.ToString() == user.Id)
+            .Where(p => p.User != null && p.User.Id == user.Id)
             .ToListAsync();
     }
 

@@ -4,7 +4,7 @@ using LekkoApp.Models.Enums;
 namespace LekkoApp.API.DTOs.Responses;
 
 public record ProjectResponse(
-    int Id,
+    Guid Id,
     string Name,
     string? Description,
     DateTime StartDate,

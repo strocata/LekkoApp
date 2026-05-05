@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LekkoApp.API", "LekkoApp.AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LekkoApp.Core", "LekkoApp.Core\LekkoApp.Core.csproj", "{214AAC5E-FB5F-468A-9DF7-301589936CF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LekkoApp.Tests", "LekkoApp.Tests\LekkoApp.Tests.csproj", "{202B34CF-FF7C-4691-9AD9-6662288EF0FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{214AAC5E-FB5F-468A-9DF7-301589936CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214AAC5E-FB5F-468A-9DF7-301589936CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214AAC5E-FB5F-468A-9DF7-301589936CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202B34CF-FF7C-4691-9AD9-6662288EF0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202B34CF-FF7C-4691-9AD9-6662288EF0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202B34CF-FF7C-4691-9AD9-6662288EF0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202B34CF-FF7C-4691-9AD9-6662288EF0FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
