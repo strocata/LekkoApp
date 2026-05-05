@@ -1,13 +1,257 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lekkoapp-frontend</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>LEKKO. — Productivity Console</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Newsreader:ital,wght@0,400;1,400&family=VT323&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="public/styles.css" />
+        <script
+            src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+            integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+            integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+            integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body data-theme="dark" data-density="comfy">
+        <div id="root"></div>
+
+        <script type="text/babel" src="src/tweaks-panel.jsx"></script>
+        <script type="text/babel" src="src/components.jsx"></script>
+        <script type="text/babel" src="src/screens.jsx"></script>
+        <script type="text/babel" src="src/timer.jsx"></script>
+
+        <script type="text/babel">
+            const { useState, useEffect } = React;
+
+            const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/ {
+                theme: "light",
+                density: "compact",
+                accentHue: 103,
+                accentChroma: 0.07,
+                accentMode: "mono",
+            }; /*EDITMODE-END*/
+
+            function App() {
+                const [view, setView] = useState("dashboard");
+                const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+                // Apply theme + density to body
+                useEffect(() => {
+                    document.body.dataset.theme = tweaks.theme;
+                    document.body.dataset.density = tweaks.density;
+                    if (tweaks.accentMode === "mono") {
+                        document.documentElement.style.setProperty(
+                            "--accent-c",
+                            "0",
+                        );
+                    } else {
+                        document.documentElement.style.setProperty(
+                            "--accent-c",
+                            String(tweaks.accentChroma),
+                        );
+                        document.documentElement.style.setProperty(
+                            "--accent-h",
+                            String(tweaks.accentHue),
+                        );
+                    }
+                }, [tweaks]);
+
+                // Keyboard shortcuts
+                useEffect(() => {
+                    const onKey = (e) => {
+                        if (
+                            e.target.tagName === "INPUT" ||
+                            e.target.tagName === "TEXTAREA"
+                        )
+                            return;
+                        if (e.key === "1") setView("dashboard");
+                        if (e.key === "2") setView("tasks");
+                        if (e.key === "3") setView("projects");
+                        if (e.key === "4") setView("tags");
+                        if (e.key === "t" || e.key === "T") setView("timer");
+                    };
+                    window.addEventListener("keydown", onKey);
+                    return () => window.removeEventListener("keydown", onKey);
+                }, []);
+
+                const crumbsByView = {
+                    dashboard: ["Lekko", "Console", "Dashboard"],
+                    tasks: ["Lekko", "Workspace", "Tasks"],
+                    projects: ["Lekko", "Workspace", "Projects"],
+                    project: ["Lekko", "Projects", "Pomodoro App"],
+                    tags: ["Lekko", "Workspace", "Tags"],
+                    timer: ["Lekko", "Focus", "Pomodoro"],
+                };
+
+                return (
+                    <div className="app">
+                        <Sidebar view={view} setView={setView} />
+                        <main className="main">
+                            <Topbar crumbs={crumbsByView[view] || ["Lekko"]}>
+                                <span className="cap dim">⌘K</span>
+                                <button className="iconbtn" title="Search">
+                                    ⌕
+                                </button>
+                                <button
+                                    className="iconbtn"
+                                    title="Notifications"
+                                >
+                                    ●
+                                </button>
+                                <button
+                                    className="iconbtn"
+                                    title="Theme"
+                                    onClick={() =>
+                                        setTweak(
+                                            "theme",
+                                            tweaks.theme === "dark"
+                                                ? "light"
+                                                : "dark",
+                                        )
+                                    }
+                                >
+                                    {tweaks.theme === "dark" ? "☾" : "☀"}
+                                </button>
+                            </Topbar>
+                            <div className="view active">
+                                {view === "dashboard" && <Dashboard />}
+                                {view === "tasks" && (
+                                    <Tasks setView={setView} />
+                                )}
+                                {view === "projects" && (
+                                    <Projects setView={setView} />
+                                )}
+                                {view === "project" && (
+                                    <ProjectDetail setView={setView} />
+                                )}
+                                {view === "tags" && <TagsPlaceholder />}
+                                {view === "timer" && <Timer />}
+                            </div>
+                        </main>
+
+                        <TweaksPanel title="Tweaks">
+                            <TweakSection label="Theme" />
+                            <TweakRadio
+                                label="Mode"
+                                value={tweaks.theme}
+                                onChange={(v) => setTweak("theme", v)}
+                                options={["dark", "light"]}
+                            />
+                            <TweakSection label="Density" />
+                            <TweakRadio
+                                label="Row height"
+                                value={tweaks.density}
+                                onChange={(v) => setTweak("density", v)}
+                                options={["compact", "comfy", "loose"]}
+                            />
+                            <TweakSection label="Accent" />
+                            <TweakRadio
+                                label="Treatment"
+                                value={tweaks.accentMode}
+                                onChange={(v) => setTweak("accentMode", v)}
+                                options={["mono", "tinted"]}
+                            />
+                            {tweaks.accentMode === "tinted" && (
+                                <>
+                                    <TweakSlider
+                                        label="Hue"
+                                        min={0}
+                                        max={360}
+                                        step={1}
+                                        value={tweaks.accentHue}
+                                        onChange={(v) =>
+                                            setTweak("accentHue", v)
+                                        }
+                                    />
+                                    <TweakSlider
+                                        label="Chroma"
+                                        min={0}
+                                        max={0.25}
+                                        step={0.01}
+                                        value={tweaks.accentChroma}
+                                        onChange={(v) =>
+                                            setTweak("accentChroma", v)
+                                        }
+                                    />
+                                </>
+                            )}
+                        </TweaksPanel>
+                    </div>
+                );
+            }
+
+            function TagsPlaceholder() {
+                const tags = [
+                    "urgent",
+                    "deep-work",
+                    "admin",
+                    "writing",
+                    "review",
+                    "bug",
+                    "design",
+                    "research",
+                    "reading",
+                    "calls",
+                    "errand",
+                    "followup",
+                ];
+                return (
+                    <section className="page">
+                        <div
+                            className="row spread"
+                            style={{ marginBottom: 24 }}
+                        >
+                            <div>
+                                <span className="cap">Workspace / Tags</span>
+                                <h1 style={{ marginTop: 6 }}>Tags</h1>
+                            </div>
+                            <button className="btn primary">+ New tag</button>
+                        </div>
+                        <div className="panel">
+                            <div className="panel-b">
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexWrap: "wrap",
+                                        gap: 8,
+                                    }}
+                                >
+                                    {tags.map((t) => (
+                                        <span
+                                            key={t}
+                                            className="tag"
+                                            style={{
+                                                padding: "6px 10px",
+                                                fontSize: 11,
+                                            }}
+                                        >
+                                            {t}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                );
+            }
+
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(<App />);
+        </script>
+    </body>
 </html>
