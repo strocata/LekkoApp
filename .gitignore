@@ -34,6 +34,7 @@ artifacts/
 # ASP.NET Core
 appsettings.Development.json
 appsettings.Local.json
+appsettings.json
 
 # Node.js
 node_modules/
@@ -48,3 +49,6 @@ build/
 # Rider
 .idea/
 *.sln.DotSettings.user
+.zed/debug.json
+.zed/tasks.json
+LekkoApp.MVC/logs/lekkoapp-20260430.txt
