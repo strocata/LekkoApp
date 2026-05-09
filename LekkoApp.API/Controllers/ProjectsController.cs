@@ -1,91 +1,107 @@
-﻿using LekkoApp.API.DTOs.Responses;
+using LekkoApp.API.DTOs.Requests;
+using LekkoApp.API.DTOs.Responses;
 using LekkoApp.Data;
 using LekkoApp.Models;
 using LekkoApp.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace LekkoApp.API.Controllers;
 
-public class ProjectsController: BaseApiController
+public class ProjectsController : BaseApiController
 {
-    private readonly ILogger<ProjectsController> _logger;
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly ITaskRepository _taskRepository;
     private readonly IProjectRepository _projectRepository;
 
-    public ProjectsController(ILogger<ProjectsController> logger, ApplicationDbContext context,
-        ITaskRepository taskRepository, UserManager<ApplicationUser> userManager, IProjectRepository projectRepository)
+    public ProjectsController(
+        ApplicationDbContext context,
+        UserManager<ApplicationUser> userManager,
+        IProjectRepository projectRepository)
     {
-        _taskRepository = taskRepository;
-        _userManager = userManager;
-        _logger = logger;
         _context = context;
+        _userManager = userManager;
         _projectRepository = projectRepository;
     }
-    
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ProjectResponse>>> Get()
     {
-        var user = await _userManager.GetUserAsync(HttpContext.User);
+        var user = await _userManager.GetUserAsync(User);
         if (user == null) return Unauthorized();
 
         var projects = await _projectRepository.GetProjectsByUserAsync(user);
-        var response = projects.Select(p => new ProjectResponse(
-            p.Id, p.Name, p.Description, p.StartDate, p.EndDate,
-            p.IsActive, p.Status, p.User, p.CreatedAt
-        )).ToList();
+        return Ok(projects.Select(MapToResponse));
+    }
 
-        return Ok(response);
+    [HttpGet("{id:guid}")]
+    public async Task<ActionResult<ProjectResponse>> GetById(Guid id)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null) return Unauthorized();
+
+        var project = await _projectRepository.GetProjectByIdAsync(id);
+        if (project == null) return NotFound();
+        if (project.User?.Id != user.Id) return Forbid();
+
+        return Ok(MapToResponse(project));
+    }
+
+    [HttpGet("{id:guid}/tasks")]
+    public async Task<ActionResult<IEnumerable<TaskSummaryResponse>>> GetTasks(Guid id)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null) return Unauthorized();
+
+        var project = await _projectRepository.GetProjectByIdAsync(id);
+        if (project == null) return NotFound();
+        if (project.User?.Id != user.Id) return Forbid();
+
+        var tasks = await _projectRepository.GetProjectTasksByIdAsync(id);
+        return Ok(tasks
+            .Where(t => t != null)
+            .Select(t => new TaskSummaryResponse(
+                t!.Id, t.Title, t.Description,
+                t.Status.ToString(), t.Priority.ToString(),
+                t.DueDate, t.ProjectId)));
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(ProjectCreateViewModel model)
+    public async Task<ActionResult<ProjectResponse>> Create([FromBody] CreateProjectRequest request)
     {
-        var user = await _userManager.GetUserAsync(HttpContext.User);
-
-        if (!ModelState.IsValid)
-        {
-            var tasks = await _taskRepository.GetByUserAsync(user);
-            model.PomodoroTasks = tasks.Select(t => new SelectListItem
-            {
-                Value = t.Id.ToString(),
-                Text = t.Title
-            });
-
-            return Ok(model);
-        }
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null) return Unauthorized();
 
         var project = new Project
         {
-            Name = model.Name,
-            Description = model.Description,
-            StartDate = model.StartDate,
-            EndDate = model.EndDate,
-            Status = model.Status,
-            User = null,
+            Name = request.Name,
+            Description = request.Description,
+            StartDate = request.StartDate,
+            EndDate = request.EndDate,
+            Status = request.Status,
+            User = null
         };
 
         await _projectRepository.CreateAsync(project, user);
 
-        if (model.SelectedTaskIds.Any())
+        if (request.SelectedTaskIds.Any())
         {
             var tasksToUpdate = await _context.PomodoroTasks
-                .Where(t => model.SelectedTaskIds.Contains(t.Id))
+                .Where(t => request.SelectedTaskIds.Contains(t.Id))
                 .ToListAsync();
 
             foreach (var task in tasksToUpdate)
-            {
                 task.ProjectId = project.Id;
-            }
 
             await _context.SaveChangesAsync();
         }
 
-        return Ok();
+        return CreatedAtAction(nameof(GetById), new { id = project.Id }, MapToResponse(project));
     }
+
+    private static ProjectResponse MapToResponse(Project p) => new(
+        p.Id, p.Name, p.Description, p.StartDate, p.EndDate,
+        p.IsActive, p.Status, p.User, p.CreatedAt
+    );
 }

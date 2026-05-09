@@ -1,10 +1,17 @@
 namespace LekkoApp.API.DTOs.Responses;
 
 public record TaskResponse(
-    int Id,
+    Guid Id,
+    int TaskNumber,
     string Title,
     string? Description,
-    int ProjectId,
+    int EstimatedPomodoros,
+    int CompletedPomodoros,
+    string Status,
+    string Priority,
+    string Recurrence,
     DateTime? DueDate,
-    bool IsCompleted
+    Guid? ProjectId,
+    DateTime CreatedAt,
+    DateTime? UpdatedAt
 );
