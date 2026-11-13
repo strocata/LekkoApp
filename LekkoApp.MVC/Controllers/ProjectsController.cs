@@ -2,6 +2,7 @@ using System.Diagnostics;
 using LekkoApp.Data;
 using LekkoApp.Models;
 using LekkoApp.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LekkoApp.Controllers;
 
+[Authorize]
 public class ProjectsController : Controller
 {
     private readonly ILogger<ProjectsController> _logger;
@@ -67,6 +69,7 @@ public class ProjectsController : Controller
     public async Task<IActionResult> Create(ProjectCreateViewModel model)
     {
         var user = await _userManager.GetUserAsync(HttpContext.User);
+        if (user == null) return Challenge();
 
         if (!ModelState.IsValid)
         {
@@ -95,7 +98,7 @@ public class ProjectsController : Controller
         if (model.SelectedTaskIds.Any())
         {
             var tasksToUpdate = await _context.PomodoroTasks
-                .Where(t => model.SelectedTaskIds.Contains(t.Id))
+                .Where(t => t.UserId == user.Id && model.SelectedTaskIds.Contains(t.Id))
                 .ToListAsync();
 
             foreach (var task in tasksToUpdate)
@@ -111,9 +114,15 @@ public class ProjectsController : Controller
 
     public async Task<IActionResult> Details(Guid projectId)
     {
-        var project = await _projectRepository.GetProjectByIdAsync(projectId);
+        var userId = _userManager.GetUserId(User);
+        if (userId == null) return Challenge();
 
-        var tasks = await _projectRepository.GetProjectTasksByIdAsync(projectId) as List<PomodoroTask>;
+        var project = await _projectRepository.GetProjectByIdForUserAsync(projectId, userId);
+        if (project == null) return NotFound();
+
+        var tasks = (await _projectRepository.GetProjectTasksByIdAsync(projectId))
+            .OfType<PomodoroTask>()
+            .ToList();
 
         var model = new ProjectDetailsViewModel()
         {

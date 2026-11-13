@@ -1,6 +1,7 @@
 using LekkoApp.Data;
 using LekkoApp.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskStatus = LekkoApp.Models.Enums.TaskStatus;
@@ -13,16 +14,25 @@ namespace LekkoApp.Controllers;
 public class TimerLogController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public TimerLogController(ApplicationDbContext context)
+    public TimerLogController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
+
+    // Tasks/sessions are looked up only among the caller's own records;
+    // anything else is reported as "not found" so foreign ids are not revealed.
+    private string? CurrentUserId => _userManager.GetUserId(User);
+
+    private Task<PomodoroTask?> FindOwnTaskAsync(Guid taskId) =>
+        _context.PomodoroTasks.FirstOrDefaultAsync(t => t.Id == taskId && t.UserId == CurrentUserId);
 
     [HttpPost("start")]
     public async Task<IActionResult> StartSession([FromBody] TimerSessionStartDto dto)
     {
-        var task = await _context.PomodoroTasks.FindAsync(dto.TaskId);
+        var task = await FindOwnTaskAsync(dto.TaskId);
         if (task == null)
             return NotFound("PomodoroTask not found");
 
@@ -54,7 +64,7 @@ public class TimerLogController : ControllerBase
     {
         var session = await _context.Pomodoros
             .Include(s => s.Task)
-            .FirstOrDefaultAsync(s => s.Id == dto.SessionId);
+            .FirstOrDefaultAsync(s => s.Id == dto.SessionId && s.Task!.UserId == CurrentUserId);
 
         if (session == null)
             return NotFound("Session not found");
@@ -65,7 +75,7 @@ public class TimerLogController : ControllerBase
         session.EndedAt = DateTime.UtcNow;
         session.Status = PomodoroSessionStatus.Completed;
 
-        if (session.Type == PomodoroType.Work)
+        if (session.Type == PomodoroType.Work && session.Task != null)
         {
             session.Task.CompletedPomodoros++;
         }
@@ -78,7 +88,8 @@ public class TimerLogController : ControllerBase
     [HttpPost("interrupt")]
     public async Task<IActionResult> InterruptSession([FromBody] TimerSessionInterruptDto dto)
     {
-        var session = await _context.Pomodoros.FindAsync(dto.SessionId);
+        var session = await _context.Pomodoros
+            .FirstOrDefaultAsync(s => s.Id == dto.SessionId && s.Task!.UserId == CurrentUserId);
         if (session == null)
             return NotFound("Session not found");
 
@@ -95,7 +106,7 @@ public class TimerLogController : ControllerBase
     [HttpPost("LogIteration")]
     public async Task<IActionResult> LogIteration([FromBody] TimerLogDto dto)
     {
-        var task = await _context.PomodoroTasks.FindAsync(dto.TaskId);
+        var task = await FindOwnTaskAsync(dto.TaskId);
         if (task == null)
             return NotFound("PomodoroTask not found");
 

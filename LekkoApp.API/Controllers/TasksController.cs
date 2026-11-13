@@ -163,7 +163,7 @@ public class TasksController : BaseApiController
         return NoContent();
     }
 
-    private async System.Threading.Tasks.Task CreateRecurringTask(PomodoroTask completed, ApplicationUser user)
+    private async Task CreateRecurringTask(PomodoroTask completed, ApplicationUser user)
     {
         var nextDueDate = completed.DueDate ?? DateTime.UtcNow;
         nextDueDate = completed.Recurrence switch

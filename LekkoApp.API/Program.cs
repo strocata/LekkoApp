@@ -1,4 +1,5 @@
 using LekkoApp.API.Extensions;
+using LekkoApp.Core.Services;
 using LekkoApp.Data;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDataProtection();
 builder.Services.AddSingleton(TimeProvider.System);
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 builder.Services
     .AddIdentityCore<ApplicationUser>(options =>

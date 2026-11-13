@@ -28,6 +28,12 @@ public class ProjectRepository: IProjectRepository
         return await _context.Projects.FindAsync(id);
     }
 
+    public async Task<Project?> GetProjectByIdForUserAsync(Guid id, string userId)
+    {
+        return await _context.Projects
+            .FirstOrDefaultAsync(p => p.Id == id && p.User != null && p.User.Id == userId);
+    }
+
     public async Task<IEnumerable<PomodoroTask?>> GetProjectTasksByIdAsync(Guid id)
     {
         return await _context.PomodoroTasks.Where(t => t.ProjectId == id).ToListAsync();

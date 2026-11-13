@@ -27,7 +27,7 @@ public enum PomodoroType
 
 public enum PomodoroSessionStatus
 {
-    Active, // стартувала, таймер іде
-    Completed, // завершилась по таймеру
-    Interrupted // завершена вручну
+    Active,
+    Completed,
+    Interrupted
 }

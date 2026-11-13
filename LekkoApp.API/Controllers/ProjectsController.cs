@@ -41,9 +41,8 @@ public class ProjectsController : BaseApiController
         var user = await _userManager.GetUserAsync(User);
         if (user == null) return Unauthorized();
 
-        var project = await _projectRepository.GetProjectByIdAsync(id);
+        var project = await _projectRepository.GetProjectByIdForUserAsync(id, user.Id);
         if (project == null) return NotFound();
-        if (project.User?.Id != user.Id) return Forbid();
 
         return Ok(MapToResponse(project));
     }
@@ -54,9 +53,8 @@ public class ProjectsController : BaseApiController
         var user = await _userManager.GetUserAsync(User);
         if (user == null) return Unauthorized();
 
-        var project = await _projectRepository.GetProjectByIdAsync(id);
+        var project = await _projectRepository.GetProjectByIdForUserAsync(id, user.Id);
         if (project == null) return NotFound();
-        if (project.User?.Id != user.Id) return Forbid();
 
         var tasks = await _projectRepository.GetProjectTasksByIdAsync(id);
         return Ok(tasks
@@ -88,7 +86,7 @@ public class ProjectsController : BaseApiController
         if (request.SelectedTaskIds.Any())
         {
             var tasksToUpdate = await _context.PomodoroTasks
-                .Where(t => request.SelectedTaskIds.Contains(t.Id))
+                .Where(t => t.UserId == user.Id && request.SelectedTaskIds.Contains(t.Id))
                 .ToListAsync();
 
             foreach (var task in tasksToUpdate)
@@ -102,6 +100,6 @@ public class ProjectsController : BaseApiController
 
     private static ProjectResponse MapToResponse(Project p) => new(
         p.Id, p.Name, p.Description, p.StartDate, p.EndDate,
-        p.IsActive, p.Status, p.User, p.CreatedAt
+        p.IsActive, p.Status, p.CreatedAt
     );
 }
